@@ -38,18 +38,28 @@ export const SpreadCanvas: React.FC<SpreadCanvasProps> = ({
     }
     if (cardCount >= 7) {
       return {
-        w: 80,
-        h: 136,
-        labelMaxW: 96,
+        w: 72,
+        h: 122,
+        labelMaxW: 90,
+        textSize: 'text-[9px]',
+        badgeSize: 'text-[7px]',
+        canvasHeight: 'h-[660px]',
+      };
+    }
+    if (cardCount >= 5) {
+      return {
+        w: 86,
+        h: 146,
+        labelMaxW: 104,
         textSize: 'text-[10px]',
         badgeSize: 'text-[8px]',
         canvasHeight: 'h-[620px]',
       };
     }
-    if (cardCount >= 4) {
+    if (cardCount === 4) {
       return {
-        w: 98,
-        h: 166,
+        w: 96,
+        h: 162,
         labelMaxW: 112,
         textSize: 'text-[11px]',
         badgeSize: 'text-[8px]',
@@ -58,18 +68,18 @@ export const SpreadCanvas: React.FC<SpreadCanvasProps> = ({
     }
     if (cardCount === 3) {
       return {
-        w: 124,
-        h: 210,
-        labelMaxW: 136,
+        w: 116,
+        h: 196,
+        labelMaxW: 132,
         textSize: 'text-[12px]',
         badgeSize: 'text-[9px]',
         canvasHeight: 'h-[540px]',
       };
     }
     return {
-      w: 154,
-      h: 260,
-      labelMaxW: 165,
+      w: 148,
+      h: 250,
+      labelMaxW: 160,
       textSize: 'text-[13px]',
       badgeSize: 'text-[10px]',
       canvasHeight: 'h-[500px]',
@@ -78,10 +88,10 @@ export const SpreadCanvas: React.FC<SpreadCanvasProps> = ({
 
   const layout = getLayoutConfiguration();
 
-  // Precise geometric layout positioning engine
+  // Precise geometric layout positioning engine for all canonical spreads
   const getSlotPosition = (slot: SpreadSlot) => {
     const isCeltic = spread.id === 'celtic_cross' || spread.id === 'celtic-cross' || cardCount === 10;
-    const isHexagram = spread.id === 'hexagram_7' || (cardCount === 7 && spread.id.includes('hexagram'));
+    const isHexagram = spread.id === 'hexagram_7' || (cardCount === 7 && (spread.id.includes('hexagram') || spread.id.includes('david')));
     const isHorseshoe = spread.id === 'horseshoe_7' || (cardCount === 7 && spread.id.includes('horseshoe'));
     const isTwoChoices = spread.id === 'two_choices' || cardCount === 5;
     const isFourElements = spread.id === 'four_elements' || cardCount === 4;
@@ -106,30 +116,30 @@ export const SpreadCanvas: React.FC<SpreadCanvasProps> = ({
       return celticCoords[slot.slot_id] || { top: `${slot.y * 100}%`, left: `${slot.x * 100}%`, rotate: slot.rotation_deg || 0, zIndex: slot.z_index || 1 };
     }
 
-    // 2. Star of David / Hexagram (7 Cards)
+    // 2. Star of David / Hexagram (7 Cards: Interlaced Upward & Downward Triangles + Center)
     if (isHexagram) {
       const hexCoords: Record<number, { top: string; left: string; rotate?: number; zIndex?: number }> = {
-        0: { top: '14%', left: '50%', rotate: 0, zIndex: 2 }, // Top Apex
-        1: { top: '66%', left: '76%', rotate: 0, zIndex: 2 }, // Bottom Right
-        2: { top: '66%', left: '24%', rotate: 0, zIndex: 2 }, // Bottom Left
-        3: { top: '86%', left: '50%', rotate: 0, zIndex: 2 }, // Bottom Apex
-        4: { top: '34%', left: '24%', rotate: 0, zIndex: 2 }, // Top Left
-        5: { top: '34%', left: '76%', rotate: 0, zIndex: 2 }, // Top Right
-        6: { top: '50%', left: '50%', rotate: 0, zIndex: 10 }, // Center Synthesis
+        0: { top: '12%', left: '50%', rotate: 0, zIndex: 2 }, // 1. Past (Upward Apex)
+        1: { top: '74%', left: '80%', rotate: 0, zIndex: 2 }, // 2. Present (Upward Right)
+        2: { top: '74%', left: '20%', rotate: 0, zIndex: 2 }, // 3. Future (Upward Left)
+        3: { top: '88%', left: '50%', rotate: 0, zIndex: 2 }, // 4. Solution (Downward Bottom Apex)
+        4: { top: '26%', left: '20%', rotate: 0, zIndex: 2 }, // 5. Surroundings (Downward Top-Left)
+        5: { top: '26%', left: '80%', rotate: 0, zIndex: 2 }, // 6. Hopes & Fears (Downward Top-Right)
+        6: { top: '50%', left: '50%', rotate: 0, zIndex: 15 }, // 7. Outcome Synthesis (Center)
       };
       return hexCoords[slot.slot_id] || { top: `${slot.y * 100}%`, left: `${slot.x * 100}%`, rotate: 0, zIndex: 1 };
     }
 
-    // 3. Horseshoe Arch (7 Cards)
+    // 3. Horseshoe Arch (7 Cards Parabolic Arch)
     if (isHorseshoe) {
       const horseCoords: Record<number, { top: string; left: string; rotate?: number; zIndex?: number }> = {
-        0: { top: '74%', left: '16%', rotate: 0, zIndex: 2 },
-        1: { top: '44%', left: '24%', rotate: 0, zIndex: 2 },
-        2: { top: '22%', left: '36%', rotate: 0, zIndex: 2 },
-        3: { top: '14%', left: '50%', rotate: 0, zIndex: 2 },
-        4: { top: '22%', left: '64%', rotate: 0, zIndex: 2 },
-        5: { top: '44%', left: '76%', rotate: 0, zIndex: 2 },
-        6: { top: '74%', left: '84%', rotate: 0, zIndex: 2 },
+        0: { top: '76%', left: '16%', rotate: 0, zIndex: 2 }, // 1. Past
+        1: { top: '46%', left: '24%', rotate: 0, zIndex: 2 }, // 2. Present
+        2: { top: '22%', left: '36%', rotate: 0, zIndex: 2 }, // 3. Hidden Influences
+        3: { top: '12%', left: '50%', rotate: 0, zIndex: 2 }, // 4. Obstacles
+        4: { top: '22%', left: '64%', rotate: 0, zIndex: 2 }, // 5. External Environment
+        5: { top: '46%', left: '76%', rotate: 0, zIndex: 2 }, // 6. Inner Hopes
+        6: { top: '76%', left: '84%', rotate: 0, zIndex: 2 }, // 7. Final Outcome
       };
       return horseCoords[slot.slot_id] || { top: `${slot.y * 100}%`, left: `${slot.x * 100}%`, rotate: 0, zIndex: 1 };
     }
@@ -137,11 +147,11 @@ export const SpreadCanvas: React.FC<SpreadCanvasProps> = ({
     // 4. Two Choices Crossroads (5 Cards)
     if (isTwoChoices) {
       const choiceCoords: Record<number, { top: string; left: string; rotate?: number; zIndex?: number }> = {
-        0: { top: '78%', left: '50%', rotate: 0, zIndex: 2 }, // Current Nexus
-        1: { top: '48%', left: '28%', rotate: 0, zIndex: 2 }, // Choice A Process
-        2: { top: '18%', left: '28%', rotate: 0, zIndex: 2 }, // Choice A Result
-        3: { top: '48%', left: '72%', rotate: 0, zIndex: 2 }, // Choice B Process
-        4: { top: '18%', left: '72%', rotate: 0, zIndex: 2 }, // Choice B Result
+        0: { top: '82%', left: '50%', rotate: 0, zIndex: 2 }, // Current Nexus
+        1: { top: '50%', left: '26%', rotate: 0, zIndex: 2 }, // Choice A Process
+        2: { top: '16%', left: '26%', rotate: 0, zIndex: 2 }, // Choice A Harvest
+        3: { top: '50%', left: '74%', rotate: 0, zIndex: 2 }, // Choice B Process
+        4: { top: '16%', left: '74%', rotate: 0, zIndex: 2 }, // Choice B Harvest
       };
       return choiceCoords[slot.slot_id] || { top: `${slot.y * 100}%`, left: `${slot.x * 100}%`, rotate: 0, zIndex: 1 };
     }
@@ -149,10 +159,10 @@ export const SpreadCanvas: React.FC<SpreadCanvasProps> = ({
     // 5. Four Elements Diamond (4 Cards)
     if (isFourElements) {
       const elemCoords: Record<number, { top: string; left: string; rotate?: number; zIndex?: number }> = {
-        0: { top: '18%', left: '50%', rotate: 0, zIndex: 2 }, // Fire Top
-        1: { top: '50%', left: '80%', rotate: 0, zIndex: 2 }, // Water Right
-        2: { top: '50%', left: '20%', rotate: 0, zIndex: 2 }, // Air Left
-        3: { top: '82%', left: '50%', rotate: 0, zIndex: 2 }, // Earth Bottom
+        0: { top: '16%', left: '50%', rotate: 0, zIndex: 2 }, // Fire (Top)
+        1: { top: '50%', left: '80%', rotate: 0, zIndex: 2 }, // Water (Right)
+        2: { top: '50%', left: '20%', rotate: 0, zIndex: 2 }, // Air (Left)
+        3: { top: '84%', left: '50%', rotate: 0, zIndex: 2 }, // Earth (Bottom)
       };
       return elemCoords[slot.slot_id] || { top: `${slot.y * 100}%`, left: `${slot.x * 100}%`, rotate: 0, zIndex: 1 };
     }
@@ -160,9 +170,9 @@ export const SpreadCanvas: React.FC<SpreadCanvasProps> = ({
     // 6. Holy Triangle (3 Cards)
     if (isHolyTriangle) {
       const triCoords: Record<number, { top: string; left: string; rotate?: number; zIndex?: number }> = {
-        0: { top: '72%', left: '28%', rotate: 0, zIndex: 2 }, // Situation Left
-        1: { top: '72%', left: '72%', rotate: 0, zIndex: 2 }, // Obstacle Right
-        2: { top: '24%', left: '50%', rotate: 0, zIndex: 2 }, // Advice Apex
+        0: { top: '74%', left: '26%', rotate: 0, zIndex: 2 }, // Situation (Left)
+        1: { top: '74%', left: '74%', rotate: 0, zIndex: 2 }, // Obstacle (Right)
+        2: { top: '22%', left: '50%', rotate: 0, zIndex: 2 }, // Advice (Apex)
       };
       return triCoords[slot.slot_id] || { top: `${slot.y * 100}%`, left: `${slot.x * 100}%`, rotate: 0, zIndex: 1 };
     }
@@ -218,7 +228,7 @@ export const SpreadCanvas: React.FC<SpreadCanvasProps> = ({
                   zIndex: isSelected ? 45 : (pos.zIndex ?? 1) + 2,
                 }}
               >
-                {/* For Crossed Card 2 in Celtic Cross, show floating pill badge above to prevent collision */}
+                {/* For Crossed Card in Celtic Cross, show floating pill badge above to prevent collision */}
                 {isCrossedObstacle ? (
                   <div className="absolute -top-7 left-1/2 -translate-x-1/2 whitespace-nowrap bg-slate-950/95 dark:bg-black/95 backdrop-blur-md px-2 py-0.5 rounded-full border border-amber-500/40 shadow-lg flex items-center gap-1 z-30 pointer-events-none">
                     <span className="text-[9px] font-editorial font-bold text-amber-300">
