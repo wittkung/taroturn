@@ -25,7 +25,7 @@ export function App() {
   const [session, setSession] = useState<ReadingSession | null>(null);
   const [revealedSlots, setRevealedSlots] = useState<Set<number>>(new Set());
   const [isDrawing, setIsDrawing] = useState<boolean>(false);
-  const [question, setQuestion] = useState<string>('新项目全平台开源架构与商业模式发展路径');
+  const [question, setQuestion] = useState<string>('');
   const [allowReversals, setAllowReversals] = useState<boolean>(true);
   const [isPro, setIsPro] = useState<boolean>(true);
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);

@@ -1,5 +1,7 @@
-// src/components/MarkdownRenderer.tsx - Elegant Zen Markdown Renderer
+// src/components/MarkdownRenderer.tsx - Production-grade Markdown Renderer powered by react-markdown & remark-gfm
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 interface MarkdownRendererProps {
   content: string;
@@ -9,168 +11,109 @@ interface MarkdownRendererProps {
 export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, className = '' }) => {
   if (!content) return null;
 
-  const lines = content.split('\n');
-  const elements: React.ReactNode[] = [];
-  let inList = false;
-  let listItems: React.ReactNode[] = [];
-
-  const flushList = () => {
-    if (inList && listItems.length > 0) {
-      elements.push(
-        <ul key={`list-${elements.length}`} className="space-y-1.5 my-2 pl-4">
-          {listItems}
-        </ul>
-      );
-      listItems = [];
-      inList = false;
-    }
-  };
-
-  const formatInline = (text: string): React.ReactNode => {
-    // Split by bold (**text**)
-    const boldParts = text.split(/(\*\*.*?\*\*)/g);
-    return boldParts.map((part, i) => {
-      if (part.startsWith('**') && part.endsWith('**')) {
-        return (
-          <strong key={i} className="font-bold text-amber-500 dark:text-amber-400">
-            {part.slice(2, -2)}
-          </strong>
-        );
-      }
-      // Split by code (`code`)
-      const codeParts = part.split(/(`.*?`)/g);
-      return codeParts.map((cp, j) => {
-        if (cp.startsWith('`') && cp.endsWith('`')) {
-          return (
-            <code
-              key={j}
-              className="px-1.5 py-0.5 mx-0.5 rounded bg-purple-500/15 text-purple-700 dark:text-purple-300 font-mono text-[11px] border border-purple-500/25"
-            >
-              {cp.slice(1, -1)}
+  return (
+    <div className={`markdown-body select-text leading-relaxed text-slate-800 dark:text-slate-200 text-xs font-editorial space-y-3 ${className}`}>
+      <ReactMarkdown
+        remarkPlugins={[remarkGfm]}
+        components={{
+          h1: ({ children }) => (
+            <h1 className="text-base font-editorial font-bold text-slate-900 dark:text-slate-100 mt-4 mb-2 pb-1.5 border-b border-amber-500/30 flex items-center gap-2">
+              <span className="w-1.5 h-4 bg-amber-500 rounded-full inline-block flex-shrink-0" />
+              <span>{children}</span>
+            </h1>
+          ),
+          h2: ({ children }) => (
+            <h2 className="text-[14px] font-editorial font-bold text-slate-900 dark:text-slate-100 mt-3.5 mb-1.5 flex items-center gap-2">
+              <span className="w-1 h-3.5 bg-purple-500 rounded-full inline-block flex-shrink-0" />
+              <span>{children}</span>
+            </h2>
+          ),
+          h3: ({ children }) => (
+            <h3 className="text-[13px] font-editorial font-bold text-amber-600 dark:text-amber-300 mt-3 mb-1">
+              {children}
+            </h3>
+          ),
+          h4: ({ children }) => (
+            <h4 className="text-[12px] font-editorial font-bold text-purple-400 mt-2 mb-1">
+              {children}
+            </h4>
+          ),
+          p: ({ children }) => (
+            <p className="text-[12px] font-editorial text-slate-800 dark:text-slate-200 leading-relaxed my-1.5">
+              {children}
+            </p>
+          ),
+          strong: ({ children }) => (
+            <strong className="font-bold text-amber-600 dark:text-amber-400">
+              {children}
+            </strong>
+          ),
+          em: ({ children }) => (
+            <em className="italic text-purple-600 dark:text-purple-300 font-editorial">
+              {children}
+            </em>
+          ),
+          blockquote: ({ children }) => (
+            <blockquote className="p-3 my-2.5 rounded-2xl bg-purple-500/10 border-l-4 border-amber-500 text-[12px] font-editorial italic text-slate-700 dark:text-slate-300 shadow-sm">
+              {children}
+            </blockquote>
+          ),
+          ul: ({ children }) => (
+            <ul className="space-y-1.5 my-2 pl-2 list-none">
+              {children}
+            </ul>
+          ),
+          ol: ({ children }) => (
+            <ol className="space-y-1.5 my-2 pl-4 list-decimal marker:text-amber-500 font-mono text-[11px]">
+              {children}
+            </ol>
+          ),
+          li: ({ children }) => (
+            <li className="text-[12px] font-editorial text-slate-800 dark:text-slate-200 flex items-start gap-2">
+              <span className="text-amber-500 text-[10px] mt-0.5 flex-shrink-0">✦</span>
+              <span className="flex-1">{children}</span>
+            </li>
+          ),
+          table: ({ children }) => (
+            <div className="overflow-x-auto my-3 rounded-xl border border-purple-500/20 bg-black/20">
+              <table className="w-full text-left text-[11px] font-editorial border-collapse">
+                {children}
+              </table>
+            </div>
+          ),
+          thead: ({ children }) => (
+            <thead className="bg-purple-500/15 text-amber-300 border-b border-purple-500/30">
+              {children}
+            </thead>
+          ),
+          tbody: ({ children }) => (
+            <tbody className="divide-y divide-white/5">
+              {children}
+            </tbody>
+          ),
+          tr: ({ children }) => (
+            <tr className="hover:bg-white/[0.02] transition-colors">
+              {children}
+            </tr>
+          ),
+          th: ({ children }) => (
+            <th className="p-2.5 font-bold">{children}</th>
+          ),
+          td: ({ children }) => (
+            <td className="p-2.5 text-slate-300">{children}</td>
+          ),
+          code: ({ children }) => (
+            <code className="px-1.5 py-0.5 rounded bg-purple-500/15 text-purple-700 dark:text-purple-300 font-mono text-[11px] border border-purple-500/25">
+              {children}
             </code>
-          );
-        }
-        return cp;
-      });
-    });
-  };
-
-  lines.forEach((line, index) => {
-    const trimmed = line.trim();
-
-    // Empty line
-    if (!trimmed) {
-      flushList();
-      elements.push(<div key={`space-${index}`} className="h-2" />);
-      return;
-    }
-
-    // Heading 1 (# ...)
-    if (trimmed.startsWith('# ')) {
-      flushList();
-      elements.push(
-        <h1
-          key={`h1-${index}`}
-          className="text-lg font-editorial font-bold text-slate-900 dark:text-slate-100 mt-4 mb-2 pb-1 border-b border-purple-500/30 flex items-center gap-2"
-        >
-          <span className="w-1.5 h-4 bg-amber-500 rounded-full inline-block" />
-          {formatInline(trimmed.slice(2))}
-        </h1>
-      );
-      return;
-    }
-
-    // Heading 2 (## ...)
-    if (trimmed.startsWith('## ')) {
-      flushList();
-      elements.push(
-        <h2
-          key={`h2-${index}`}
-          className="text-base font-editorial font-bold text-slate-900 dark:text-slate-100 mt-3.5 mb-1.5 flex items-center gap-2"
-        >
-          <span className="w-1 h-3.5 bg-purple-500 rounded-full inline-block" />
-          {formatInline(trimmed.slice(3))}
-        </h2>
-      );
-      return;
-    }
-
-    // Heading 3 (### ...)
-    if (trimmed.startsWith('### ')) {
-      flushList();
-      elements.push(
-        <h3
-          key={`h3-${index}`}
-          className="text-sm font-editorial font-bold text-amber-600 dark:text-amber-300 mt-3 mb-1"
-        >
-          {formatInline(trimmed.slice(4))}
-        </h3>
-      );
-      return;
-    }
-
-    // Blockquote (> ...)
-    if (trimmed.startsWith('> ')) {
-      flushList();
-      elements.push(
-        <blockquote
-          key={`quote-${index}`}
-          className="p-3 my-2 rounded-xl bg-purple-500/10 border-l-4 border-amber-500 text-[12px] font-editorial italic text-slate-700 dark:text-slate-300 shadow-sm"
-        >
-          {formatInline(trimmed.slice(2))}
-        </blockquote>
-      );
-      return;
-    }
-
-    // Bullet List (- ... or * ...)
-    if (trimmed.startsWith('- ') || trimmed.startsWith('* ')) {
-      inList = true;
-      listItems.push(
-        <li
-          key={`li-${index}`}
-          className="text-[12px] font-editorial text-slate-800 dark:text-slate-200 flex items-start gap-2"
-        >
-          <span className="text-amber-500 text-[10px] mt-1">✦</span>
-          <span className="flex-1">{formatInline(trimmed.slice(2))}</span>
-        </li>
-      );
-      return;
-    }
-
-    // Numbered List (1. ... 2. ...)
-    if (/^\d+\.\s/.test(trimmed)) {
-      inList = true;
-      const numMatch = trimmed.match(/^(\d+)\.\s(.*)$/);
-      if (numMatch) {
-        listItems.push(
-          <li
-            key={`li-${index}`}
-            className="text-[12px] font-editorial text-slate-800 dark:text-slate-200 flex items-start gap-2"
-          >
-            <span className="font-mono text-[10px] font-bold text-purple-400 bg-purple-500/20 px-1.5 py-0.2 rounded">
-              {numMatch[1]}
-            </span>
-            <span className="flex-1">{formatInline(numMatch[2])}</span>
-          </li>
-        );
-        return;
-      }
-    }
-
-    // Regular Paragraph
-    flushList();
-    elements.push(
-      <p
-        key={`p-${index}`}
-        className="text-[12px] font-editorial text-slate-800 dark:text-slate-200 leading-relaxed my-1"
+          ),
+          hr: () => (
+            <hr className="my-3 border-t border-purple-500/20" />
+          ),
+        }}
       >
-        {formatInline(trimmed)}
-      </p>
-    );
-  });
-
-  flushList();
-
-  return <div className={`space-y-1 ${className}`}>{elements}</div>;
+        {content}
+      </ReactMarkdown>
+    </div>
+  );
 };
