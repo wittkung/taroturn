@@ -112,6 +112,29 @@ export const SpreadCanvas: React.FC<SpreadCanvasProps> = ({
                         </div>
                       </div>
                     </div>
+
+                    {/* Celtic Cross Compact Card & Slot Label */}
+                    <div className="mt-1 text-center flex flex-col items-center pointer-events-none max-w-[110px] select-none">
+                      <span className="text-[10px] font-editorial font-medium text-slate-700 dark:text-slate-300 truncate w-full">
+                        {slot.title_zh}
+                      </span>
+                      {isFlipped && card && (
+                        <div className="flex items-center gap-1 mt-0.5">
+                          <span className="text-[11px] font-editorial font-bold text-slate-900 dark:text-slate-100 whitespace-nowrap">
+                            {card.name_zh}
+                          </span>
+                          <span
+                            className={`text-[8px] px-1 py-0.2 rounded font-editorial font-bold leading-tight ${
+                              placed?.drawn_card.orientation === 'Upright'
+                                ? 'bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30'
+                                : 'bg-rose-500/20 text-rose-700 dark:text-rose-300 border border-rose-500/30'
+                            }`}
+                          >
+                            {placed?.drawn_card.orientation === 'Upright' ? '正位' : '逆位'}
+                          </span>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 );
               })}
@@ -175,10 +198,26 @@ export const SpreadCanvas: React.FC<SpreadCanvasProps> = ({
                         </div>
                       </div>
                     </div>
-                    <div className="mt-3 text-center">
-                      <span className="text-[14px] font-editorial font-bold text-slate-800 dark:text-slate-200 block">
+                    <div className="mt-3 text-center flex flex-col items-center select-none">
+                      <span className="text-[13px] font-editorial font-medium text-slate-700 dark:text-slate-300 block">
                         {slot.title_zh}
                       </span>
+                      {isFlipped && card && (
+                        <div className="flex items-center gap-1.5 mt-1 bg-slate-900/60 dark:bg-black/60 backdrop-blur-md px-2.5 py-0.5 rounded-full border border-purple-500/30">
+                          <span className="text-[13px] font-editorial font-bold text-slate-900 dark:text-slate-100">
+                            {card.name_zh}
+                          </span>
+                          <span
+                            className={`text-[9px] px-1.5 py-0.2 rounded-full font-editorial font-bold ${
+                              placed?.drawn_card.orientation === 'Upright'
+                                ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/40'
+                                : 'bg-rose-500/20 text-rose-400 border border-rose-500/40'
+                            }`}
+                          >
+                            {placed?.drawn_card.orientation === 'Upright' ? '正位' : '逆位'}
+                          </span>
+                        </div>
+                      )}
                     </div>
                   </div>
                 );
@@ -235,11 +274,27 @@ export const SpreadCanvas: React.FC<SpreadCanvasProps> = ({
                         </div>
                       </div>
                     </div>
-                    <div className="mt-3 text-center">
-                      <span className="text-[14px] font-editorial font-bold text-slate-800 dark:text-slate-100 block">
+                    <div className="mt-3 text-center flex flex-col items-center select-none">
+                      <span className="text-[13px] font-editorial font-medium text-slate-700 dark:text-slate-300 block">
                         {slot.title_zh}
                       </span>
-                      <span className="text-[11px] text-slate-600 dark:text-slate-400 font-editorial line-clamp-1 max-w-[140px]">
+                      {isFlipped && card && (
+                        <div className="flex items-center gap-1.5 mt-1 bg-slate-900/60 dark:bg-black/60 backdrop-blur-md px-3 py-0.5 rounded-full border border-purple-500/30">
+                          <span className="text-[13px] font-editorial font-bold text-slate-900 dark:text-slate-100">
+                            {card.name_zh}
+                          </span>
+                          <span
+                            className={`text-[9px] px-1.5 py-0.2 rounded-full font-editorial font-bold ${
+                              placed?.drawn_card.orientation === 'Upright'
+                                ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/40'
+                                : 'bg-rose-500/20 text-rose-400 border border-rose-500/40'
+                            }`}
+                          >
+                            {placed?.drawn_card.orientation === 'Upright' ? '正位' : '逆位'}
+                          </span>
+                        </div>
+                      )}
+                      <span className="text-[11px] text-slate-500 dark:text-slate-400 font-editorial line-clamp-1 max-w-[140px] mt-0.5">
                         {slot.meaning_prompt}
                       </span>
                     </div>
@@ -292,10 +347,26 @@ export const SpreadCanvas: React.FC<SpreadCanvasProps> = ({
                         </div>
                       </div>
                     </div>
-                    <div className="mt-4 text-center">
-                      <span className="text-[16px] font-editorial font-bold text-slate-800 dark:text-slate-100 block">
+                    <div className="mt-4 text-center flex flex-col items-center select-none">
+                      <span className="text-[14px] font-editorial font-medium text-slate-700 dark:text-slate-300 block">
                         {slot.title_zh}
                       </span>
+                      {isFlipped && card && (
+                        <div className="flex items-center gap-2 mt-1.5 bg-slate-900/60 dark:bg-black/60 backdrop-blur-md px-3.5 py-1 rounded-full border border-purple-500/30">
+                          <span className="text-[15px] font-editorial font-bold text-slate-900 dark:text-slate-100">
+                            {card.name_zh}
+                          </span>
+                          <span
+                            className={`text-[10px] px-2 py-0.5 rounded-full font-editorial font-bold ${
+                              placed?.drawn_card.orientation === 'Upright'
+                                ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/40'
+                                : 'bg-rose-500/20 text-rose-400 border border-rose-500/40'
+                            }`}
+                          >
+                            {placed?.drawn_card.orientation === 'Upright' ? '正位' : '逆位'}
+                          </span>
+                        </div>
+                      )}
                     </div>
                   </div>
                 );
