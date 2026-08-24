@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "RitualAudioHapticContract",
+  "description": "Schema for sensory audio and haptic configuration across clients",
+  "type": "object",
+  "required": ["soundId", "volume", "loop"],
+  "properties": {
+    "soundId": {
+      "type": "string",
+      "enum": [
+        "sfx_shuffle",
+        "sfx_cut",
+        "sfx_deal",
+        "sfx_flip",
+        "ambient_bowl_432",
+        "ambient_rain"
+      ]
+    },
+    "volume": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0
+    },
+    "loop": {
+      "type": "boolean"
+    },
+    "hapticType": {
+      "type": "string",
+      "enum": ["heavy", "medium", "light", "rigid", "alignment"]
+    },
+    "delayMs": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "additionalProperties": false
+}

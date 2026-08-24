@@ -1,0 +1,97 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AppleUniFFISessionContract",
+  "description": "Schema for Apple SwiftUI UniFFI bridge session interface",
+  "type": "object",
+  "required": ["sessionId", "spreadId", "rngSeed", "placedCards", "dignitySummary"],
+  "properties": {
+    "sessionId": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "spreadId": {
+      "type": "string"
+    },
+    "question": {
+      "type": ["string", "null"]
+    },
+    "rngSeed": {
+      "type": "string",
+      "pattern": "^[0-9a-fA-F]{64}$"
+    },
+    "placedCards": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["drawnCard", "slot"],
+        "properties": {
+          "drawnCard": {
+            "type": "object",
+            "required": ["cardId", "orientation"],
+            "properties": {
+              "cardId": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 77
+              },
+              "orientation": {
+                "type": "string",
+                "enum": ["Upright", "Reversed"]
+              }
+            },
+            "additionalProperties": false
+          },
+          "slot": {
+            "type": "object",
+            "required": ["slotId", "titleZh", "titleEn", "x", "y"],
+            "properties": {
+              "slotId": { "type": "integer" },
+              "titleZh": { "type": "string" },
+              "titleEn": { "type": "string" },
+              "x": { "type": "number" },
+              "y": { "type": "number" }
+            },
+            "additionalProperties": true
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "dignitySummary": {
+      "type": "object",
+      "required": ["dominantElement", "elementalRatios", "pairwiseDignities", "overallHarmonyScore"],
+      "properties": {
+        "dominantElement": { "type": "string" },
+        "elementalRatios": {
+          "type": "object",
+          "properties": {
+            "fire": { "type": "number" },
+            "water": { "type": "number" },
+            "air": { "type": "number" },
+            "earth": { "type": "number" }
+          },
+          "required": ["fire", "water", "air", "earth"],
+          "additionalProperties": false
+        },
+        "pairwiseDignities": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["sourceSlotId", "targetSlotId", "relation", "dignityStatus", "tensionScore"],
+            "properties": {
+              "sourceSlotId": { "type": "integer" },
+              "targetSlotId": { "type": "integer" },
+              "relation": { "type": "string" },
+              "dignityStatus": { "type": "string", "enum": ["WellDignified", "IllDignified", "NeutralDignified"] },
+              "tensionScore": { "type": "number" }
+            },
+            "additionalProperties": true
+          }
+        },
+        "overallHarmonyScore": { "type": "number" }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,13 @@
+{
+  "name": "taroturn-miniprogram",
+  "version": "0.1.0",
+  "description": "Taroturn WeChat Mini Program Client",
+  "scripts": {
+    "build": "echo 'Mini program assets validated'"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "miniprogram-api-typings": "^3.12.2",
+    "typescript": "^5.5.4"
+  }
+}

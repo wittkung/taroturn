@@ -29,6 +29,7 @@ build/
 node_modules/
 dist/
 pkg/
+*.tsbuildinfo
 taroturn-miniprogram/wasm/*.wasm
 taroturn-miniprogram/wasm/*.js
 taroturn-miniprogram/miniprogram_npm/

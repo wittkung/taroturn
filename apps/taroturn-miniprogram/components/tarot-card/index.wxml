@@ -1,0 +1,29 @@
+<!-- components/tarot-card/index.wxml -->
+<wxs module="gesture" src="./gesture.wxs"></wxs>
+
+<view class="tarot-card-scene" bindtap="handleTap">
+  <view 
+    class="tarot-card-inner {{isFlipped ? 'flipped' : ''}}"
+    bindtouchstart="{{gesture.touchStart}}"
+    bindtouchmove="{{gesture.touchMove}}"
+    bindtouchend="{{gesture.touchEnd}}"
+  >
+    <!-- 卡牌背面 -->
+    <view class="tarot-card-face tarot-card-back">
+      <view class="back-pattern">
+        <view class="sacred-geometry-star"></view>
+        <text class="back-text">TAROTURN</text>
+      </view>
+    </view>
+
+    <!-- 卡牌正面 -->
+    <view class="tarot-card-face tarot-card-front">
+      <view class="front-content">
+        <text class="card-name-zh">{{nameZh}}</text>
+        <text class="card-name-en">{{nameEn}}</text>
+        <text class="card-element-tag">{{elementZh}}</text>
+        <text class="card-orientation-tag {{isUpright ? 'upright' : 'reversed'}}">{{isUpright ? '正位' : '逆位'}}</text>
+      </view>
+    </view>
+  </view>
+</view>

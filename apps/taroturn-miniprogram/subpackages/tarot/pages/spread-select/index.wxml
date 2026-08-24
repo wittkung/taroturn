@@ -1,0 +1,20 @@
+<!-- subpackages/tarot/pages/spread-select/index.wxml -->
+<view class="container">
+  <view class="section-header">
+    <text class="page-title kintsugi-gold-text">神圣几何牌阵</text>
+    <text class="page-subtitle">选择承载本次心念聚焦的能量图谱</text>
+  </view>
+
+  <view class="spread-list">
+    <block wx:for="{{spreads}}" wx:key="id">
+      <view class="spread-card zen-card-glass" bindtap="selectSpread" data-id="{{item.id}}">
+        <view class="card-top">
+          <text class="spread-name-zh">{{item.nameZh}}</text>
+          <text class="spread-slots-count">{{item.slots.length}} 张牌</text>
+        </view>
+        <text class="spread-name-en">{{item.nameEn}}</text>
+        <text class="spread-desc">{{item.descriptionZh}}</text>
+      </view>
+    </block>
+  </view>
+</view>

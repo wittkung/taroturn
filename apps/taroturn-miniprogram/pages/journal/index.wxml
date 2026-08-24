@@ -1,0 +1,13 @@
+<!-- pages/journal/index.wxml -->
+<view class="container">
+  <view class="journal-header">
+    <text class="journal-title kintsugi-gold-text">灵修历史启示录</text>
+    <text class="journal-subtitle">历次抽牌与心智洞察记录</text>
+  </view>
+
+  <view class="empty-state zen-card-glass">
+    <text class="empty-icon">🔮</text>
+    <text class="empty-title">静候首次神谕</text>
+    <text class="empty-desc">完成一次牌阵占卜后，您的灵修会话将在此静穆留存。</text>
+  </view>
+</view>

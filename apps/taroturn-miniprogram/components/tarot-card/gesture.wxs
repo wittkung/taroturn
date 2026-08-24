@@ -1,0 +1,36 @@
+// gesture.wxs - 0-latency 3D card drag and tilt in render thread
+var maxTilt = 12;
+
+function touchStart(e, ins) {
+  var touch = e.touches[0];
+  ins.getState().startX = touch.clientX;
+  ins.getState().startY = touch.clientY;
+}
+
+function touchMove(e, ins) {
+  var touch = e.touches[0];
+  var state = ins.getState();
+  var deltaX = touch.clientX - state.startX;
+  var deltaY = touch.clientY - state.startY;
+
+  var rotX = -deltaY * 0.1;
+  var rotY = deltaX * 0.1;
+
+  ins.setStyle({
+    transform: 'translate3d(' + deltaX + 'px, ' + deltaY + 'px, 0px) rotateX(' + rotX + 'deg) rotateY(' + rotY + 'deg) scale(1.04)'
+  });
+  return false;
+}
+
+function touchEnd(e, ins) {
+  ins.setStyle({
+    transform: 'translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) scale(1.0)',
+    transition: 'transform 0.4s cubic-bezier(0.25, 1, 0.5, 1)'
+  });
+}
+
+module.exports = {
+  touchStart: touchStart,
+  touchMove: touchMove,
+  touchEnd: touchEnd
+};

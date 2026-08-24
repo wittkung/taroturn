@@ -1,0 +1,28 @@
+<!-- subpackages/tarot/pages/interpretation/index.wxml -->
+<view class="container">
+  <view class="report-header">
+    <text class="report-title kintsugi-gold-text">深度全景神谕报告</text>
+    <text class="report-subtitle">四元素能量平衡与两两尊位解析</text>
+  </view>
+
+  <view class="report-content zen-card-glass">
+    <view class="energy-row">
+      <text class="energy-label">主导能量</text>
+      <text class="energy-val kintsugi-gold-text">风水交融 · 和谐转化</text>
+    </view>
+    <view class="energy-row">
+      <text class="energy-label">整体和谐度</text>
+      <text class="energy-val">+0.85 (高度共振)</text>
+    </view>
+    <view class="divider"></view>
+    <text class="oracle-text">
+      当下的境遇是内在心智演化的必经节点。保持觉知，在变动中寻获泰然自若的中心定力。
+    </text>
+  </view>
+
+  <view class="actions-area">
+    <button class="export-btn" bindtap="exportCardImage">
+      生成 300DPI 禅意分享长图
+    </button>
+  </view>
+</view>

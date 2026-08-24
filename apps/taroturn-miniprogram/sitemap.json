@@ -1,0 +1,7 @@
+{
+  "desc": "About Taroturn Indexing Policy",
+  "rules": [{
+    "action": "allow",
+    "page": "*"
+  }]
+}

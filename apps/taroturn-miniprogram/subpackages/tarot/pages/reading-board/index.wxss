@@ -1,0 +1,82 @@
+/* subpackages/tarot/pages/reading-board/index.wxss */
+.board-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 24rpx;
+  box-sizing: border-box;
+  justify-content: space-between;
+}
+
+.board-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 16rpx;
+}
+
+.spread-title {
+  font-size: 36rpx;
+  font-weight: bold;
+}
+
+.board-hint {
+  font-size: 22rpx;
+  color: #8E889B;
+  margin-top: 8rpx;
+}
+
+.cards-scroll-view {
+  width: 100%;
+  height: 600rpx;
+  margin: 32rpx 0;
+}
+
+.cards-track {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 24rpx;
+  padding: 0 16rpx;
+}
+
+.slot-card-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24rpx 16rpx;
+  width: 260rpx;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.slot-tag {
+  font-size: 22rpx;
+  color: #D4AF37;
+  font-weight: bold;
+  margin-bottom: 8rpx;
+}
+
+.slot-prompt {
+  font-size: 18rpx;
+  color: #8E889B;
+  text-align: center;
+  margin-top: 8rpx;
+  line-height: 1.3;
+}
+
+.board-actions {
+  width: 100%;
+  margin-bottom: 24rpx;
+}
+
+.ai-interpret-btn {
+  background: linear-gradient(135deg, #D4AF37 0%, #AA820A 100%);
+  color: #0E081A;
+  font-weight: bold;
+  font-size: 28rpx;
+  border-radius: 40rpx;
+  border: none;
+  padding: 20rpx 0;
+  width: 100%;
+}

@@ -1,0 +1,58 @@
+/* pages/index/index.wxss */
+.header-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40rpx;
+  margin-bottom: 48rpx;
+}
+
+.sanctuary-title {
+  font-size: 48rpx;
+  font-weight: bold;
+  letter-spacing: 6rpx;
+}
+
+.sanctuary-subtitle {
+  font-size: 24rpx;
+  color: #8E889B;
+  margin-top: 8rpx;
+}
+
+.daily-oracle-card {
+  width: 100%;
+  padding: 40rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  margin-bottom: 48rpx;
+}
+
+.section-tag {
+  font-size: 22rpx;
+  color: #D4AF37;
+  letter-spacing: 2rpx;
+  margin-bottom: 24rpx;
+}
+
+.hint-text {
+  font-size: 20rpx;
+  color: #8E889B;
+  margin-top: 16rpx;
+}
+
+.actions-section {
+  width: 100%;
+}
+
+.ritual-button {
+  background: linear-gradient(135deg, #D4AF37 0%, #AA820A 100%);
+  color: #0E081A;
+  font-weight: bold;
+  font-size: 28rpx;
+  border-radius: 40rpx;
+  border: none;
+  padding: 24rpx 0;
+  width: 100%;
+}

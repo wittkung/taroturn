@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "MiniProgramAuthContract",
+  "description": "Schema for WeChat Mini Program login request and response payloads",
+  "type": "object",
+  "required": ["token", "userId", "nickname", "tier", "isPro"],
+  "properties": {
+    "token": {
+      "type": "string",
+      "description": "Bearer JWT token issued by server"
+    },
+    "userId": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique user UUID"
+    },
+    "nickname": {
+      "type": "string",
+      "description": "WeChat user display nickname"
+    },
+    "tier": {
+      "type": "string",
+      "enum": ["FREE", "PRO_MONTHLY", "PRO_YEARLY", "LIFETIME"]
+    },
+    "isPro": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": false
+}

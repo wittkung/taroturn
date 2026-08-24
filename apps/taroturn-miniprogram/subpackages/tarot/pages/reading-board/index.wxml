@@ -1,0 +1,36 @@
+<!-- subpackages/tarot/pages/reading-board/index.wxml -->
+<view class="board-container">
+  <!-- 顶栏状态 -->
+  <view class="board-header">
+    <text class="spread-title kintsugi-gold-text">{{spread.nameZh}}</text>
+    <text class="board-hint">依次轻触卡牌揭晓神圣原型与元素尊位</text>
+  </view>
+
+  <!-- 牌阵卡位网格/流 -->
+  <scroll-view scroll-x class="cards-scroll-view" enable-flex>
+    <view class="cards-track">
+      <block wx:for="{{placedCards}}" wx:key="slotId">
+        <view class="slot-card-item zen-card-glass">
+          <text class="slot-tag">{{item.slot.titleZh}}</text>
+          <tarot-card
+            name-zh="{{item.nameZh}}"
+            name-en="{{item.nameEn}}"
+            element-zh="{{item.elementZh}}"
+            is-upright="{{item.isUpright}}"
+            is-flipped="{{item.isFlipped}}"
+            data-index="{{index}}"
+            bind:cardtap="handleCardTap"
+          ></tarot-card>
+          <text class="slot-prompt">{{item.slot.meaningPrompt}}</text>
+        </view>
+      </block>
+    </view>
+  </scroll-view>
+
+  <!-- 底部操作栏 -->
+  <view class="board-actions">
+    <button class="ai-interpret-btn" bindtap="goToInterpretation">
+      进入深度解盘与长图导出
+    </button>
+  </view>
+</view>

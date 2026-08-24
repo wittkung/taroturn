@@ -1,0 +1,29 @@
+<!-- pages/index/index.wxml -->
+<view class="container">
+  <!-- 标题与标语 -->
+  <view class="header-section">
+    <text class="sanctuary-title kintsugi-gold-text">TAROTURN</text>
+    <text class="sanctuary-subtitle">澄澈之境 · 确定性神谕占卜</text>
+  </view>
+
+  <!-- 今日灵感卡位 -->
+  <view class="daily-oracle-card zen-card-glass">
+    <text class="section-tag">今日能量启示</text>
+    <tarot-card
+      name-zh="{{todayCard.nameZh}}"
+      name-en="{{todayCard.nameEn}}"
+      element-zh="{{todayCard.elementZh}}"
+      is-upright="{{todayCard.isUpright}}"
+      is-flipped="{{isDailyFlipped}}"
+      bind:cardtap="handleFlipDaily"
+    ></tarot-card>
+    <text class="hint-text">{{isDailyFlipped ? '轻触翻阅深度典籍' : '轻触卡牌完成今日揭晓'}}</text>
+  </view>
+
+  <!-- 牌阵选择入口 -->
+  <view class="actions-section">
+    <button class="ritual-button kintsugi-btn" bindtap="goToSpreadSelect">
+      开启深度牌阵仪式
+    </button>
+  </view>
+</view>

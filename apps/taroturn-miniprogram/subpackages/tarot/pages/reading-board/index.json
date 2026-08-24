@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "tarot-card": "../../../../components/tarot-card/index"
+  },
+  "navigationBarTitleText": "牌阵推演台"
+}

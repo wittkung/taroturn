@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "tarot-card": "../../components/tarot-card/index"
+  },
+  "navigationBarTitleText": "Taroturn 塔罗神域"
+}

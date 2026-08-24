@@ -1,0 +1,49 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/journal/index"
+  ],
+  "subpackages": [
+    {
+      "root": "subpackages/tarot",
+      "name": "tarot",
+      "pages": [
+        "pages/spread-select/index",
+        "pages/reading-board/index",
+        "pages/interpretation/index"
+      ]
+    }
+  ],
+  "preloadRule": {
+    "pages/index/index": {
+      "network": "all",
+      "packages": ["tarot"]
+    }
+  },
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#0E081A",
+    "navigationBarTitleText": "Taroturn 塔罗神域",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#0E081A"
+  },
+  "tabBar": {
+    "color": "#8E889B",
+    "selectedColor": "#D4AF37",
+    "backgroundColor": "#120B20",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "神谕台"
+      },
+      {
+        "pagePath": "pages/journal/index",
+        "text": "启示录"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}
