@@ -1,0 +1,105 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "TarotReadingSessionSchema",
+  "type": "object",
+  "required": [
+    "session_id",
+    "created_at",
+    "spread_id",
+    "rng_seed",
+    "reversal_probability",
+    "placed_cards",
+    "dignity_summary"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "session_id": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "integer"
+    },
+    "spread_id": {
+      "type": "string"
+    },
+    "question": {
+      "type": ["string", "null"]
+    },
+    "rng_seed": {
+      "type": "string"
+    },
+    "reversal_probability": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0
+    },
+    "placed_cards": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["slot_id", "card_id", "orientation", "draw_sequence"],
+        "additionalProperties": false,
+        "properties": {
+          "slot_id": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "card_id": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 77
+          },
+          "orientation": {
+            "type": "string",
+            "enum": ["Upright", "Reversed"]
+          },
+          "draw_sequence": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "dignity_summary": {
+      "type": "object",
+      "required": [
+        "fire_ratio",
+        "water_ratio",
+        "air_ratio",
+        "earth_ratio",
+        "major_ratio",
+        "reversed_ratio",
+        "dominant_element",
+        "shadow_card_id"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "fire_ratio": { "type": "number" },
+        "water_ratio": { "type": "number" },
+        "air_ratio": { "type": "number" },
+        "earth_ratio": { "type": "number" },
+        "major_ratio": { "type": "number" },
+        "reversed_ratio": { "type": "number" },
+        "dominant_element": {
+          "type": "string",
+          "enum": ["Fire", "Water", "Air", "Earth", "Balanced", "None"]
+        },
+        "shadow_card_id": {
+          "type": ["integer", "null"],
+          "minimum": 0,
+          "maximum": 77
+        }
+      }
+    },
+    "ai_interpretation": {
+      "type": ["string", "null"]
+    },
+    "user_notes": {
+      "type": ["string", "null"]
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

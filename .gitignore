@@ -1,0 +1,40 @@
+# Rust
+/target/
+**/*.rs.bk
+Cargo.lock
+
+# Gradle / JVM / Kotlin
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.properties
+.idea/
+*.iml
+*.class
+*.jar
+*.war
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Environment & Credentials
+.env
+.env.local
+*.pem
+*.key
+
+# WASM / Web / WeChat Mini Program
+node_modules/
+dist/
+pkg/
+taroturn-miniprogram/wasm/*.wasm
+taroturn-miniprogram/wasm/*.js
+taroturn-miniprogram/miniprogram_npm/
+
+# UniFFI / Swift / Android
+bindings/swift/*.framework
+bindings/swift/DerivedData/
+bindings/kotlin/build/
+*.aar

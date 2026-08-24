@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "TarotSyncJournalSchema",
+  "type": "object",
+  "required": ["client_id", "sync_timestamp", "entries"],
+  "additionalProperties": false,
+  "properties": {
+    "client_id": {
+      "type": "string"
+    },
+    "sync_timestamp": {
+      "type": "integer"
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["operation", "session_id", "session_payload", "version"],
+        "additionalProperties": false,
+        "properties": {
+          "operation": {
+            "type": "string",
+            "enum": ["UPSERT", "DELETE", "FAVORITE_TOGGLE"]
+          },
+          "session_id": {
+            "type": "string"
+          },
+          "session_payload": {
+            "type": "object",
+            "required": ["spread_id", "rng_seed", "reversal_probability", "placed_cards_summary"],
+            "additionalProperties": false,
+            "properties": {
+              "spread_id": { "type": "string" },
+              "rng_seed": { "type": "string" },
+              "reversal_probability": { "type": "number" },
+              "placed_cards_summary": { "type": "string" },
+              "user_notes": { "type": ["string", "null"] },
+              "is_favorite": { "type": "boolean" }
+            }
+          },
+          "version": {
+            "type": "integer"
+          }
+        }
+      }
+    }
+  }
+}

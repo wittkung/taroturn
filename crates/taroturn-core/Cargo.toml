@@ -1,0 +1,31 @@
+[package]
+name = "taroturn-core"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+
+[lib]
+crate-type = ["rlib", "cdylib", "staticlib"]
+
+[dependencies]
+serde = { workspace = true }
+serde_json = { workspace = true }
+rand = { workspace = true }
+rand_chacha = { workspace = true }
+getrandom = { workspace = true }
+thiserror = { workspace = true }
+uniffi = { workspace = true }
+wasm-bindgen = { workspace = true, optional = true }
+serde-wasm-bindgen = { workspace = true, optional = true }
+js-sys = { workspace = true, optional = true }
+
+[[bin]]
+name = "uniffi-bindgen"
+path = "src/bin/uniffi_bindgen.rs"
+required-features = ["uniffi/cli"]
+
+[features]
+default = ["std"]
+std = []
+wasm = ["wasm-bindgen", "serde-wasm-bindgen", "js-sys"]

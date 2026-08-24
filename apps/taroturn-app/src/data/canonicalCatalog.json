@@ -1,0 +1,3136 @@
+{
+  "cards": [
+    {
+      "id": 0,
+      "key": "major_00_fool",
+      "arcana": "Major",
+      "suit": null,
+      "element": "Air",
+      "name_en": "The Fool",
+      "name_zh": "愚者",
+      "astrology": "Uranus / Air",
+      "hebrew_letter": "Aleph",
+      "facets": {
+        "general_upright": [
+          "New Beginnings",
+          "Innocence",
+          "Spontaneity",
+          "Free Spirit"
+        ],
+        "general_reversed": [
+          "Recklessness",
+          "Risk-taking",
+          "Inconsideration",
+          "Naivety"
+        ],
+        "love_upright": "Spontaneous romantic encounter, open heart",
+        "love_reversed": "Hesitation to commit or reckless romantic choices",
+        "career_upright": "New career venture, entrepreneurial leap of faith",
+        "career_reversed": "Impulsive career move without safety net",
+        "spiritual_upright": "Embarking on a profound spiritual quest",
+        "spiritual_reversed": "Blind spiritual following or fear of the unknown",
+        "shadow_aspect": "Denial of earthly consequences in pursuit of freedom"
+      }
+    },
+    {
+      "id": 1,
+      "key": "major_01_magician",
+      "arcana": "Major",
+      "suit": null,
+      "element": "Air",
+      "name_en": "The Magician",
+      "name_zh": "魔术师",
+      "astrology": "Mercury",
+      "hebrew_letter": "Beth",
+      "facets": {
+        "general_upright": [
+          "Manifestation",
+          "Resourcefulness",
+          "Power",
+          "Inspired Action"
+        ],
+        "general_reversed": [
+          "Illusion",
+          "Manipulation",
+          "Untapped Potential",
+          "Wasted Talent"
+        ],
+        "love_upright": "Clear communication, attraction, conscious relationship building",
+        "love_reversed": "Deception, hidden intentions, manipulation in romance",
+        "career_upright": "Mastery of skills, project launch, resource alignment",
+        "career_reversed": "Misplaced efforts, trickery, stagnation in career",
+        "spiritual_upright": "Aligning will with universal intention",
+        "spiritual_reversed": "Spiritual arrogance or misuse of inner energy",
+        "shadow_aspect": "Over-reliance on cleverness at the expense of genuine depth"
+      }
+    },
+    {
+      "id": 2,
+      "key": "major_02_high_priestess",
+      "arcana": "Major",
+      "suit": null,
+      "element": "Water",
+      "name_en": "The High Priestess",
+      "name_zh": "女祭司",
+      "astrology": "Moon",
+      "hebrew_letter": "Gimel",
+      "facets": {
+        "general_upright": [
+          "Intuition",
+          "Sacred Knowledge",
+          "Divine Feminine",
+          "Subconscious"
+        ],
+        "general_reversed": [
+          "Secrets",
+          "Disconnected from Intuition",
+          "Repression",
+          "Silence"
+        ],
+        "love_upright": "Deep soul connection, intuitive harmony, patience in romance",
+        "love_reversed": "Emotional distance, unexpressed feelings, hidden secrets",
+        "career_upright": "Quiet observation, research, strategic insight before action",
+        "career_reversed": "Superficial work environment, gossip, ignoring gut instincts",
+        "spiritual_upright": "Direct contact with inner wisdom and mystical realms",
+        "spiritual_reversed": "Spiritual confusion, dogmatic beliefs blocking true sight",
+        "shadow_aspect": "Withdrawal from worldly connection out of fear of vulnerability"
+      }
+    },
+    {
+      "id": 3,
+      "key": "major_03_empress",
+      "arcana": "Major",
+      "suit": null,
+      "element": "Earth",
+      "name_en": "The Empress",
+      "name_zh": "女皇",
+      "astrology": "Venus",
+      "hebrew_letter": "Daleth",
+      "facets": {
+        "general_upright": [
+          "Fertility",
+          "Abundance",
+          "Nurturing",
+          "Sensuality",
+          "Creativity"
+        ],
+        "general_reversed": [
+          "Creative Block",
+          "Dependence",
+          "Overbearing",
+          "Depletion"
+        ],
+        "love_upright": "Warm unconditional love, sensuality, growing commitment",
+        "love_reversed": "Codependency, smothering love, emotional depletion",
+        "career_upright": "Fruitful creative projects, prosperous business growth",
+        "career_reversed": "Creative burnout, stagnation, financial neglect",
+        "spiritual_upright": "Embodiment of earthly beauty and maternal grace",
+        "spiritual_reversed": "Neglect of physical vessel or creative spirit",
+        "shadow_aspect": "Overindulgence in material comfort avoiding necessary discipline"
+      }
+    },
+    {
+      "id": 4,
+      "key": "major_04_emperor",
+      "arcana": "Major",
+      "suit": null,
+      "element": "Fire",
+      "name_en": "The Emperor",
+      "name_zh": "皇帝",
+      "astrology": "Aries",
+      "hebrew_letter": "He",
+      "facets": {
+        "general_upright": [
+          "Authority",
+          "Structure",
+          "Stability",
+          "Fatherhood",
+          "Leadership"
+        ],
+        "general_reversed": [
+          "Tyranny",
+          "Rigidity",
+          "Lack of Discipline",
+          "Loss of Control"
+        ],
+        "love_upright": "Solid commitment, clear boundaries, reliable partnership",
+        "love_reversed": "Controlling behavior, emotional coldness, power struggles",
+        "career_upright": "Executive leadership, structural order, clear strategy",
+        "career_reversed": "Micromanagement, chaos, ineffective authority",
+        "spiritual_upright": "Establishing structured spiritual practice and discipline",
+        "spiritual_reversed": "Rigid dogma stifling spiritual spontaneity",
+        "shadow_aspect": "Fear of chaos driving obsessive control"
+      }
+    },
+    {
+      "id": 5,
+      "key": "major_05_hierophant",
+      "arcana": "Major",
+      "suit": null,
+      "element": "Earth",
+      "name_en": "The Hierophant",
+      "name_zh": "教皇",
+      "astrology": "Taurus",
+      "hebrew_letter": "Vav",
+      "facets": {
+        "general_upright": [
+          "Spiritual Wisdom",
+          "Tradition",
+          "Institutions",
+          "Mentorship"
+        ],
+        "general_reversed": [
+          "Personal Beliefs",
+          "Rebellion",
+          "Unconventional",
+          "Dogma"
+        ],
+        "love_upright": "Traditional relationship values, shared ethics, marriage",
+        "love_reversed": "Unconventional relationship, questioning social norms",
+        "career_upright": "Established corporate structure, institutional mentorship",
+        "career_reversed": "Bureaucratic friction, breaking out of orthodox patterns",
+        "spiritual_upright": "Study of sacred lineages and traditional teachings",
+        "spiritual_reversed": "Formulating individualized spiritual philosophy",
+        "shadow_aspect": "Clinging to outer forms while losing inner esoteric essence"
+      }
+    },
+    {
+      "id": 6,
+      "key": "major_06_lovers",
+      "arcana": "Major",
+      "suit": null,
+      "element": "Air",
+      "name_en": "The Lovers",
+      "name_zh": "恋人",
+      "astrology": "Gemini",
+      "hebrew_letter": "Zayin",
+      "facets": {
+        "general_upright": [
+          "Love",
+          "Harmony",
+          "Relationships",
+          "Values Alignment",
+          "Choices"
+        ],
+        "general_reversed": [
+          "Disharmony",
+          "Imbalance",
+          "Misaligned Values",
+          "Conflict"
+        ],
+        "love_upright": "Deep soulmate connection, mutual vulnerability, union",
+        "love_reversed": "Values dissonance, communication breakdown, trust issues",
+        "career_upright": "Fruitful partnership, ethical decision making in business",
+        "career_reversed": "Internal conflict between passion and practical duty",
+        "spiritual_upright": "Integration of dualistic aspects within the psyche",
+        "spiritual_reversed": "Internal moral dilemma or divided loyalty",
+        "shadow_aspect": "Seeking external completion rather than inner wholeness"
+      }
+    },
+    {
+      "id": 7,
+      "key": "major_07_chariot",
+      "arcana": "Major",
+      "suit": null,
+      "element": "Water",
+      "name_en": "The Chariot",
+      "name_zh": "战车",
+      "astrology": "Cancer",
+      "hebrew_letter": "Cheth",
+      "facets": {
+        "general_upright": [
+          "Control",
+          "Willpower",
+          "Success",
+          "Determination",
+          "Focus"
+        ],
+        "general_reversed": [
+          "Lack of Control",
+          "Aggression",
+          "Directionless",
+          "Obstacles"
+        ],
+        "love_upright": "Courageous pursuit in romance, overcoming relationship hurdles",
+        "love_reversed": "Impatience or forceful pressure straining romantic bond",
+        "career_upright": "Triumph over business competition, milestone conquest",
+        "career_reversed": "Power struggles, burnout, derailment of key deliverables",
+        "spiritual_upright": "Harnessing opposing psychic impulses toward unified goal",
+        "spiritual_reversed": "Spiritual dispersion, loss of center under external storms",
+        "shadow_aspect": "Suppressing authentic emotion to maintain an armor of control"
+      }
+    },
+    {
+      "id": 8,
+      "key": "major_08_strength",
+      "arcana": "Major",
+      "suit": null,
+      "element": "Fire",
+      "name_en": "Strength",
+      "name_zh": "力量",
+      "astrology": "Leo",
+      "hebrew_letter": "Teth",
+      "facets": {
+        "general_upright": [
+          "Courage",
+          "Persuasion",
+          "Compassion",
+          "Inner Strength",
+          "Patience"
+        ],
+        "general_reversed": [
+          "Self-Doubt",
+          "Raw Emotion",
+          "Weakness",
+          "Inner Turmoil"
+        ],
+        "love_upright": "Loving patience, gentle taming of emotional tempests",
+        "love_reversed": "Insecurity, vulnerability fear, reactive explosive anger",
+        "career_upright": "Quiet resilience in challenging corporate negotiations",
+        "career_reversed": "Confidence deficit, yielding to undue intimidation",
+        "spiritual_upright": "Compassionate mastery over instinctual animal nature",
+        "spiritual_reversed": "Struggling with shadow self or spiritual exhaustion",
+        "shadow_aspect": "Mistaking aggressive dominance for genuine inner fortitude"
+      }
+    },
+    {
+      "id": 9,
+      "key": "major_09_hermit",
+      "arcana": "Major",
+      "suit": null,
+      "element": "Earth",
+      "name_en": "The Hermit",
+      "name_zh": "隐士",
+      "astrology": "Virgo",
+      "hebrew_letter": "Yod",
+      "facets": {
+        "general_upright": [
+          "Soul Searching",
+          "Introspection",
+          "Solitude",
+          "Inner Guidance"
+        ],
+        "general_reversed": [
+          "Isolation",
+          "Loneliness",
+          "Withdrawal",
+          "Paranoia"
+        ],
+        "love_upright": "Solitary contemplation, finding wholeness before union",
+        "love_reversed": "Emotional isolation, shutting partner out defensively",
+        "career_upright": "Career recalibration, autonomous specialist research",
+        "career_reversed": "Professional detachment, alienation from team dynamics",
+        "spiritual_upright": "Guiding lantern on the path of self-illumination",
+        "spiritual_reversed": "Spiritual arrogance or fear of worldly re-engagement",
+        "shadow_aspect": "Using intellectual solitude as an escape from intimacy"
+      }
+    },
+    {
+      "id": 10,
+      "key": "major_10_wheel_of_fortune",
+      "arcana": "Major",
+      "suit": null,
+      "element": "Fire",
+      "name_en": "Wheel of Fortune",
+      "name_zh": "命运之轮",
+      "astrology": "Jupiter",
+      "hebrew_letter": "Kaph",
+      "facets": {
+        "general_upright": [
+          "Good Luck",
+          "Karma",
+          "Life Cycles",
+          "Destiny",
+          "Turning Point"
+        ],
+        "general_reversed": [
+          "Bad Luck",
+          "Resistance to Change",
+          "Breaking Cycles",
+          "Disruption"
+        ],
+        "love_upright": "Fateful meeting, cyclical evolution of emotional stages",
+        "love_reversed": "External circumstances disrupting romantic equilibrium",
+        "career_upright": "Lucky opportunity, market inflection point, sudden breakthrough",
+        "career_reversed": "Unexpected setback, cyclical downturn, timing mismatch",
+        "spiritual_upright": "Understanding the cosmic dance of karma and impermanence",
+        "spiritual_reversed": "Fatalistic helplessness or resisting inevitable evolution",
+        "shadow_aspect": "Clinging to momentary peaks while fearing inescapable valleys"
+      }
+    },
+    {
+      "id": 11,
+      "key": "major_11_justice",
+      "arcana": "Major",
+      "suit": null,
+      "element": "Air",
+      "name_en": "Justice",
+      "name_zh": "正义",
+      "astrology": "Libra",
+      "hebrew_letter": "Lamed",
+      "facets": {
+        "general_upright": [
+          "Justice",
+          "Fairness",
+          "Truth",
+          "Cause and Effect",
+          "Law"
+        ],
+        "general_reversed": [
+          "Unfairness",
+          "Lack of Accountability",
+          "Dishonesty",
+          "Bias"
+        ],
+        "love_upright": "Honest communication, equal partnership, balanced give-and-take",
+        "love_reversed": "One-sided emotional ledger, unresolved disputes, dishonesty",
+        "career_upright": "Fair contracts, legal resolution, merit-based recognition",
+        "career_reversed": "Contractual disputes, unfair treatment, evasive accountability",
+        "spiritual_upright": "Universal karmic alignment and radical self-honesty",
+        "spiritual_reversed": "Self-deception, projection of blame onto others",
+        "shadow_aspect": "Cold legalistic judgment devoid of compassionate understanding"
+      }
+    },
+    {
+      "id": 12,
+      "key": "major_12_hanged_man",
+      "arcana": "Major",
+      "suit": null,
+      "element": "Water",
+      "name_en": "The Hanged Man",
+      "name_zh": "倒吊人",
+      "astrology": "Neptune / Water",
+      "hebrew_letter": "Mem",
+      "facets": {
+        "general_upright": [
+          "Surrender",
+          "New Perspective",
+          "Letting Go",
+          "Pause",
+          "Sacrifice"
+        ],
+        "general_reversed": [
+          "Delays",
+          "Resistance",
+          "Stalling",
+          "Martyrdom"
+        ],
+        "love_upright": "Surrendering ego demands, seeing partner from fresh angle",
+        "love_reversed": "Playing the martyr, unnecessary sacrifice causing resentment",
+        "career_upright": "Strategic pause, incubating ideas, unconventional solution",
+        "career_reversed": "Aimless stalling, procrastination, involuntary standstill",
+        "spiritual_upright": "Spiritual enlightenment gained through ego surrender",
+        "spiritual_reversed": "Futile resistance against necessary spiritual shedding",
+        "shadow_aspect": "Feigning spiritual detachment while nursing passive aggression"
+      }
+    },
+    {
+      "id": 13,
+      "key": "major_13_death",
+      "arcana": "Major",
+      "suit": null,
+      "element": "Water",
+      "name_en": "Death",
+      "name_zh": "死神",
+      "astrology": "Scorpio",
+      "hebrew_letter": "Nun",
+      "facets": {
+        "general_upright": [
+          "Endings",
+          "Transformation",
+          "Transition",
+          "New Beginnings"
+        ],
+        "general_reversed": [
+          "Resistance to Change",
+          "Stagnation",
+          "Decay",
+          "Fear of Ending"
+        ],
+        "love_upright": "Closure of outdated relational dynamics, transformative renewal",
+        "love_reversed": "Clinging to a deceased dynamic out of fear of solitude",
+        "career_upright": "Career metamorphosis, conclusion of a project phase, rebranding",
+        "career_reversed": "Remaining trapped in an unviable professional dead-end",
+        "spiritual_upright": "Psychic death of the obsolete self paving way for rebirth",
+        "spiritual_reversed": "Dread of mortality and spiritual transformation",
+        "shadow_aspect": "Denial of natural decay, hindering emergent vitality"
+      }
+    },
+    {
+      "id": 14,
+      "key": "major_14_temperance",
+      "arcana": "Major",
+      "suit": null,
+      "element": "Fire",
+      "name_en": "Temperance",
+      "name_zh": "节制",
+      "astrology": "Sagittarius",
+      "hebrew_letter": "Samekh",
+      "facets": {
+        "general_upright": [
+          "Balance",
+          "Moderation",
+          "Patience",
+          "Purpose",
+          "Alchemy"
+        ],
+        "general_reversed": [
+          "Imbalance",
+          "Excess",
+          "Self-Healing",
+          "Re-alignment"
+        ],
+        "love_upright": "Harmonious blending of differences, gentle emotional pacing",
+        "love_reversed": "Extremes of emotion, impatience, relational turbulence",
+        "career_upright": "Collaborative synergy, measured workload, strategic patience",
+        "career_reversed": "Burnout, reckless overextension, conflicting team factions",
+        "spiritual_upright": "Alchemical synthesis of inner polarities into spiritual gold",
+        "spiritual_reversed": "Spiritual dissonance, fragmented inner energies",
+        "shadow_aspect": "Compromising core truth under guise of superficial peace"
+      }
+    },
+    {
+      "id": 15,
+      "key": "major_15_devil",
+      "arcana": "Major",
+      "suit": null,
+      "element": "Earth",
+      "name_en": "The Devil",
+      "name_zh": "恶魔",
+      "astrology": "Capricorn",
+      "hebrew_letter": "Ayin",
+      "facets": {
+        "general_upright": [
+          "Shadow Self",
+          "Attachment",
+          "Addiction",
+          "Restriction",
+          "Materialism"
+        ],
+        "general_reversed": [
+          "Release",
+          "Freedom",
+          "Restoring Control",
+          "Overcoming Addiction"
+        ],
+        "love_upright": "Intense magnetic obsession, toxic codependency, lustful bond",
+        "love_reversed": "Breaking free from relational shackles, recognizing illusions",
+        "career_upright": "Golden handcuffs, burnout, unfulfilling corporate servitude",
+        "career_reversed": "Reclaiming professional autonomy, divesting from toxic work",
+        "spiritual_upright": "Confronting repressed shadow archetypes without fear",
+        "spiritual_reversed": "Liberation from dogmatic spiritual bondage",
+        "shadow_aspect": "Willful blindness to self-imposed psychic chains"
+      }
+    },
+    {
+      "id": 16,
+      "key": "major_16_tower",
+      "arcana": "Major",
+      "suit": null,
+      "element": "Fire",
+      "name_en": "The Tower",
+      "name_zh": "高塔",
+      "astrology": "Mars",
+      "hebrew_letter": "Pe",
+      "facets": {
+        "general_upright": [
+          "Sudden Change",
+          "Upheaval",
+          "Chaos",
+          "Revelation",
+          "Awakening"
+        ],
+        "general_reversed": [
+          "Personal Transformation",
+          "Fear of Change",
+          "Averting Disaster"
+        ],
+        "love_upright": "Shocking revelation, sudden breakdown of relational facade",
+        "love_reversed": "Internal emotional quake, delaying inevitable disclosure",
+        "career_upright": "Corporate restructuring, unexpected termination, paradigm shift",
+        "career_reversed": "Narrowly surviving a structural crisis, rebuilding from rubble",
+        "spiritual_upright": "Lightning bolt of divine truth shattering ego constructs",
+        "spiritual_reversed": "Spiritual crisis leading to authentic foundation",
+        "shadow_aspect": "Building towering defense mechanisms upon rotten foundations"
+      }
+    },
+    {
+      "id": 17,
+      "key": "major_17_star",
+      "arcana": "Major",
+      "suit": null,
+      "element": "Air",
+      "name_en": "The Star",
+      "name_zh": "星星",
+      "astrology": "Aquarius",
+      "hebrew_letter": "Tzaddi",
+      "facets": {
+        "general_upright": [
+          "Hope",
+          "Faith",
+          "Purpose",
+          "Renewal",
+          "Spirituality",
+          "Inspiration"
+        ],
+        "general_reversed": [
+          "Lack of Faith",
+          "Despair",
+          "Self-Trust",
+          "Disconnection"
+        ],
+        "love_upright": "Healing after heartbreak, tranquil optimism, genuine openness",
+        "love_reversed": "Disillusionment, pessimism, closing off to romantic hope",
+        "career_upright": "Visionary career inspiration, long-term brand elevation",
+        "career_reversed": "Creative drought, imposter syndrome, losing faith in goals",
+        "spiritual_upright": "Direct communion with cosmic grace and spiritual serenity",
+        "spiritual_reversed": "Spiritual fatigue, feeling abandoned by the divine",
+        "shadow_aspect": "Passive wishful daydreaming without grounded physical execution"
+      }
+    },
+    {
+      "id": 18,
+      "key": "major_18_moon",
+      "arcana": "Major",
+      "suit": null,
+      "element": "Water",
+      "name_en": "The Moon",
+      "name_zh": "月亮",
+      "astrology": "Pisces",
+      "hebrew_letter": "Qoph",
+      "facets": {
+        "general_upright": [
+          "Illusion",
+          "Fear",
+          "Anxiety",
+          "Subconscious",
+          "Intuition"
+        ],
+        "general_reversed": [
+          "Release of Fear",
+          "Unveiled Secrets",
+          "Clarity",
+          "Overcoming"
+        ],
+        "love_upright": "Misunderstandings, projected insecurities, subconscious fears",
+        "love_reversed": "Lifting the veil of deception, clarity emerging in romance",
+        "career_upright": "Ambiguous workplace dynamics, hidden agendas, uncertain terms",
+        "career_reversed": "Truth exposed, navigating through corporate fog to clarity",
+        "spiritual_upright": "Night journey through the mythic realm of the shadow",
+        "spiritual_reversed": "Escaping terrifying psychic nightmares into conscious dawn",
+        "shadow_aspect": "Mistaking neurotic anxiety for genuine intuitive insight"
+      }
+    },
+    {
+      "id": 19,
+      "key": "major_19_sun",
+      "arcana": "Major",
+      "suit": null,
+      "element": "Fire",
+      "name_en": "The Sun",
+      "name_zh": "太阳",
+      "astrology": "Sun",
+      "hebrew_letter": "Resh",
+      "facets": {
+        "general_upright": [
+          "Positivity",
+          "Fun",
+          "Warmth",
+          "Success",
+          "Vitality",
+          "Joy"
+        ],
+        "general_reversed": [
+          "Inner Child",
+          "Feeling Down",
+          "Overly Optimistic",
+          "Clouded"
+        ],
+        "love_upright": "Radiant joy, mutual adoration, vibrant shared happiness",
+        "love_reversed": "Minor temporary dampening of joy, needing inner warmth",
+        "career_upright": "Triumphant business success, public acclaim, creative vitality",
+        "career_reversed": "Unrealistic expectations, superficial optimism needing realism",
+        "spiritual_upright": "Solar consciousness, radiant vitality and integrated wholeness",
+        "spiritual_reversed": "Reconnecting with wounded inner child to restore light",
+        "shadow_aspect": "Blinding oneself to genuine nuance with toxic positivity"
+      }
+    },
+    {
+      "id": 20,
+      "key": "major_20_judgement",
+      "arcana": "Major",
+      "suit": null,
+      "element": "Fire",
+      "name_en": "Judgement",
+      "name_zh": "审判",
+      "astrology": "Pluto / Fire",
+      "hebrew_letter": "Shin",
+      "facets": {
+        "general_upright": [
+          "Judgement",
+          "Rebirth",
+          "Inner Calling",
+          "Absolution",
+          "Awakening"
+        ],
+        "general_reversed": [
+          "Self-Doubt",
+          "Harsh Self-Criticism",
+          "Ignoring the Call"
+        ],
+        "love_upright": "Awakening to true relationship purpose, forgiveness, renewal",
+        "love_reversed": "Holding grudges, paralyzing guilt, refusing to forgive",
+        "career_upright": "Vocation awakening, major career evaluation, taking the leap",
+        "career_reversed": "Second-guessing destiny, fear of being judged by peers",
+        "spiritual_upright": "Hearing the trumpet of the soul and answering higher calling",
+        "spiritual_reversed": "Repressing spiritual awakening due to fear of transformation",
+        "shadow_aspect": "Cruel self-condemnation masquerading as spiritual vigilance"
+      }
+    },
+    {
+      "id": 21,
+      "key": "major_21_world",
+      "arcana": "Major",
+      "suit": null,
+      "element": "Earth",
+      "name_en": "The World",
+      "name_zh": "世界",
+      "astrology": "Saturn",
+      "hebrew_letter": "Tav",
+      "facets": {
+        "general_upright": [
+          "Completion",
+          "Integration",
+          "Accomplishment",
+          "Travel",
+          "Fulfillment"
+        ],
+        "general_reversed": [
+          "Seeking Closure",
+          "Shortcuts",
+          "Delays",
+          "Incompletion"
+        ],
+        "love_upright": "Harmonious culmination, holistic love, soul-level fulfillment",
+        "love_reversed": "Lingering unfinished business, longing for elusive closure",
+        "career_upright": "Grand project completion, international acclaim, ultimate milestone",
+        "career_reversed": "Almost at finish line but taking dangerous shortcuts",
+        "spiritual_upright": "Attaining cosmic consciousness and wholeness in the universe",
+        "spiritual_reversed": "Stuck at threshold of spiritual mastery before final surrender",
+        "shadow_aspect": "Fear of completing a major life chapter because of the unknown void after"
+      }
+    },
+    {
+      "id": 22,
+      "key": "minor_wands_01_ace",
+      "arcana": "Minor",
+      "suit": "Wands",
+      "element": "Fire",
+      "name_en": "Ace of Wands",
+      "name_zh": "权杖一",
+      "astrology": "Root of the Powers of Fire",
+      "hebrew_letter": "Kether in Atziluth",
+      "facets": {
+        "general_upright": [
+          "Inspiration",
+          "New Passion",
+          "Creative Spark",
+          "Courage"
+        ],
+        "general_reversed": [
+          "Delays",
+          "Lack of Motivation",
+          "Creative Block",
+          "Hesitation"
+        ],
+        "love_upright": "Passionate new spark, magnetic romantic attraction",
+        "love_reversed": "Fading enthusiasm or fear of initiating romance",
+        "career_upright": "Breakthrough venture, bold entrepreneurial initiative",
+        "career_reversed": "Stalled initiative, lack of follow-through",
+        "spiritual_upright": "Direct infusion of creative primal spiritual fire",
+        "spiritual_reversed": "Creative spiritual drought, scattered energy",
+        "shadow_aspect": "Impulsive obsession without grounded emotional maturity"
+      }
+    },
+    {
+      "id": 23,
+      "key": "minor_wands_02_two",
+      "arcana": "Minor",
+      "suit": "Wands",
+      "element": "Fire",
+      "name_en": "Two of Wands",
+      "name_zh": "权杖二",
+      "astrology": "Mars in Aries (0°-10° / Dominion)",
+      "hebrew_letter": "Chokmah in Atziluth",
+      "facets": {
+        "general_upright": [
+          "Planning",
+          "Future Vision",
+          "Progress",
+          "Decisions",
+          "Discovery"
+        ],
+        "general_reversed": [
+          "Fear of Unknown",
+          "Lack of Planning",
+          "Playing it Safe",
+          "Overanalysis"
+        ],
+        "love_upright": "Envisioning shared future, planning joint horizons",
+        "love_reversed": "Reluctance to commit to long-term relational vision",
+        "career_upright": "Strategic expansion, overseas markets, long-term roadmap",
+        "career_reversed": "Hesitation to step outside comfortable territory",
+        "spiritual_upright": "Broadening spiritual horizons, stepping beyond comfort zone",
+        "spiritual_reversed": "Spiritual inertia, clinging to familiar dogmas",
+        "shadow_aspect": "Arrogant empire-building neglecting immediate emotional bonds"
+      }
+    },
+    {
+      "id": 24,
+      "key": "minor_wands_03_three",
+      "arcana": "Minor",
+      "suit": "Wands",
+      "element": "Fire",
+      "name_en": "Three of Wands",
+      "name_zh": "权杖三",
+      "astrology": "Sun in Aries (10°-20° / Established Strength)",
+      "hebrew_letter": "Binah in Atziluth",
+      "facets": {
+        "general_upright": [
+          "Expansion",
+          "Foresight",
+          "Overseas Opportunities",
+          "Confidence"
+        ],
+        "general_reversed": [
+          "Obstacles",
+          "Delays in Returns",
+          "Frustration",
+          "Disappointment"
+        ],
+        "love_upright": "Long-distance connection, mutual exploration, shared growth",
+        "love_reversed": "Patience tested in relationship timing",
+        "career_upright": "Ventures yielding returns, global partnership, scaling up",
+        "career_reversed": "Supply chain friction, delayed milestones",
+        "spiritual_upright": "Watching inner spiritual seeds manifest in physical world",
+        "spiritual_reversed": "Doubt during necessary gestation periods",
+        "shadow_aspect": "Restless desire for the next horizon discounting present achievements"
+      }
+    },
+    {
+      "id": 25,
+      "key": "minor_wands_04_four",
+      "arcana": "Minor",
+      "suit": "Wands",
+      "element": "Fire",
+      "name_en": "Four of Wands",
+      "name_zh": "权杖四",
+      "astrology": "Venus in Aries (20°-30° / Perfected Work)",
+      "hebrew_letter": "Chesed in Atziluth",
+      "facets": {
+        "general_upright": [
+          "Celebration",
+          "Harmony",
+          "Homecoming",
+          "Community",
+          "Milestone"
+        ],
+        "general_reversed": [
+          "Personal Celebration",
+          "Domestic Tension",
+          "Transient Peace",
+          "Exclusion"
+        ],
+        "love_upright": "Engagement, joyous wedding, solid domestic harmony",
+        "love_reversed": "Family friction, feeling uninvited or tense at home",
+        "career_upright": "Project milestone celebration, stable supportive work culture",
+        "career_reversed": "Internal team conflict disrupting harmony",
+        "spiritual_upright": "Sacred sanctuary, celebrating community spiritual harmony",
+        "spiritual_reversed": "Over-attachment to external rituals",
+        "shadow_aspect": "Superficial peace masking unresolved structural issues"
+      }
+    },
+    {
+      "id": 26,
+      "key": "minor_wands_05_five",
+      "arcana": "Minor",
+      "suit": "Wands",
+      "element": "Fire",
+      "name_en": "Five of Wands",
+      "name_zh": "权杖五",
+      "astrology": "Saturn in Leo (0°-10° / Strife)",
+      "hebrew_letter": "Geburah in Atziluth",
+      "facets": {
+        "general_upright": [
+          "Conflict",
+          "Competition",
+          "Disagreements",
+          "Diversity of Ideas"
+        ],
+        "general_reversed": [
+          "Avoiding Conflict",
+          "Internal Conflict",
+          "Resolution",
+          "Harmony"
+        ],
+        "love_upright": "Ego clashes, petty bickering, competitive tension",
+        "love_reversed": "Repressing grievances or resolving dispute peacefully",
+        "career_upright": "Market competition, brainstorming friction, organizational rivalry",
+        "career_reversed": "Passive aggressive corporate politics",
+        "spiritual_upright": "Spiritual tests through external friction and challenges",
+        "spiritual_reversed": "Internal spiritual discord and divided will",
+        "shadow_aspect": "Wasting vital creative energy on pointless dominance games"
+      }
+    },
+    {
+      "id": 27,
+      "key": "minor_wands_06_six",
+      "arcana": "Minor",
+      "suit": "Wands",
+      "element": "Fire",
+      "name_en": "Six of Wands",
+      "name_zh": "权杖六",
+      "astrology": "Jupiter in Leo (10°-20° / Victory)",
+      "hebrew_letter": "Tiphareth in Atziluth",
+      "facets": {
+        "general_upright": [
+          "Success",
+          "Public Recognition",
+          "Progress",
+          "Self-Confidence"
+        ],
+        "general_reversed": [
+          "Egotism",
+          "Fall from Grace",
+          "Lack of Recognition",
+          "Disgrace"
+        ],
+        "love_upright": "Admired partner, celebrated relationship, mutual pride",
+        "love_reversed": "Seeking external validation over authentic intimacy",
+        "career_upright": "Triumphant delivery, industry award, leadership acclaim",
+        "career_reversed": "Imposter syndrome, delayed credit, hubris",
+        "spiritual_upright": "Radiant solar self-actualization and moral victory",
+        "spiritual_reversed": "Spiritual pride and craving for followers",
+        "shadow_aspect": "Narcissistic thirst for applause undermining core humility"
+      }
+    },
+    {
+      "id": 28,
+      "key": "minor_wands_07_seven",
+      "arcana": "Minor",
+      "suit": "Wands",
+      "element": "Fire",
+      "name_en": "Seven of Wands",
+      "name_zh": "权杖七",
+      "astrology": "Mars in Leo (20°-30° / Valour)",
+      "hebrew_letter": "Netzach in Atziluth",
+      "facets": {
+        "general_upright": [
+          "Perseverance",
+          "Defending Position",
+          "Courage",
+          "Standing Ground"
+        ],
+        "general_reversed": [
+          "Giving In",
+          "Overwhelmed",
+          "Exhaustion",
+          "Compromise"
+        ],
+        "love_upright": "Defending love against outside critics, unwavering loyalty",
+        "love_reversed": "Feeling besieged by external relationship pressure",
+        "career_upright": "Defending market leadership, holding ground under scrutiny",
+        "career_reversed": "Overwhelmed by competitors, burnout",
+        "spiritual_upright": "Courageous defense of spiritual integrity and personal truth",
+        "spiritual_reversed": "Yielding core beliefs to crowd consensus",
+        "shadow_aspect": "Paranoid defensiveness mistaking helpful feedback for attack"
+      }
+    },
+    {
+      "id": 29,
+      "key": "minor_wands_08_eight",
+      "arcana": "Minor",
+      "suit": "Wands",
+      "element": "Fire",
+      "name_en": "Eight of Wands",
+      "name_zh": "权杖八",
+      "astrology": "Mercury in Sagittarius (0°-10° / Swiftness)",
+      "hebrew_letter": "Hod in Atziluth",
+      "facets": {
+        "general_upright": [
+          "Speed",
+          "Rapid Action",
+          "Movement",
+          "Quick Communication",
+          "Travel"
+        ],
+        "general_reversed": [
+          "Delays",
+          "Frustration",
+          "Hastiness",
+          "Panic",
+          "Misunderstandings"
+        ],
+        "love_upright": "Whirlwind romance, rapid passionate text exchange",
+        "love_reversed": "Impulsive romantic declarations or communication delay",
+        "career_upright": "Fast-track project execution, rapid product launch, travel",
+        "career_reversed": "Rushing without QA, chaotic miscommunication",
+        "spiritual_upright": "Sudden acceleration of spiritual awakening and synchronicity",
+        "spiritual_reversed": "Scattered psychic energy and mental frenzy",
+        "shadow_aspect": "Speed for speed's sake without clear intentional destination"
+      }
+    },
+    {
+      "id": 30,
+      "key": "minor_wands_09_nine",
+      "arcana": "Minor",
+      "suit": "Wands",
+      "element": "Fire",
+      "name_en": "Nine of Wands",
+      "name_zh": "权杖九",
+      "astrology": "Moon in Sagittarius (10°-20° / Great Strength)",
+      "hebrew_letter": "Yesod in Atziluth",
+      "facets": {
+        "general_upright": [
+          "Resilience",
+          "Grit",
+          "Last Line of Defense",
+          "Persistence"
+        ],
+        "general_reversed": [
+          "Exhaustion",
+          "Giving Up",
+          "Defensiveness",
+          "Paranoia"
+        ],
+        "love_upright": "Guarded heart from past trauma, testing partner's loyalty",
+        "love_reversed": "Vulnerability block, unyielding emotional fortress",
+        "career_upright": "Final sprint before delivery, battle-tested endurance",
+        "career_reversed": "Chronic burnout, near surrender at final hurdle",
+        "spiritual_upright": "Guarding the spiritual flame through dark night of soul",
+        "spiritual_reversed": "Spiritual fatigue, hypervigilance",
+        "shadow_aspect": "Chronic hyper-vigilance perpetuating imaginary enemies"
+      }
+    },
+    {
+      "id": 31,
+      "key": "minor_wands_10_ten",
+      "arcana": "Minor",
+      "suit": "Wands",
+      "element": "Fire",
+      "name_en": "Ten of Wands",
+      "name_zh": "权杖十",
+      "astrology": "Saturn in Sagittarius (20°-30° / Oppression)",
+      "hebrew_letter": "Malkuth in Atziluth",
+      "facets": {
+        "general_upright": [
+          "Burden",
+          "Extra Responsibility",
+          "Hard Work",
+          "Stress",
+          "Overextension"
+        ],
+        "general_reversed": [
+          "Delegating",
+          "Releasing Burden",
+          "Burnout",
+          "Collapse"
+        ],
+        "love_upright": "Carrying emotional load alone, weighed down by relational duty",
+        "love_reversed": "Sharing burdens, delegating emotional labor",
+        "career_upright": "Overloaded with deliverables, single point of failure",
+        "career_reversed": "Severe burnout, refusing to delegate, collapse",
+        "spiritual_upright": "Carrying worldly karmic burdens toward spiritual liberation",
+        "spiritual_reversed": "Spiritual martyrdom and savior complex",
+        "shadow_aspect": "Masochistic workaholism used to avoid inner emptiness"
+      }
+    },
+    {
+      "id": 32,
+      "key": "minor_wands_11_page",
+      "arcana": "Minor",
+      "suit": "Wands",
+      "element": "Fire",
+      "name_en": "Page of Wands",
+      "name_zh": "权杖侍从",
+      "astrology": "Earth of Fire / Princess of Flame",
+      "hebrew_letter": "Malkuth in Atziluth",
+      "facets": {
+        "general_upright": [
+          "Enthusiasm",
+          "Exploration",
+          "Discovery",
+          "Free Spirit",
+          "New Ideas"
+        ],
+        "general_reversed": [
+          "Setbacks",
+          "Lack of Goals",
+          "Procrastination",
+          "Immaturity"
+        ],
+        "love_upright": "Playful flirting, exciting romantic messages, fresh start",
+        "love_reversed": "Flighty commitment, juvenile romantic games",
+        "career_upright": "Junior spark of innovation, eager research, exploring ideas",
+        "career_reversed": "Lack of follow-through, impulsive career shifts",
+        "spiritual_upright": "Youthful enthusiasm for spiritual discovery and occult studies",
+        "spiritual_reversed": "Dabbling in spiritual trends without depth",
+        "shadow_aspect": "Addiction to initial novelty abandoning mastery when discipline is needed"
+      }
+    },
+    {
+      "id": 33,
+      "key": "minor_wands_12_knight",
+      "arcana": "Minor",
+      "suit": "Wands",
+      "element": "Fire",
+      "name_en": "Knight of Wands",
+      "name_zh": "权杖骑士",
+      "astrology": "Fire of Fire / Lord of Flame",
+      "hebrew_letter": "Tiphareth in Atziluth",
+      "facets": {
+        "general_upright": [
+          "Energy",
+          "Passion",
+          "Adventure",
+          "Impulsiveness",
+          "Action"
+        ],
+        "general_reversed": [
+          "Anger",
+          "Impatience",
+          "Recklessness",
+          "Volatile"
+        ],
+        "love_upright": "Fiery romantic pursuit, passionate whirlwind, charismatic charm",
+        "love_reversed": "Hot-and-cold behavior, ghosting, impatience",
+        "career_upright": "Aggressive market disruption, bold pitches, swift action",
+        "career_reversed": "Reckless overpromising, volatile team friction",
+        "spiritual_upright": "Passionate spiritual crusade and radiant devotion",
+        "spiritual_reversed": "Dogmatic fanaticism, spiritual burnout",
+        "shadow_aspect": "Chasing adrenaline surges mistaking restlessness for purpose"
+      }
+    },
+    {
+      "id": 34,
+      "key": "minor_wands_13_queen",
+      "arcana": "Minor",
+      "suit": "Wands",
+      "element": "Fire",
+      "name_en": "Queen of Wands",
+      "name_zh": "权杖王后",
+      "astrology": "Water of Fire / Queen of Thrones of Flame",
+      "hebrew_letter": "Briah in Atziluth",
+      "facets": {
+        "general_upright": [
+          "Courage",
+          "Confidence",
+          "Independence",
+          "Social Grace",
+          "Warmth"
+        ],
+        "general_reversed": [
+          "Self-Doubt",
+          "Jealousy",
+          "Demanding",
+          "Insecurity"
+        ],
+        "love_upright": "Radiant magnetic confidence, charismatic warm partner",
+        "love_reversed": "Demanding spotlight, jealous insecurity",
+        "career_upright": "Inspirational executive leadership, vibrant team morale",
+        "career_reversed": "Temperamental outbursts, micromanagement",
+        "spiritual_upright": "Embodied spiritual magnetism, living as radiant beacon",
+        "spiritual_reversed": "Manipulative charisma, spiritual vanity",
+        "shadow_aspect": "Dominating others under guise of enthusiastic cheerleading"
+      }
+    },
+    {
+      "id": 35,
+      "key": "minor_wands_14_king",
+      "arcana": "Minor",
+      "suit": "Wands",
+      "element": "Fire",
+      "name_en": "King of Wands",
+      "name_zh": "权杖国王",
+      "astrology": "Air of Fire / Prince of Chariot of Fire",
+      "hebrew_letter": "Chokmah in Atziluth",
+      "facets": {
+        "general_upright": [
+          "Visionary Leadership",
+          "Honor",
+          "Overcoming Challenges",
+          "Charisma"
+        ],
+        "general_reversed": [
+          "Impulsiveness",
+          "Ruthlessness",
+          "High Expectations",
+          "Tyranny"
+        ],
+        "love_upright": "Mature passionate commitment, protective inspiring leader",
+        "love_reversed": "Overbearing dominance, impatience with partner",
+        "career_upright": "C-level visionary, inspiring corporate scaling, decisive strategy",
+        "career_reversed": "Autocratic leadership, unrealistic demands",
+        "spiritual_upright": "Mastery of creative spiritual fire and ethical manifestation",
+        "spiritual_reversed": "Spiritual arrogance, demanding total obedience",
+        "shadow_aspect": "Burning bridges in pursuit of grand ungrounded visions"
+      }
+    },
+    {
+      "id": 36,
+      "key": "minor_cups_01_ace",
+      "arcana": "Minor",
+      "suit": "Cups",
+      "element": "Water",
+      "name_en": "Ace of Cups",
+      "name_zh": "圣杯一",
+      "astrology": "Root of the Powers of Water",
+      "hebrew_letter": "Kether in Briah",
+      "facets": {
+        "general_upright": [
+          "Love",
+          "New Feelings",
+          "Intuition",
+          "Compassion",
+          "Creativity"
+        ],
+        "general_reversed": [
+          "Self-Love",
+          "Blocked Intuition",
+          "Emotional Drain",
+          "Vulnerability"
+        ],
+        "love_upright": "Overflowing romantic love, deep heart-opening, soul resonance",
+        "love_reversed": "Unexpressed affection, fear of intimacy",
+        "career_upright": "Fulfilling vocation, compassionate creative collaboration",
+        "career_reversed": "Creative block, professional dissatisfaction",
+        "spiritual_upright": "Direct infusion of divine unconditional love and grace",
+        "spiritual_reversed": "Emotional spiritual blockage, feeling numb",
+        "shadow_aspect": "Unbounded emotional indulgence drowning rational discernment"
+      }
+    },
+    {
+      "id": 37,
+      "key": "minor_cups_02_two",
+      "arcana": "Minor",
+      "suit": "Cups",
+      "element": "Water",
+      "name_en": "Two of Cups",
+      "name_zh": "圣杯二",
+      "astrology": "Venus in Cancer (0°-10° / Love)",
+      "hebrew_letter": "Chokmah in Briah",
+      "facets": {
+        "general_upright": [
+          "Unified Love",
+          "Partnership",
+          "Mutual Attraction",
+          "Harmony"
+        ],
+        "general_reversed": [
+          "Breakup",
+          "Imbalance",
+          "Misaligned Values",
+          "Distrust"
+        ],
+        "love_upright": "Soulmate connection, equal vulnerability, harmonious union",
+        "love_reversed": "One-sided attraction, communication breakdown",
+        "career_upright": "Synergistic co-founder partnership, mutual business trust",
+        "career_reversed": "Contractual discord, broken partnership",
+        "spiritual_upright": "Sacred spiritual marriage (Hieros Gamos) within the soul",
+        "spiritual_reversed": "Inner division between head and heart",
+        "shadow_aspect": "Codependent fusion sacrificing personal autonomy for peace"
+      }
+    },
+    {
+      "id": 38,
+      "key": "minor_cups_03_three",
+      "arcana": "Minor",
+      "suit": "Cups",
+      "element": "Water",
+      "name_en": "Three of Cups",
+      "name_zh": "圣杯三",
+      "astrology": "Mercury in Cancer (10°-20° / Abundance)",
+      "hebrew_letter": "Binah in Briah",
+      "facets": {
+        "general_upright": [
+          "Celebration",
+          "Friendship",
+          "Sisterhood",
+          "Community",
+          "Gathering"
+        ],
+        "general_reversed": [
+          "Gossip",
+          "Isolation",
+          "Overindulgence",
+          "Third-Party Friction"
+        ],
+        "love_upright": "Joyous social dating, shared circle of friends, celebration",
+        "love_reversed": "Third-party interference, gossip harming intimacy",
+        "career_upright": "Team milestone party, collaborative synergy, festive launch",
+        "career_reversed": "Office cliques, gossiping, unproductive meetings",
+        "spiritual_upright": "Joyful community communion and shared spiritual circle",
+        "spiritual_reversed": "Spiritual elitism and superficial groupthink",
+        "shadow_aspect": "Using superficial party euphoria to numb underlying melancholy"
+      }
+    },
+    {
+      "id": 39,
+      "key": "minor_cups_04_four",
+      "arcana": "Minor",
+      "suit": "Cups",
+      "element": "Water",
+      "name_en": "Four of Cups",
+      "name_zh": "圣杯四",
+      "astrology": "Moon in Cancer (20°-30° / Luxury)",
+      "hebrew_letter": "Chesed in Briah",
+      "facets": {
+        "general_upright": [
+          "Apathy",
+          "Contemplation",
+          "Disconnection",
+          "Melancholy"
+        ],
+        "general_reversed": [
+          "Clarity",
+          "Acceptance",
+          "Seizing Opportunity",
+          "Awakening"
+        ],
+        "love_upright": "Emotional boredom, taking partner for granted, withdrawal",
+        "love_reversed": "Recognizing love offered, opening up to connection",
+        "career_upright": "Career stagnation, uninspired by current offers, apathy",
+        "career_reversed": "Seizing overlooked project opportunity, renewed drive",
+        "spiritual_upright": "Meditation on inner emptiness, quiet contemplation",
+        "spiritual_reversed": "Refusing spiritual grace out of stubborn cynicism",
+        "shadow_aspect": "Chronic dissatisfaction romanticizing unattainable illusions"
+      }
+    },
+    {
+      "id": 40,
+      "key": "minor_cups_05_five",
+      "arcana": "Minor",
+      "suit": "Cups",
+      "element": "Water",
+      "name_en": "Five of Cups",
+      "name_zh": "圣杯五",
+      "astrology": "Mars in Scorpio (0°-10° / Loss in Pleasure)",
+      "hebrew_letter": "Geburah in Briah",
+      "facets": {
+        "general_upright": [
+          "Grief",
+          "Loss",
+          "Regret",
+          "Disappointment",
+          "Mourning"
+        ],
+        "general_reversed": [
+          "Acceptance",
+          "Moving On",
+          "Finding Peace",
+          "Forgiveness"
+        ],
+        "love_upright": "Heartbreak, grieving lost love, lingering regret",
+        "love_reversed": "Turning around to see remaining love, forgiveness",
+        "career_upright": "Failed deal, project setback, mourning sunk costs",
+        "career_reversed": "Pivoting strategy, salvaging remaining assets",
+        "spiritual_upright": "Grief as an initiation into deeper spiritual empathy",
+        "spiritual_reversed": "Trapped in perpetual victimhood and sorrow",
+        "shadow_aspect": "Obsessive mourning over spilled cups ignoring standing reserves"
+      }
+    },
+    {
+      "id": 41,
+      "key": "minor_cups_06_six",
+      "arcana": "Minor",
+      "suit": "Cups",
+      "element": "Water",
+      "name_en": "Six of Cups",
+      "name_zh": "圣杯六",
+      "astrology": "Sun in Scorpio (10°-20° / Pleasure)",
+      "hebrew_letter": "Tiphareth in Briah",
+      "facets": {
+        "general_upright": [
+          "Nostalgia",
+          "Childhood Memories",
+          "Innocence",
+          "Reunion"
+        ],
+        "general_reversed": [
+          "Stuck in Past",
+          "Unrealistic Idealism",
+          "Moving Forward"
+        ],
+        "love_upright": "Sweet nostalgic romance, childhood sweetheart, gentle warmth",
+        "love_reversed": "Idealizing ex-partner, clinging to obsolete past",
+        "career_upright": "Revisiting past clients, family business, legacy project",
+        "career_reversed": "Reluctance to adopt modern methods, outmoded tech",
+        "spiritual_upright": "Reconnecting with innocent pure inner child",
+        "spiritual_reversed": "Escaping adult spiritual responsibility into childhood fantasy",
+        "shadow_aspect": "Trapping current relationships in golden nostalgic cages"
+      }
+    },
+    {
+      "id": 42,
+      "key": "minor_cups_07_seven",
+      "arcana": "Minor",
+      "suit": "Cups",
+      "element": "Water",
+      "name_en": "Seven of Cups",
+      "name_zh": "圣杯七",
+      "astrology": "Venus in Scorpio (20°-30° / Illusionary Success)",
+      "hebrew_letter": "Netzach in Briah",
+      "facets": {
+        "general_upright": [
+          "Choices",
+          "Fantasy",
+          "Illusion",
+          "Wishful Thinking",
+          "Options"
+        ],
+        "general_reversed": [
+          "Clarity",
+          "Decisiveness",
+          "Reality Check",
+          "Sober Choices"
+        ],
+        "love_upright": "Daydreaming multiple romantic prospects, fantasy vs reality",
+        "love_reversed": "Sober choice, cutting through romantic illusions",
+        "career_upright": "Too many project ideas, scattered strategy, paralysis by analysis",
+        "career_reversed": "Prioritizing viable MVP, realistic execution",
+        "spiritual_upright": "Exploring astral realms and multifaceted mythic visions",
+        "spiritual_reversed": "Lost in spiritual glamour and psychic daydreaming",
+        "shadow_aspect": "Chasing shiny mirages to avoid grounded hard work"
+      }
+    },
+    {
+      "id": 43,
+      "key": "minor_cups_08_eight",
+      "arcana": "Minor",
+      "suit": "Cups",
+      "element": "Water",
+      "name_en": "Eight of Cups",
+      "name_zh": "圣杯八",
+      "astrology": "Saturn in Pisces (0°-10° / Abandoned Success)",
+      "hebrew_letter": "Hod in Briah",
+      "facets": {
+        "general_upright": [
+          "Walking Away",
+          "Disillusionment",
+          "Leaving Behind",
+          "Searching for Truth"
+        ],
+        "general_reversed": [
+          "Aimless Drifting",
+          "Fear of Moving On",
+          "Clinging to Dead Ends"
+        ],
+        "love_upright": "Walking away from unfulfilling relationship, seeking deeper truth",
+        "love_reversed": "Staying in hollow relationship out of fear",
+        "career_upright": "Leaving comfortable corporate job to pursue authentic vocation",
+        "career_reversed": "Drifting aimlessly without career direction",
+        "spiritual_upright": "The spiritual hero's quest, nocturnal departure toward the peaks",
+        "spiritual_reversed": "Fear of leaving material security behind",
+        "shadow_aspect": "Chronic dissatisfaction disguised as spiritual seeking"
+      }
+    },
+    {
+      "id": 44,
+      "key": "minor_cups_09_nine",
+      "arcana": "Minor",
+      "suit": "Cups",
+      "element": "Water",
+      "name_en": "Nine of Cups",
+      "name_zh": "圣杯九",
+      "astrology": "Jupiter in Pisces (10°-20° / Material Happiness)",
+      "hebrew_letter": "Yesod in Briah",
+      "facets": {
+        "general_upright": [
+          "Contentment",
+          "Satisfaction",
+          "Wishes Fulfilled",
+          "Gratitude"
+        ],
+        "general_reversed": [
+          "Greed",
+          "Smugness",
+          "Superficiality",
+          "Dissatisfaction"
+        ],
+        "love_upright": "Emotional bliss, dream partner, deep romantic fulfillment",
+        "love_reversed": "Self-satisfied complacency, superficial pleasure",
+        "career_upright": "Lucrative milestone, dream job achieved, proud satisfaction",
+        "career_reversed": "Smug entitlement, resting on past laurels",
+        "spiritual_upright": "Inner spiritual peace and emotional self-sufficiency",
+        "spiritual_reversed": "Hedonistic self-indulgence masquerading as enlightenment",
+        "shadow_aspect": "Smug isolation mistaking material comfort for soul growth"
+      }
+    },
+    {
+      "id": 45,
+      "key": "minor_cups_10_ten",
+      "arcana": "Minor",
+      "suit": "Cups",
+      "element": "Water",
+      "name_en": "Ten of Cups",
+      "name_zh": "圣杯十",
+      "astrology": "Mars in Pisces (20°-30° / Perfected Success)",
+      "hebrew_letter": "Malkuth in Briah",
+      "facets": {
+        "general_upright": [
+          "Divine Love",
+          "Family Harmony",
+          "Lasting Happiness",
+          "Alignment"
+        ],
+        "general_reversed": [
+          "Domestic Discord",
+          "Shattered Dreams",
+          "Strained Relations"
+        ],
+        "love_upright": "Lasting marriage, family bliss, complete emotional harmony",
+        "love_reversed": "Domestic tension, facade of happy family",
+        "career_upright": "Wholesome corporate culture, aligned values, shared prosperity",
+        "career_reversed": "Corporate culture clash, toxic work environment",
+        "spiritual_upright": "Living in harmony with universal cosmic love",
+        "spiritual_reversed": "Spiritual disillusionment within community",
+        "shadow_aspect": "Imposing dogmatic happily-ever-after templates on messy human truth"
+      }
+    },
+    {
+      "id": 46,
+      "key": "minor_cups_11_page",
+      "arcana": "Minor",
+      "suit": "Cups",
+      "element": "Water",
+      "name_en": "Page of Cups",
+      "name_zh": "圣杯侍从",
+      "astrology": "Earth of Water / Princess of the Waters",
+      "hebrew_letter": "Malkuth in Briah",
+      "facets": {
+        "general_upright": [
+          "Creative Intuition",
+          "Gentle Curiosity",
+          "Intuitive Messages",
+          "Sensitivity"
+        ],
+        "general_reversed": [
+          "Emotional Immaturity",
+          "Insecurity",
+          "Overly Sensitive",
+          "Vulnerability"
+        ],
+        "love_upright": "Sweet romantic confession, poetic affection, tender message",
+        "love_reversed": "Emotional mood swings, childish insecurity",
+        "career_upright": "Creative inspiration, artistic breakthrough, fresh perspectives",
+        "career_reversed": "Unrealistic proposals, feeling easily hurt by feedback",
+        "spiritual_upright": "Gentle psychic opening and receptive intuitive whispers",
+        "spiritual_reversed": "Psychic gullibility, emotional escapism",
+        "shadow_aspect": "Playing the fragile wounded poet to manipulate care from others"
+      }
+    },
+    {
+      "id": 47,
+      "key": "minor_cups_12_knight",
+      "arcana": "Minor",
+      "suit": "Cups",
+      "element": "Water",
+      "name_en": "Knight of Cups",
+      "name_zh": "圣杯骑士",
+      "astrology": "Fire of Water / Lord of Waves and Waters",
+      "hebrew_letter": "Tiphareth in Briah",
+      "facets": {
+        "general_upright": [
+          "Romance",
+          "Charm",
+          "Idealism",
+          "Following Heart",
+          "Diplomacy"
+        ],
+        "general_reversed": [
+          "Unrealistic Expectations",
+          "Moodiness",
+          "Deception",
+          "Heartbreak"
+        ],
+        "love_upright": "Romantic courtship, chivalrous partner, poetic declarations",
+        "love_reversed": "Love-bombing followed by withdrawal, illusion",
+        "career_upright": "Diplomatic negotiations, creative pitch, visionary ambassador",
+        "career_reversed": "All style no substance, unreliable deadlines",
+        "spiritual_upright": "Devoted spiritual seeker pursuing the Holy Grail",
+        "spiritual_reversed": "Chasing spiritual romance without grounded discipline",
+        "shadow_aspect": "Seducing others with idealistic promises one cannot sustain"
+      }
+    },
+    {
+      "id": 48,
+      "key": "minor_cups_13_queen",
+      "arcana": "Minor",
+      "suit": "Cups",
+      "element": "Water",
+      "name_en": "Queen of Cups",
+      "name_zh": "圣杯王后",
+      "astrology": "Water of Water / Queen of Thrones of Waters",
+      "hebrew_letter": "Briah in Briah",
+      "facets": {
+        "general_upright": [
+          "Empathy",
+          "Compassion",
+          "Intuitive Healing",
+          "Emotional Depth"
+        ],
+        "general_reversed": [
+          "Codependency",
+          "Martyrdom",
+          "Emotional Manipulation",
+          "Moodiness"
+        ],
+        "love_upright": "Deep empathetic love, psychic connection, safe emotional haven",
+        "love_reversed": "Smothering codependency, emotional martyrdom",
+        "career_upright": "Empathetic leadership, intuitive client resonance, mentorship",
+        "career_reversed": "Allowing emotions to cloud executive judgment",
+        "spiritual_upright": "High intuitive mastery, direct channel of divine compassion",
+        "spiritual_reversed": "Drowning in psychic projections and emotional swamp",
+        "shadow_aspect": "Absorbing everyone else's trauma to avoid one's own boundary setting"
+      }
+    },
+    {
+      "id": 49,
+      "key": "minor_cups_14_king",
+      "arcana": "Minor",
+      "suit": "Cups",
+      "element": "Water",
+      "name_en": "King of Cups",
+      "name_zh": "圣杯国王",
+      "astrology": "Air of Water / Prince of Chariot of Waters",
+      "hebrew_letter": "Chokmah in Briah",
+      "facets": {
+        "general_upright": [
+          "Emotional Balance",
+          "Compassion",
+          "Wisdom",
+          "Diplomacy",
+          "Counsel"
+        ],
+        "general_reversed": [
+          "Emotional Volatility",
+          "Manipulation",
+          "Coldness",
+          "Withholding"
+        ],
+        "love_upright": "Emotionally mature partner, calm anchor during relational storms",
+        "love_reversed": "Passive-aggressive withholding, manipulative calm",
+        "career_upright": "Wise senior executive, trusted counselor, calm crisis management",
+        "career_reversed": "Suppressed corporate anger, covert manipulation",
+        "spiritual_upright": "Mastery over emotional tides with serene spiritual wisdom",
+        "spiritual_reversed": "Spiritual detachment turned into emotional numbness",
+        "shadow_aspect": "Using calm intellectual superiority to suppress raw authentic feelings"
+      }
+    },
+    {
+      "id": 50,
+      "key": "minor_swords_01_ace",
+      "arcana": "Minor",
+      "suit": "Swords",
+      "element": "Air",
+      "name_en": "Ace of Swords",
+      "name_zh": "宝剑一",
+      "astrology": "Root of the Powers of Air",
+      "hebrew_letter": "Kether in Yetzirah",
+      "facets": {
+        "general_upright": [
+          "Clarity",
+          "Raw Truth",
+          "Breakthrough",
+          "Sharp Intellect",
+          "Justice"
+        ],
+        "general_reversed": [
+          "Confusion",
+          "Brutality",
+          "Misinformation",
+          "Hostility"
+        ],
+        "love_upright": "Honest breakthrough conversation, cutting through ambiguity",
+        "love_reversed": "Brutal harsh words, painful misunderstanding",
+        "career_upright": "Strategic clarity, sharp technical solution, decisive audit",
+        "career_reversed": "Miscalculated strategy, analysis paralysis",
+        "spiritual_upright": "Sword of discriminating wisdom piercing veil of illusion",
+        "spiritual_reversed": "Using intellect to rationalize spiritual ego",
+        "shadow_aspect": "Wielding brutal honesty as a weapon to wound rather than heal"
+      }
+    },
+    {
+      "id": 51,
+      "key": "minor_swords_02_two",
+      "arcana": "Minor",
+      "suit": "Swords",
+      "element": "Air",
+      "name_en": "Two of Swords",
+      "name_zh": "宝剑二",
+      "astrology": "Moon in Libra (0°-10° / Peace Restored)",
+      "hebrew_letter": "Chokmah in Yetzirah",
+      "facets": {
+        "general_upright": [
+          "Stalemate",
+          "Difficult Choice",
+          "Truce",
+          "Blindspot",
+          "Avoidance"
+        ],
+        "general_reversed": [
+          "Indecision",
+          "Information Overload",
+          "Conflict",
+          "Exposure"
+        ],
+        "love_upright": "Emotional standoff, avoiding tough decision, temporary truce",
+        "love_reversed": "Forced revelation, emotional impasse breaking",
+        "career_upright": "Corporate deadlock, balancing trade-offs, defensive pause",
+        "career_reversed": "Indecisive leadership stalling project momentum",
+        "spiritual_upright": "Quiet mental balance before inner wisdom reveals path",
+        "spiritual_reversed": "Willful blindness to obvious spiritual truths",
+        "shadow_aspect": "Wearing blindfold of intellectual neutrality to evade moral choice"
+      }
+    },
+    {
+      "id": 52,
+      "key": "minor_swords_03_three",
+      "arcana": "Minor",
+      "suit": "Swords",
+      "element": "Air",
+      "name_en": "Three of Swords",
+      "name_zh": "宝剑三",
+      "astrology": "Saturn in Libra (10°-20° / Sorrow)",
+      "hebrew_letter": "Binah in Yetzirah",
+      "facets": {
+        "general_upright": [
+          "Heartbreak",
+          "Painful Truth",
+          "Grief",
+          "Betrayal",
+          "Surgical Clarity"
+        ],
+        "general_reversed": [
+          "Recovery",
+          "Forgiveness",
+          "Releasing Pain",
+          "Repression"
+        ],
+        "love_upright": "Painful heartbreak, shattered illusions, necessary grief",
+        "love_reversed": "Healing from past betrayal, releasing bitterness",
+        "career_upright": "Severed contract, harsh audit findings, restructuring pain",
+        "career_reversed": "Rebuilding from business setback, forgiveness",
+        "spiritual_upright": "The piercing of ego illusions leading to compassionate heart",
+        "spiritual_reversed": "Refusing to acknowledge profound inner grief",
+        "shadow_aspect": "Obsessively picking at old psychic wounds to justify bitterness"
+      }
+    },
+    {
+      "id": 53,
+      "key": "minor_swords_04_four",
+      "arcana": "Minor",
+      "suit": "Swords",
+      "element": "Air",
+      "name_en": "Four of Swords",
+      "name_zh": "宝剑四",
+      "astrology": "Jupiter in Libra (20°-30° / Rest from Strife)",
+      "hebrew_letter": "Chesed in Yetzirah",
+      "facets": {
+        "general_upright": [
+          "Rest",
+          "Recovery",
+          "Meditation",
+          "Sanctuary",
+          "Contemplation"
+        ],
+        "general_reversed": [
+          "Exhaustion",
+          "Burnout",
+          "Forced Rest",
+          "Stagnation"
+        ],
+        "love_upright": "Taking space in relationship, emotional recovery, quiet sanctuary",
+        "love_reversed": "Isolation out of fear, emotional coldness",
+        "career_upright": "Strategic pause, sabbatical, recharging before major release",
+        "career_reversed": "Severe burnout forcing medical leave",
+        "spiritual_upright": "Silent meditation, inner temple sanctuary, mental stillness",
+        "spiritual_reversed": "Mental restlessness disturbing spiritual retreat",
+        "shadow_aspect": "Using spiritual retreat as permanent hiding place from life"
+      }
+    },
+    {
+      "id": 54,
+      "key": "minor_swords_05_five",
+      "arcana": "Minor",
+      "suit": "Swords",
+      "element": "Air",
+      "name_en": "Five of Swords",
+      "name_zh": "宝剑五",
+      "astrology": "Venus in Aquarius (0°-10° / Defeat)",
+      "hebrew_letter": "Geburah in Yetzirah",
+      "facets": {
+        "general_upright": [
+          "Conflict",
+          "Pyrrhic Victory",
+          "Hostility",
+          "Self-Interest"
+        ],
+        "general_reversed": [
+          "Reconciliation",
+          "Compromise",
+          "Past Resentment",
+          "Humility"
+        ],
+        "love_upright": "Winning argument but losing relationship, toxic ego battles",
+        "love_reversed": "Reconciling after dispute, laying down weapons",
+        "career_upright": "Cutthroat corporate politics, hollow victory, alienated peers",
+        "career_reversed": "Forgiving business rivals, rebuilding trust",
+        "spiritual_upright": "Recognizing futility of spiritual ego dominance games",
+        "spiritual_reversed": "Persistent resentment and gloating over adversaries",
+        "shadow_aspect": "Needing to win every minor battle at cost of entire alliance"
+      }
+    },
+    {
+      "id": 55,
+      "key": "minor_swords_06_six",
+      "arcana": "Minor",
+      "suit": "Swords",
+      "element": "Air",
+      "name_en": "Six of Swords",
+      "name_zh": "宝剑六",
+      "astrology": "Mercury in Aquarius (10°-20° / Earned Success)",
+      "hebrew_letter": "Tiphareth in Yetzirah",
+      "facets": {
+        "general_upright": [
+          "Transition",
+          "Moving Forward",
+          "Leaving Turmoil",
+          "Recovery"
+        ],
+        "general_reversed": [
+          "Emotional Baggage",
+          "Turbulence",
+          "Reluctance to Move"
+        ],
+        "love_upright": "Transitioning to calmer waters together, healing after storm",
+        "love_reversed": "Carrying heavy baggage into new relationship",
+        "career_upright": "Migrating legacy codebase, relocation, emerging from crisis",
+        "career_reversed": "Stuck in problematic legacy architecture",
+        "spiritual_upright": "Mental voyage across astral waters toward spiritual peace",
+        "spiritual_reversed": "Refusing guidance across difficult inner transitions",
+        "shadow_aspect": "Carrying unresolved cognitive dissonance into every new haven"
+      }
+    },
+    {
+      "id": 56,
+      "key": "minor_swords_07_seven",
+      "arcana": "Minor",
+      "suit": "Swords",
+      "element": "Air",
+      "name_en": "Seven of Swords",
+      "name_zh": "宝剑七",
+      "astrology": "Moon in Aquarius (20°-30° / Unstable Effort)",
+      "hebrew_letter": "Netzach in Yetzirah",
+      "facets": {
+        "general_upright": [
+          "Strategy",
+          "Stealth",
+          "Resourcefulness",
+          "Deception",
+          "Evasion"
+        ],
+        "general_reversed": [
+          "Confession",
+          "Imposter Syndrome",
+          "Getting Caught",
+          "Sincerity"
+        ],
+        "love_upright": "Hidden agendas, evasive behavior, sneaky communication",
+        "love_reversed": "Coming clean, honest confession, rebuilding trust",
+        "career_upright": "Tactical stealth, protecting IP, unconventional strategy",
+        "career_reversed": "Unethical shortcuts, fraud, getting caught",
+        "spiritual_upright": "Testing subtle discernment against spiritual illusions",
+        "spiritual_reversed": "Deceiving oneself regarding spiritual attainment",
+        "shadow_aspect": "Rationalizing deceit as clever strategy"
+      }
+    },
+    {
+      "id": 57,
+      "key": "minor_swords_08_eight",
+      "arcana": "Minor",
+      "suit": "Swords",
+      "element": "Air",
+      "name_en": "Eight of Swords",
+      "name_zh": "宝剑八",
+      "astrology": "Jupiter in Gemini (0°-10° / Shortened Force)",
+      "hebrew_letter": "Hod in Yetzirah",
+      "facets": {
+        "general_upright": [
+          "Self-Imposed Restriction",
+          "Victim Mentality",
+          "Trapped",
+          "Limiting Beliefs"
+        ],
+        "general_reversed": [
+          "Freedom",
+          "New Perspective",
+          "Empowerment",
+          "Taking Control"
+        ],
+        "love_upright": "Feeling trapped in relational patterns, self-imposed helplessness",
+        "love_reversed": "Realizing exit is open, breaking mental chains",
+        "career_upright": "Paralyzed by corporate fear, imposter syndrome, career trap",
+        "career_reversed": "Asserting autonomy, seeking external solution",
+        "spiritual_upright": "Confronting mental cages created by rigid belief systems",
+        "spiritual_reversed": "Remaining in victimhood out of secondary gain",
+        "shadow_aspect": "Constructing imaginary prison bars out of unexamined beliefs"
+      }
+    },
+    {
+      "id": 58,
+      "key": "minor_swords_09_nine",
+      "arcana": "Minor",
+      "suit": "Swords",
+      "element": "Air",
+      "name_en": "Nine of Swords",
+      "name_zh": "宝剑九",
+      "astrology": "Mars in Gemini (10°-20° / Despair and Cruelty)",
+      "hebrew_letter": "Yesod in Yetzirah",
+      "facets": {
+        "general_upright": [
+          "Anxiety",
+          "Nightmares",
+          "Insomnia",
+          "Guilt",
+          "Mental Anguish"
+        ],
+        "general_reversed": [
+          "Hope",
+          "Reaching Out",
+          "Recovery",
+          "Perspective"
+        ],
+        "love_upright": "Paralyzing nighttime worry, relationship anxiety, guilt",
+        "love_reversed": "Realizing fears are exaggerated, opening up to partner",
+        "career_upright": "Deadline panic, sleepless nights over audits, high stress",
+        "career_reversed": "Managing crisis calmly, seeking professional help",
+        "spiritual_upright": "Night terror of the shadow self during spiritual awakening",
+        "spiritual_reversed": "Drowning in catastrophizing mental loops",
+        "shadow_aspect": "Tormenting oneself with imaginary worst-case scenarios"
+      }
+    },
+    {
+      "id": 59,
+      "key": "minor_swords_10_ten",
+      "arcana": "Minor",
+      "suit": "Swords",
+      "element": "Air",
+      "name_en": "Ten of Swords",
+      "name_zh": "宝剑十",
+      "astrology": "Sun in Gemini (20°-30° / Ruin)",
+      "hebrew_letter": "Malkuth in Yetzirah",
+      "facets": {
+        "general_upright": [
+          "Rock Bottom",
+          "Painful Ending",
+          "Inevitable Conclusion",
+          "Dawn Approaches"
+        ],
+        "general_reversed": [
+          "Recovery",
+          "Resurrection",
+          "Relief",
+          "Learning Lessons"
+        ],
+        "love_upright": "Final end of toxic relationship, rock bottom hit, dawn ahead",
+        "love_reversed": "Picking up pieces, healing, new dawn starting",
+        "career_upright": "Project termination, company liquidation, utter reset",
+        "career_reversed": "Surviving collapse, pivot, rebuilding better foundation",
+        "spiritual_upright": "Total death of mental ego structures, bottom reached",
+        "spiritual_reversed": "Prolonging agony by refusing to admit conclusion",
+        "shadow_aspect": "Dramatizing rock-bottom to avoid taking first step toward dawn"
+      }
+    },
+    {
+      "id": 60,
+      "key": "minor_swords_11_page",
+      "arcana": "Minor",
+      "suit": "Swords",
+      "element": "Air",
+      "name_en": "Page of Swords",
+      "name_zh": "宝剑侍从",
+      "astrology": "Earth of Air / Princess of Rushing Winds",
+      "hebrew_letter": "Malkuth in Yetzirah",
+      "facets": {
+        "general_upright": [
+          "Curiosity",
+          "Mental Agility",
+          "Vigilance",
+          "Inquisitive",
+          "Truth-Seeking"
+        ],
+        "general_reversed": [
+          "Gossip",
+          "Deception",
+          "All Talk",
+          "Defensiveness"
+        ],
+        "love_upright": "Intellectual banter, probing questions, curious flirting",
+        "love_reversed": "Snooping partner's phone, defensive paranoia",
+        "career_upright": "Junior investigative researcher, sharp QA auditing, alert mind",
+        "career_reversed": "Nitpicking, spreading workplace rumors",
+        "spiritual_upright": "Alert spiritual inquiry, questioning dogmas with keen intellect",
+        "spiritual_reversed": "Cynical intellectual sparring lacking heart",
+        "shadow_aspect": "Collecting intellectual data while resisting real transformation"
+      }
+    },
+    {
+      "id": 61,
+      "key": "minor_swords_12_knight",
+      "arcana": "Minor",
+      "suit": "Swords",
+      "element": "Air",
+      "name_en": "Knight of Swords",
+      "name_zh": "宝剑骑士",
+      "astrology": "Fire of Air / Lord of Wind and Breezes",
+      "hebrew_letter": "Tiphareth in Yetzirah",
+      "facets": {
+        "general_upright": [
+          "Ambition",
+          "Direct Action",
+          "Fast Thinking",
+          "Drive",
+          "Assertiveness"
+        ],
+        "general_reversed": [
+          "Aggression",
+          "Bluntness",
+          "Recklessness",
+          "Tactlessness"
+        ],
+        "love_upright": "Blunt direct communication, fast-paced courtship, intense debate",
+        "love_reversed": "Tactless cruelty, bulldozing partner's feelings",
+        "career_upright": "Aggressive market entry, swift bug triage, rapid execution",
+        "career_reversed": "Rushing without foresight, creating team conflict",
+        "spiritual_upright": "Intellectual warrior fighting for truth and mental freedom",
+        "spiritual_reversed": "Fanatical ideological crusade destroying peace",
+        "shadow_aspect": "Charging headlong into verbal battles to defend intellectual pride"
+      }
+    },
+    {
+      "id": 62,
+      "key": "minor_swords_13_queen",
+      "arcana": "Minor",
+      "suit": "Swords",
+      "element": "Air",
+      "name_en": "Queen of Swords",
+      "name_zh": "宝剑王后",
+      "astrology": "Water of Air / Queen of Thrones of Air",
+      "hebrew_letter": "Briah in Yetzirah",
+      "facets": {
+        "general_upright": [
+          "Sharp Wit",
+          "Clear Boundaries",
+          "Independence",
+          "Objective Truth"
+        ],
+        "general_reversed": [
+          "Coldness",
+          "Bitterness",
+          "Cruel Judgment",
+          "Cynicism"
+        ],
+        "love_upright": "Clear relational boundaries, perceptive honesty, independence",
+        "love_reversed": "Cold emotional wall, cynical sharpness",
+        "career_upright": "Objective executive oversight, rigorous code review, fair judge",
+        "career_reversed": "Harsh critique, unapproachable atmosphere",
+        "spiritual_upright": "Mastery of clear mental discernment and detached insight",
+        "spiritual_reversed": "Using cynicism as armor against vulnerability",
+        "shadow_aspect": "Freezing out intimacy with razor-sharp intellectual judgment"
+      }
+    },
+    {
+      "id": 63,
+      "key": "minor_swords_14_king",
+      "arcana": "Minor",
+      "suit": "Swords",
+      "element": "Air",
+      "name_en": "King of Swords",
+      "name_zh": "宝剑国王",
+      "astrology": "Air of Air / Prince of Chariot of Winds",
+      "hebrew_letter": "Chokmah in Yetzirah",
+      "facets": {
+        "general_upright": [
+          "Mental Authority",
+          "Intellectual Rigor",
+          "Truth",
+          "Discipline",
+          "Strategy"
+        ],
+        "general_reversed": [
+          "Tyranny",
+          "Manipulation",
+          "Cold Rationalism",
+          "Dogmatism"
+        ],
+        "love_upright": "Intellectually stimulating partner, ethical clear expectations",
+        "love_reversed": "Cold emotional tyrant, hyper-rational dismissal",
+        "career_upright": "Chief Technology Officer, legal counsel, strategic architect",
+        "career_reversed": "Rigid bureaucracy, dismissing human factor",
+        "spiritual_upright": "Philosophical mastery, absolute alignment with universal truth",
+        "spiritual_reversed": "Spiritual intellectualism divorced from compassion",
+        "shadow_aspect": "Sacrificing human compassion on the altar of abstract logic"
+      }
+    },
+    {
+      "id": 64,
+      "key": "minor_pentacles_01_ace",
+      "arcana": "Minor",
+      "suit": "Pentacles",
+      "element": "Earth",
+      "name_en": "Ace of Pentacles",
+      "name_zh": "星币一",
+      "astrology": "Root of the Powers of Earth",
+      "hebrew_letter": "Kether in Assiah",
+      "facets": {
+        "general_upright": [
+          "Abundance",
+          "Financial Opportunity",
+          "New Venture",
+          "Manifestation"
+        ],
+        "general_reversed": [
+          "Missed Opportunity",
+          "Financial Insecurity",
+          "Poor Planning"
+        ],
+        "love_upright": "Grounded loving bond, mutual financial stability, physical safety",
+        "love_reversed": "Financial anxiety straining relationship",
+        "career_upright": "Seed funding, lucrative contract, tangible asset acquisition",
+        "career_reversed": "Missed business chance, poor budgeting",
+        "spiritual_upright": "Manifesting spiritual energy into tangible earthly service",
+        "spiritual_reversed": "Material obsession blocking spiritual flow",
+        "shadow_aspect": "Clinging to gold while blind to intrinsic wealth of spirit"
+      }
+    },
+    {
+      "id": 65,
+      "key": "minor_pentacles_02_two",
+      "arcana": "Minor",
+      "suit": "Pentacles",
+      "element": "Earth",
+      "name_en": "Two of Pentacles",
+      "name_zh": "星币二",
+      "astrology": "Jupiter in Capricorn (0°-10° / Harmonious Change)",
+      "hebrew_letter": "Chokmah in Assiah",
+      "facets": {
+        "general_upright": [
+          "Balance",
+          "Adaptability",
+          "Time Management",
+          "Prioritization",
+          "Agility"
+        ],
+        "general_reversed": [
+          "Overextended",
+          "Financial Chaos",
+          "Disorganization",
+          "Dropping Balls"
+        ],
+        "love_upright": "Juggling busy lives, balancing work and romance with humor",
+        "love_reversed": "Neglecting partner due to chaotic schedule",
+        "career_upright": "Cash flow management, balancing multiple projects, agility",
+        "career_reversed": "Overextended commitments, budget deficit",
+        "spiritual_upright": "Flowing gracefully through dualities of material life",
+        "spiritual_reversed": "Spiritual dissipation caused by material chaos",
+        "shadow_aspect": "Juggling superficial tasks to evade core existential decisions"
+      }
+    },
+    {
+      "id": 66,
+      "key": "minor_pentacles_03_three",
+      "arcana": "Minor",
+      "suit": "Pentacles",
+      "element": "Earth",
+      "name_en": "Three of Pentacles",
+      "name_zh": "星币三",
+      "astrology": "Mars in Capricorn (10°-20° / Material Works)",
+      "hebrew_letter": "Binah in Assiah",
+      "facets": {
+        "general_upright": [
+          "Mastery",
+          "Collaboration",
+          "Teamwork",
+          "Skill",
+          "Craftsmanship"
+        ],
+        "general_reversed": [
+          "Lack of Teamwork",
+          "Disorganized Effort",
+          "Poor Craftsmanship"
+        ],
+        "love_upright": "Building shared life together, working as dedicated team",
+        "love_reversed": "Friction over division of household labor",
+        "career_upright": "Expert cross-functional engineering, design system mastery",
+        "career_reversed": "Siloed communication, inferior workmanship",
+        "spiritual_upright": "Building the temple of the soul through collective craftsmanship",
+        "spiritual_reversed": "Spiritual pride in technique lacking heart",
+        "shadow_aspect": "Valuing technical perfectionism over human connection"
+      }
+    },
+    {
+      "id": 67,
+      "key": "minor_pentacles_04_four",
+      "arcana": "Minor",
+      "suit": "Pentacles",
+      "element": "Earth",
+      "name_en": "Four of Pentacles",
+      "name_zh": "星币四",
+      "astrology": "Sun in Capricorn (20°-30° / Earthly Power)",
+      "hebrew_letter": "Chesed in Assiah",
+      "facets": {
+        "general_upright": [
+          "Financial Security",
+          "Conservatism",
+          "Frugality",
+          "Boundaries"
+        ],
+        "general_reversed": [
+          "Greed",
+          "Materialism",
+          "Possessiveness",
+          "Scarcity Mindset"
+        ],
+        "love_upright": "Protective relationship, deep stability, solid shared assets",
+        "love_reversed": "Jealous possessiveness, control issues",
+        "career_upright": "Capital preservation, tight budget, protecting core assets",
+        "career_reversed": "Stifling innovation through penny-pinching",
+        "spiritual_upright": "Grounding spiritual light into stable earthly vessel",
+        "spiritual_reversed": "Clinging to spiritual dogmas out of fear of loss",
+        "shadow_aspect": "Hoarding resources out of chronic scarcity trauma"
+      }
+    },
+    {
+      "id": 68,
+      "key": "minor_pentacles_05_five",
+      "arcana": "Minor",
+      "suit": "Pentacles",
+      "element": "Earth",
+      "name_en": "Five of Pentacles",
+      "name_zh": "星币五",
+      "astrology": "Mercury in Taurus (0°-10° / Material Trouble)",
+      "hebrew_letter": "Geburah in Assiah",
+      "facets": {
+        "general_upright": [
+          "Hardship",
+          "Financial Loss",
+          "Isolation",
+          "Feeling Left in Cold"
+        ],
+        "general_reversed": [
+          "Recovery",
+          "Spiritual Sanctuary",
+          "Community Aid",
+          "Turnaround"
+        ],
+        "love_upright": "Weathering hard times together, emotional loneliness",
+        "love_reversed": "Recognizing support, healing relationship hardship",
+        "career_upright": "Cash flow crunch, layoff, organizational crisis",
+        "career_reversed": "Emerging from crisis, finding bridge financing",
+        "spiritual_upright": "The dark night of material distress revealing true inner sanctuary",
+        "spiritual_reversed": "Refusing to see open sanctuary door nearby",
+        "shadow_aspect": "Fixating on poverty mindset while sanctuary is within reach"
+      }
+    },
+    {
+      "id": 69,
+      "key": "minor_pentacles_06_six",
+      "arcana": "Minor",
+      "suit": "Pentacles",
+      "element": "Earth",
+      "name_en": "Six of Pentacles",
+      "name_zh": "星币六",
+      "astrology": "Moon in Taurus (10°-20° / Material Success)",
+      "hebrew_letter": "Tiphareth in Assiah",
+      "facets": {
+        "general_upright": [
+          "Generosity",
+          "Charity",
+          "Balanced Giving",
+          "Mutual Support"
+        ],
+        "general_reversed": [
+          "One-Sided Debt",
+          "Strings Attached",
+          "Power Imbalance"
+        ],
+        "love_upright": "Equal emotional give-and-take, generous affection, mutual care",
+        "love_reversed": "Financial power imbalance, conditional giving",
+        "career_upright": "Fair compensation, venture grant, mentorship, shared equity",
+        "career_reversed": "Exploitative contracts, unpaid overtime",
+        "spiritual_upright": "Universal circulation of energy and generous spiritual sharing",
+        "spiritual_reversed": "Spiritual patronizing with strings attached",
+        "shadow_aspect": "Using charity to buy dominance and indebtedness"
+      }
+    },
+    {
+      "id": 70,
+      "key": "minor_pentacles_07_seven",
+      "arcana": "Minor",
+      "suit": "Pentacles",
+      "element": "Earth",
+      "name_en": "Seven of Pentacles",
+      "name_zh": "星币七",
+      "astrology": "Saturn in Taurus (20°-30° / Success Unfulfilled)",
+      "hebrew_letter": "Netzach in Assiah",
+      "facets": {
+        "general_upright": [
+          "Patience",
+          "Long-Term View",
+          "Evaluation",
+          "Sustainable Growth"
+        ],
+        "general_reversed": [
+          "Impatience",
+          "Wasted Effort",
+          "Lack of Long-Term Vision"
+        ],
+        "love_upright": "Patient cultivation of love, evaluating relationship trajectory",
+        "love_reversed": "Impatience with slow progress, frustration",
+        "career_upright": "Reviewing quarterly ROI, waiting for harvest, sustainable code",
+        "career_reversed": "Sunk cost fallacy, failing to prune bad code",
+        "spiritual_upright": "Trusting the organic seasons of spiritual ripening",
+        "spiritual_reversed": "Impatience demanding immediate spiritual fruit",
+        "shadow_aspect": "Anxiously watching seeds rather than tending soil with trust"
+      }
+    },
+    {
+      "id": 71,
+      "key": "minor_pentacles_08_eight",
+      "arcana": "Minor",
+      "suit": "Pentacles",
+      "element": "Earth",
+      "name_en": "Eight of Pentacles",
+      "name_zh": "星币八",
+      "astrology": "Sun in Virgo (0°-10° / Prudence)",
+      "hebrew_letter": "Hod in Assiah",
+      "facets": {
+        "general_upright": [
+          "Craftsmanship",
+          "Apprenticeship",
+          "Dedication",
+          "Detail-Oriented"
+        ],
+        "general_reversed": [
+          "Perfectionism",
+          "Monotony",
+          "Lack of Ambition",
+          "Rush Job"
+        ],
+        "love_upright": "Daily devoted acts of love, steady reliable emotional growth",
+        "love_reversed": "Getting lost in routine, taking love as mechanical chore",
+        "career_upright": "Mastering software craftsmanship, disciplined refactoring",
+        "career_reversed": "Careless rush jobs or paralyzing perfectionism",
+        "spiritual_upright": "Disciplined daily spiritual practice and repetitive inner work",
+        "spiritual_reversed": "Mechanical ritual observance without inner devotion",
+        "shadow_aspect": "Hiding in minutiae to avoid confronting broader life vision"
+      }
+    },
+    {
+      "id": 72,
+      "key": "minor_pentacles_09_nine",
+      "arcana": "Minor",
+      "suit": "Pentacles",
+      "element": "Earth",
+      "name_en": "Nine of Pentacles",
+      "name_zh": "星币九",
+      "astrology": "Venus in Virgo (10°-20° / Material Gain)",
+      "hebrew_letter": "Yesod in Assiah",
+      "facets": {
+        "general_upright": [
+          "Self-Reliance",
+          "Refinement",
+          "Abundance",
+          "Grace",
+          "Independence"
+        ],
+        "general_reversed": [
+          "Over-Materialism",
+          "Pretense",
+          "Financial Dependency"
+        ],
+        "love_upright": "Self-sufficient happy partner, refined elegant companionship",
+        "love_reversed": "Fear of sacrificing luxury for true intimacy",
+        "career_upright": "High-earning specialist, autonomous consulting, financial summit",
+        "career_reversed": "Overspending on luxury, facade of success",
+        "spiritual_upright": "Living in harmony with earthly abundance and soul refinement",
+        "spiritual_reversed": "Spiritual snobbery and solitary isolation",
+        "shadow_aspect": "Building gilded cage of self-sufficiency fearing messy intimacy"
+      }
+    },
+    {
+      "id": 73,
+      "key": "minor_pentacles_10_ten",
+      "arcana": "Minor",
+      "suit": "Pentacles",
+      "element": "Earth",
+      "name_en": "Ten of Pentacles",
+      "name_zh": "星币十",
+      "astrology": "Mercury in Virgo (20°-30° / Wealth)",
+      "hebrew_letter": "Malkuth in Assiah",
+      "facets": {
+        "general_upright": [
+          "Legacy",
+          "Generational Wealth",
+          "Long-Term Security",
+          "Tradition"
+        ],
+        "general_reversed": [
+          "Family Dispute",
+          "Financial Collapse",
+          "Tradition Burden"
+        ],
+        "love_upright": "Solid family dynasty, long-term multi-generational stability",
+        "love_reversed": "Family inheritance dispute, rigid family pressure",
+        "career_upright": "Established enduring enterprise, thriving IPO, solid legacy",
+        "career_reversed": "Corporate restructuring, legacy code collapse",
+        "spiritual_upright": "Holistic realization of spirit grounded in ancestral continuum",
+        "spiritual_reversed": "Being trapped by rigid family traditions",
+        "shadow_aspect": "Sacrificing present authentic joy to build dead monuments"
+      }
+    },
+    {
+      "id": 74,
+      "key": "minor_pentacles_11_page",
+      "arcana": "Minor",
+      "suit": "Pentacles",
+      "element": "Earth",
+      "name_en": "Page of Pentacles",
+      "name_zh": "星币侍从",
+      "astrology": "Earth of Earth / Princess of Echoing Hills",
+      "hebrew_letter": "Malkuth in Assiah",
+      "facets": {
+        "general_upright": [
+          "Study",
+          "Ambition",
+          "Grounded Start",
+          "Practical Loyalty",
+          "Apprentice"
+        ],
+        "general_reversed": [
+          "Lack of Progress",
+          "Procrastination",
+          "Short-Term Focus"
+        ],
+        "love_upright": "Reliable grounded partner, steady loyal dating, shared goals",
+        "love_reversed": "Boring or slow progress, procrastination",
+        "career_upright": "Junior engineer eager to learn, solid prototype, diligent study",
+        "career_reversed": "Lack of practical follow-through, daydreaming",
+        "spiritual_upright": "Grounding new spiritual knowledge into physical habits",
+        "spiritual_reversed": "Theoretical spiritual study without earthly action",
+        "shadow_aspect": "Collecting certificates and books without applying wisdom in life"
+      }
+    },
+    {
+      "id": 75,
+      "key": "minor_pentacles_12_knight",
+      "arcana": "Minor",
+      "suit": "Pentacles",
+      "element": "Earth",
+      "name_en": "Knight of Pentacles",
+      "name_zh": "星币骑士",
+      "astrology": "Fire of Earth / Lord of Wide and Fertile Land",
+      "hebrew_letter": "Tiphareth in Assiah",
+      "facets": {
+        "general_upright": [
+          "Efficiency",
+          "Routine",
+          "Conservatism",
+          "Methodical",
+          "Reliability"
+        ],
+        "general_reversed": [
+          "Stubbornness",
+          "Workaholic",
+          "Monotony",
+          "Laziness"
+        ],
+        "love_upright": "Ultra-reliable devoted partner, steady predictable care",
+        "love_reversed": "Stubborn inflexibility, romantic dullness",
+        "career_upright": "Rock-solid project manager, reliable delivery, zero debt",
+        "career_reversed": "Resisting necessary pivots, obsessive workaholism",
+        "spiritual_upright": "Steadfast perseverance on the long spiritual path",
+        "spiritual_reversed": "Spiritual dry spell and stubborn dogma",
+        "shadow_aspect": "Grinding through life on autopilot mistaking endurance for vitality"
+      }
+    },
+    {
+      "id": 76,
+      "key": "minor_pentacles_13_queen",
+      "arcana": "Minor",
+      "suit": "Pentacles",
+      "element": "Earth",
+      "name_en": "Queen of Pentacles",
+      "name_zh": "星币王后",
+      "astrology": "Water of Earth / Queen of Thrones of Earth",
+      "hebrew_letter": "Briah in Assiah",
+      "facets": {
+        "general_upright": [
+          "Nurturing",
+          "Practical Care",
+          "Resourcefulness",
+          "Warm Hospitality"
+        ],
+        "general_reversed": [
+          "Smothering",
+          "Financial Anxiety",
+          "Work-Life Imbalance"
+        ],
+        "love_upright": "Warm nurturing home, grounded secure love, practical care",
+        "love_reversed": "Overbearing material control, smothering care",
+        "career_upright": "Operations executive, excellent resource stewardship, calm lead",
+        "career_reversed": "Financial anxiety, micromanaging budgets",
+        "spiritual_upright": "Embodiment of Gaia and mother earth wisdom",
+        "spiritual_reversed": "Neglecting spirit in favor of excessive physical comfort",
+        "shadow_aspect": "Equating love with material provision and physical control"
+      }
+    },
+    {
+      "id": 77,
+      "key": "minor_pentacles_14_king",
+      "arcana": "Minor",
+      "suit": "Pentacles",
+      "element": "Earth",
+      "name_en": "King of Pentacles",
+      "name_zh": "星币国王",
+      "astrology": "Air of Earth / Prince of Chariot of Earth",
+      "hebrew_letter": "Chokmah in Assiah",
+      "facets": {
+        "general_upright": [
+          "Enterprise",
+          "Abundance",
+          "Financial Leadership",
+          "Security",
+          "Stability"
+        ],
+        "general_reversed": [
+          "Greed",
+          "Materialism",
+          "Stubbornness",
+          "Indulgence"
+        ],
+        "love_upright": "Generous solid provider, dependable pillar of strength",
+        "love_reversed": "Materialistic partner, measuring love by money",
+        "career_upright": "Seasoned CEO, financial tycoon, sustainable enterprise builder",
+        "career_reversed": "Corporate greed, resisting market innovation",
+        "spiritual_upright": "Mastery over physical world and stewardship of universal wealth",
+        "spiritual_reversed": "Materialistic blindness to spiritual values",
+        "shadow_aspect": "Valuing balance sheets over soul vitality"
+      }
+    }
+  ],
+  "spreads": [
+    {
+      "id": "daily_single",
+      "name_en": "Daily Focus / Oracle",
+      "name_zh": "每日启示 / 单张牌",
+      "description": "Single card draw for daily contemplation or focused guidance.",
+      "category": "Daily",
+      "slots": [
+        {
+          "slot_id": 0,
+          "title_en": "Core Oracle",
+          "title_zh": "核心启示",
+          "meaning_prompt": "The primary energy and guidance for this moment.",
+          "x": 0.5,
+          "y": 0.5,
+          "rotation_deg": 0.0,
+          "z_index": 0,
+          "constraint": "Any"
+        }
+      ],
+      "edges": []
+    },
+    {
+      "id": "three_cards_time",
+      "name_en": "Past, Present, Future (Time Stream)",
+      "name_zh": "时间之流 (过去-现在-未来)",
+      "description": "Temporal evolution of circumstances and energetic momentum.",
+      "category": "Comprehensive",
+      "slots": [
+        {
+          "slot_id": 0,
+          "title_en": "Past Influence",
+          "title_zh": "过去根基",
+          "meaning_prompt": "Root cause and foundational context leading up to now.",
+          "x": 0.2,
+          "y": 0.5,
+          "rotation_deg": 0.0,
+          "z_index": 0,
+          "constraint": "Any"
+        },
+        {
+          "slot_id": 1,
+          "title_en": "Present Reality",
+          "title_zh": "现在处境",
+          "meaning_prompt": "Current energetic climate and focal challenge.",
+          "x": 0.5,
+          "y": 0.5,
+          "rotation_deg": 0.0,
+          "z_index": 0,
+          "constraint": "Any"
+        },
+        {
+          "slot_id": 2,
+          "title_en": "Future Outcome",
+          "title_zh": "未来走向",
+          "meaning_prompt": "Natural trajectory if present course remains unchanged.",
+          "x": 0.8,
+          "y": 0.5,
+          "rotation_deg": 0.0,
+          "z_index": 0,
+          "constraint": "Any"
+        }
+      ],
+      "edges": [
+        {
+          "source_slot_id": 0,
+          "target_slot_id": 1,
+          "relation": "FlowsTo",
+          "weight": 1.0
+        },
+        {
+          "source_slot_id": 1,
+          "target_slot_id": 2,
+          "relation": "FlowsTo",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "id": "holy_triangle",
+      "name_en": "Situation, Obstacle, Advice (Holy Triangle)",
+      "name_zh": "圣三角 (现状-障碍-建议)",
+      "description": "Action-oriented decision analysis and obstacle diagnosis.",
+      "category": "Decision",
+      "slots": [
+        {
+          "slot_id": 0,
+          "title_en": "Situation",
+          "title_zh": "现状全貌",
+          "meaning_prompt": "The underlying reality of the matter.",
+          "x": 0.3,
+          "y": 0.7,
+          "rotation_deg": 0.0,
+          "z_index": 0,
+          "constraint": "Any"
+        },
+        {
+          "slot_id": 1,
+          "title_en": "Obstacle",
+          "title_zh": "核心阻碍",
+          "meaning_prompt": "Hidden friction or explicit challenge facing you.",
+          "x": 0.7,
+          "y": 0.7,
+          "rotation_deg": 0.0,
+          "z_index": 0,
+          "constraint": "Any"
+        },
+        {
+          "slot_id": 2,
+          "title_en": "Advice",
+          "title_zh": "指引建议",
+          "meaning_prompt": "Optimal attitude and decisive action recommended.",
+          "x": 0.5,
+          "y": 0.3,
+          "rotation_deg": 0.0,
+          "z_index": 0,
+          "constraint": "Any"
+        }
+      ],
+      "edges": [
+        {
+          "source_slot_id": 0,
+          "target_slot_id": 1,
+          "relation": "Opposes",
+          "weight": 1.0
+        },
+        {
+          "source_slot_id": 0,
+          "target_slot_id": 2,
+          "relation": "Synthesizes",
+          "weight": 1.0
+        },
+        {
+          "source_slot_id": 1,
+          "target_slot_id": 2,
+          "relation": "Synthesizes",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "id": "four_elements",
+      "name_en": "Four Elements Balance",
+      "name_zh": "四要素平衡牌阵",
+      "description": "Evaluating balance across Action, Emotion, Intellect, and Materiality.",
+      "category": "Comprehensive",
+      "slots": [
+        {
+          "slot_id": 0,
+          "title_en": "Fire (Will / Action)",
+          "title_zh": "火之位 (意志与行动)",
+          "meaning_prompt": "Your passion, momentum, and creative drive.",
+          "x": 0.5,
+          "y": 0.2,
+          "rotation_deg": 0.0,
+          "z_index": 0,
+          "constraint": "Any"
+        },
+        {
+          "slot_id": 1,
+          "title_en": "Water (Emotions / Relationships)",
+          "title_zh": "水之位 (情感与直觉)",
+          "meaning_prompt": "Your subconscious desires and emotional bonds.",
+          "x": 0.8,
+          "y": 0.5,
+          "rotation_deg": 0.0,
+          "z_index": 0,
+          "constraint": "Any"
+        },
+        {
+          "slot_id": 2,
+          "title_en": "Air (Intellect / Communication)",
+          "title_zh": "风之位 (心智与沟通)",
+          "meaning_prompt": "Your mental clarity, thoughts, and strategy.",
+          "x": 0.2,
+          "y": 0.5,
+          "rotation_deg": 0.0,
+          "z_index": 0,
+          "constraint": "Any"
+        },
+        {
+          "slot_id": 3,
+          "title_en": "Earth (Material / Body)",
+          "title_zh": "土之位 (物质与躯体)",
+          "meaning_prompt": "Your financial stability and physical health.",
+          "x": 0.5,
+          "y": 0.8,
+          "rotation_deg": 0.0,
+          "z_index": 0,
+          "constraint": "Any"
+        }
+      ],
+      "edges": [
+        {
+          "source_slot_id": 0,
+          "target_slot_id": 2,
+          "relation": "Illuminates",
+          "weight": 1.0
+        },
+        {
+          "source_slot_id": 1,
+          "target_slot_id": 3,
+          "relation": "Supports",
+          "weight": 1.0
+        },
+        {
+          "source_slot_id": 0,
+          "target_slot_id": 1,
+          "relation": "Opposes",
+          "weight": 0.8
+        },
+        {
+          "source_slot_id": 2,
+          "target_slot_id": 3,
+          "relation": "Opposes",
+          "weight": 0.8
+        }
+      ]
+    },
+    {
+      "id": "two_choices",
+      "name_en": "Two Choices / Crossroads Spread",
+      "name_zh": "二选一抉择牌阵",
+      "description": "Comparing comparative trajectories of Choice A vs Choice B.",
+      "category": "Decision",
+      "slots": [
+        {
+          "slot_id": 0,
+          "title_en": "Current State",
+          "title_zh": "抉择原点",
+          "meaning_prompt": "The nexus and dilemma facing you today.",
+          "x": 0.5,
+          "y": 0.8,
+          "rotation_deg": 0.0,
+          "z_index": 0,
+          "constraint": "Any"
+        },
+        {
+          "slot_id": 1,
+          "title_en": "Choice A Process",
+          "title_zh": "选项 A 发展历程",
+          "meaning_prompt": "The experiences and effort required in Option A.",
+          "x": 0.3,
+          "y": 0.5,
+          "rotation_deg": 0.0,
+          "z_index": 0,
+          "constraint": "Any"
+        },
+        {
+          "slot_id": 2,
+          "title_en": "Choice A Result",
+          "title_zh": "选项 A 最终结果",
+          "meaning_prompt": "The eventual harvest and outcome of Option A.",
+          "x": 0.3,
+          "y": 0.2,
+          "rotation_deg": 0.0,
+          "z_index": 0,
+          "constraint": "Any"
+        },
+        {
+          "slot_id": 3,
+          "title_en": "Choice B Process",
+          "title_zh": "选项 B 发展历程",
+          "meaning_prompt": "The experiences and effort required in Option B.",
+          "x": 0.7,
+          "y": 0.5,
+          "rotation_deg": 0.0,
+          "z_index": 0,
+          "constraint": "Any"
+        },
+        {
+          "slot_id": 4,
+          "title_en": "Choice B Result",
+          "title_zh": "选项 B 最终结果",
+          "meaning_prompt": "The eventual harvest and outcome of Option B.",
+          "x": 0.7,
+          "y": 0.2,
+          "rotation_deg": 0.0,
+          "z_index": 0,
+          "constraint": "Any"
+        }
+      ],
+      "edges": [
+        {
+          "source_slot_id": 0,
+          "target_slot_id": 1,
+          "relation": "FlowsTo",
+          "weight": 1.0
+        },
+        {
+          "source_slot_id": 1,
+          "target_slot_id": 2,
+          "relation": "FlowsTo",
+          "weight": 1.0
+        },
+        {
+          "source_slot_id": 0,
+          "target_slot_id": 3,
+          "relation": "FlowsTo",
+          "weight": 1.0
+        },
+        {
+          "source_slot_id": 3,
+          "target_slot_id": 4,
+          "relation": "FlowsTo",
+          "weight": 1.0
+        },
+        {
+          "source_slot_id": 2,
+          "target_slot_id": 4,
+          "relation": "Opposes",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "id": "hexagram_7",
+      "name_en": "Hexagram / Star of David Spread",
+      "name_zh": "六芒星 / 大卫星牌阵",
+      "description": "Deep holistic inquiry integrating internal motives and external forces.",
+      "category": "Comprehensive",
+      "slots": [
+        {
+          "slot_id": 0,
+          "title_en": "Past",
+          "title_zh": "过去原因",
+          "meaning_prompt": "Past circumstances.",
+          "x": 0.5,
+          "y": 0.15,
+          "rotation_deg": 0.0,
+          "z_index": 0,
+          "constraint": "Any"
+        },
+        {
+          "slot_id": 1,
+          "title_en": "Present",
+          "title_zh": "现在状况",
+          "meaning_prompt": "Current focal dynamics.",
+          "x": 0.8,
+          "y": 0.65,
+          "rotation_deg": 0.0,
+          "z_index": 0,
+          "constraint": "Any"
+        },
+        {
+          "slot_id": 2,
+          "title_en": "Future",
+          "title_zh": "未来趋势",
+          "meaning_prompt": "Future developmental arc.",
+          "x": 0.2,
+          "y": 0.65,
+          "rotation_deg": 0.0,
+          "z_index": 0,
+          "constraint": "Any"
+        },
+        {
+          "slot_id": 3,
+          "title_en": "Solution",
+          "title_zh": "应对方法",
+          "meaning_prompt": "Effective strategies.",
+          "x": 0.5,
+          "y": 0.85,
+          "rotation_deg": 0.0,
+          "z_index": 0,
+          "constraint": "Any"
+        },
+        {
+          "slot_id": 4,
+          "title_en": "Surroundings",
+          "title_zh": "周围环境",
+          "meaning_prompt": "Attitudes of people around.",
+          "x": 0.2,
+          "y": 0.35,
+          "rotation_deg": 0.0,
+          "z_index": 0,
+          "constraint": "Any"
+        },
+        {
+          "slot_id": 5,
+          "title_en": "Hopes and Fears",
+          "title_zh": "愿望与恐惧",
+          "meaning_prompt": "Subconscious aspirations.",
+          "x": 0.8,
+          "y": 0.35,
+          "rotation_deg": 0.0,
+          "z_index": 0,
+          "constraint": "Any"
+        },
+        {
+          "slot_id": 6,
+          "title_en": "Outcome / Synthesis",
+          "title_zh": "核心结论",
+          "meaning_prompt": "Final holistic culmination.",
+          "x": 0.5,
+          "y": 0.5,
+          "rotation_deg": 0.0,
+          "z_index": 1,
+          "constraint": "Any"
+        }
+      ],
+      "edges": [
+        {
+          "source_slot_id": 0,
+          "target_slot_id": 1,
+          "relation": "FlowsTo",
+          "weight": 1.0
+        },
+        {
+          "source_slot_id": 1,
+          "target_slot_id": 2,
+          "relation": "FlowsTo",
+          "weight": 1.0
+        },
+        {
+          "source_slot_id": 3,
+          "target_slot_id": 6,
+          "relation": "Synthesizes",
+          "weight": 1.0
+        },
+        {
+          "source_slot_id": 4,
+          "target_slot_id": 5,
+          "relation": "Reflects",
+          "weight": 1.0
+        },
+        {
+          "source_slot_id": 1,
+          "target_slot_id": 6,
+          "relation": "Supports",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "id": "celtic_cross",
+      "name_en": "Celtic Cross",
+      "name_zh": "凯尔特十字牌阵",
+      "description": "The quintessential 10-card profound reading revealing conscious, subconscious, past, future, and outcome.",
+      "category": "Comprehensive",
+      "slots": [
+        {
+          "slot_id": 0,
+          "title_en": "The Heart / Present",
+          "title_zh": "现状核心",
+          "meaning_prompt": "The primary theme.",
+          "x": 0.35,
+          "y": 0.5,
+          "rotation_deg": 0.0,
+          "z_index": 0,
+          "constraint": "Any"
+        },
+        {
+          "slot_id": 1,
+          "title_en": "The Crossing / Obstacle",
+          "title_zh": "交叉阻碍",
+          "meaning_prompt": "The immediate obstacle.",
+          "x": 0.35,
+          "y": 0.5,
+          "rotation_deg": 90.0,
+          "z_index": 1,
+          "constraint": "Any"
+        },
+        {
+          "slot_id": 2,
+          "title_en": "The Root / Subconscious",
+          "title_zh": "潜意识根基",
+          "meaning_prompt": "Deep subconscious origins.",
+          "x": 0.35,
+          "y": 0.8,
+          "rotation_deg": 0.0,
+          "z_index": 0,
+          "constraint": "Any"
+        },
+        {
+          "slot_id": 3,
+          "title_en": "The Recent Past",
+          "title_zh": "过去影响",
+          "meaning_prompt": "Recent events.",
+          "x": 0.15,
+          "y": 0.5,
+          "rotation_deg": 0.0,
+          "z_index": 0,
+          "constraint": "Any"
+        },
+        {
+          "slot_id": 4,
+          "title_en": "The Crown / Conscious Goal",
+          "title_zh": "显意识期望",
+          "meaning_prompt": "Conscious aspirations.",
+          "x": 0.35,
+          "y": 0.2,
+          "rotation_deg": 0.0,
+          "z_index": 0,
+          "constraint": "Any"
+        },
+        {
+          "slot_id": 5,
+          "title_en": "The Near Future",
+          "title_zh": "近期未来",
+          "meaning_prompt": "Approaching events.",
+          "x": 0.55,
+          "y": 0.5,
+          "rotation_deg": 0.0,
+          "z_index": 0,
+          "constraint": "Any"
+        },
+        {
+          "slot_id": 6,
+          "title_en": "Yourself / Attitude",
+          "title_zh": "自我心态",
+          "meaning_prompt": "Self-perception.",
+          "x": 0.8,
+          "y": 0.8,
+          "rotation_deg": 0.0,
+          "z_index": 0,
+          "constraint": "Any"
+        },
+        {
+          "slot_id": 7,
+          "title_en": "External Environment",
+          "title_zh": "外部环境",
+          "meaning_prompt": "Environmental impact.",
+          "x": 0.8,
+          "y": 0.6,
+          "rotation_deg": 0.0,
+          "z_index": 0,
+          "constraint": "Any"
+        },
+        {
+          "slot_id": 8,
+          "title_en": "Hopes & Fears",
+          "title_zh": "希望与忧虑",
+          "meaning_prompt": "Secret desires and fears.",
+          "x": 0.8,
+          "y": 0.4,
+          "rotation_deg": 0.0,
+          "z_index": 0,
+          "constraint": "Any"
+        },
+        {
+          "slot_id": 9,
+          "title_en": "Final Outcome",
+          "title_zh": "最终结果",
+          "meaning_prompt": "Ultimate resolution.",
+          "x": 0.8,
+          "y": 0.2,
+          "rotation_deg": 0.0,
+          "z_index": 0,
+          "constraint": "Any"
+        }
+      ],
+      "edges": [
+        {
+          "source_slot_id": 1,
+          "target_slot_id": 0,
+          "relation": "Crosses",
+          "weight": 1.2
+        },
+        {
+          "source_slot_id": 2,
+          "target_slot_id": 0,
+          "relation": "Supports",
+          "weight": 1.0
+        },
+        {
+          "source_slot_id": 3,
+          "target_slot_id": 0,
+          "relation": "FlowsTo",
+          "weight": 1.0
+        },
+        {
+          "source_slot_id": 4,
+          "target_slot_id": 0,
+          "relation": "Illuminates",
+          "weight": 1.0
+        },
+        {
+          "source_slot_id": 0,
+          "target_slot_id": 5,
+          "relation": "FlowsTo",
+          "weight": 1.0
+        },
+        {
+          "source_slot_id": 6,
+          "target_slot_id": 7,
+          "relation": "Reflects",
+          "weight": 1.0
+        },
+        {
+          "source_slot_id": 8,
+          "target_slot_id": 9,
+          "relation": "Supports",
+          "weight": 1.0
+        },
+        {
+          "source_slot_id": 5,
+          "target_slot_id": 9,
+          "relation": "FlowsTo",
+          "weight": 1.0
+        }
+      ]
+    }
+  ]
+}

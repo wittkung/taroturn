@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "TarotAiPromptEnvelopeSchema",
+  "type": "object",
+  "required": [
+    "request_id",
+    "provider",
+    "system_instructions",
+    "user_query",
+    "spread_context",
+    "placed_cards",
+    "dignity_summary"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "request_id": {
+      "type": "string"
+    },
+    "provider": {
+      "type": "string",
+      "enum": ["AGY_CLI", "SPRING_SERVER_GEMINI", "SPRING_SERVER_OPENAI", "SPRING_SERVER_OLLAMA"]
+    },
+    "model": {
+      "type": ["string", "null"]
+    },
+    "system_instructions": {
+      "type": "string"
+    },
+    "user_query": {
+      "type": "string"
+    },
+    "spread_context": {
+      "type": "object",
+      "required": ["spread_id", "spread_name_zh", "spread_name_en"],
+      "additionalProperties": false,
+      "properties": {
+        "spread_id": { "type": "string" },
+        "spread_name_zh": { "type": "string" },
+        "spread_name_en": { "type": "string" }
+      }
+    },
+    "placed_cards": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["slot_title", "card_name_zh", "card_name_en", "orientation", "element", "archetype_keywords"],
+        "additionalProperties": false,
+        "properties": {
+          "slot_title": { "type": "string" },
+          "card_name_zh": { "type": "string" },
+          "card_name_en": { "type": "string" },
+          "orientation": {
+            "type": "string",
+            "enum": ["Upright", "Reversed"]
+          },
+          "element": { "type": "string" },
+          "archetype_keywords": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    },
+    "dignity_summary": {
+      "type": "object",
+      "required": ["dominant_element", "element_balance_desc", "major_ratio", "shadow_card_name"],
+      "additionalProperties": false,
+      "properties": {
+        "dominant_element": { "type": "string" },
+        "element_balance_desc": { "type": "string" },
+        "major_ratio": { "type": "number" },
+        "shadow_card_name": { "type": ["string", "null"] }
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "TarotErrorEnvelopeSchema",
+  "type": "object",
+  "required": ["code", "message", "subsystem", "timestamp"],
+  "additionalProperties": false,
+  "properties": {
+    "code": {
+      "type": "string",
+      "enum": [
+        "INVALID_SEED",
+        "SPREAD_SLOT_OVERFLOW",
+        "CARD_INDEX_OUT_OF_BOUNDS",
+        "DUPLICATE_CARD_DRAW",
+        "CONSTRAINT_VIOLATION",
+        "DESERIALIZATION_ERROR",
+        "AI_PROVIDER_UNAVAILABLE",
+        "AUTH_UNAUTHORIZED",
+        "SYNC_CONFLICT"
+      ]
+    },
+    "message": {
+      "type": "string"
+    },
+    "subsystem": {
+      "type": "string",
+      "enum": ["CORE", "CLI", "SERVER", "WASM", "FFI", "AGY_BRIDGE"]
+    },
+    "details": {
+      "type": ["string", "null"]
+    },
+    "timestamp": {
+      "type": "integer"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+[package]
+name = "taroturn-cli"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+
+[dependencies]
+taroturn-core = { path = "../taroturn-core" }
+taroturn-ui = { path = "../taroturn-ui" }
+clap = { workspace = true }
+colored = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }

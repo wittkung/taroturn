@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AuthResponseSchema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "token",
+    "userId",
+    "nickname",
+    "tier",
+    "isPro"
+  ],
+  "properties": {
+    "token": {
+      "type": "string"
+    },
+    "userId": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "nickname": {
+      "type": "string"
+    },
+    "tier": {
+      "type": "string",
+      "enum": [
+        "FREE",
+        "PRO_MONTHLY",
+        "PRO_ANNUAL",
+        "PRO_LIFETIME"
+      ]
+    },
+    "isPro": {
+      "type": "boolean"
+    }
+  }
+}

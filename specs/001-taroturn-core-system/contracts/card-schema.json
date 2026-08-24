@@ -1,0 +1,81 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "TarotCardSchema",
+  "type": "object",
+  "required": ["id", "key", "arcana", "element", "name_en", "name_zh", "facets"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 77
+    },
+    "key": {
+      "type": "string"
+    },
+    "arcana": {
+      "type": "string",
+      "enum": ["Major", "Minor"]
+    },
+    "suit": {
+      "type": ["string", "null"],
+      "enum": ["Wands", "Cups", "Swords", "Pentacles", null]
+    },
+    "rank": {
+      "type": ["string", "null"],
+      "enum": ["Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Page", "Knight", "Queen", "King", null]
+    },
+    "element": {
+      "type": "string",
+      "enum": ["Fire", "Water", "Air", "Earth", "Spirit", "None"]
+    },
+    "name_en": {
+      "type": "string"
+    },
+    "name_zh": {
+      "type": "string"
+    },
+    "astrology": {
+      "type": ["string", "null"]
+    },
+    "hebrew_letter": {
+      "type": ["string", "null"]
+    },
+    "facets": {
+      "type": "object",
+      "required": ["general_upright", "general_reversed", "love_upright", "love_reversed", "career_upright", "career_reversed", "spiritual_upright", "spiritual_reversed", "shadow_aspect"],
+      "additionalProperties": false,
+      "properties": {
+        "general_upright": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "general_reversed": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "love_upright": {
+          "type": "string"
+        },
+        "love_reversed": {
+          "type": "string"
+        },
+        "career_upright": {
+          "type": "string"
+        },
+        "career_reversed": {
+          "type": "string"
+        },
+        "spiritual_upright": {
+          "type": "string"
+        },
+        "spiritual_reversed": {
+          "type": "string"
+        },
+        "shadow_aspect": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

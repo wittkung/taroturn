@@ -1,0 +1,129 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PairwiseDignitySchema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "fire_ratio",
+    "water_ratio",
+    "air_ratio",
+    "earth_ratio",
+    "major_ratio",
+    "reversed_ratio",
+    "dominant_element",
+    "pairwise_dignities",
+    "overall_harmony_score",
+    "balance_description_zh"
+  ],
+  "properties": {
+    "fire_ratio": {
+      "type": "number"
+    },
+    "water_ratio": {
+      "type": "number"
+    },
+    "air_ratio": {
+      "type": "number"
+    },
+    "earth_ratio": {
+      "type": "number"
+    },
+    "major_ratio": {
+      "type": "number"
+    },
+    "reversed_ratio": {
+      "type": "number"
+    },
+    "dominant_element": {
+      "type": "string",
+      "enum": [
+        "Fire",
+        "Water",
+        "Air",
+        "Earth",
+        "Balanced",
+        "None"
+      ]
+    },
+    "shadow_card_id": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "pairwise_dignities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "source_slot_id",
+          "target_slot_id",
+          "source_card_id",
+          "target_card_id",
+          "relation",
+          "source_element",
+          "target_element",
+          "affinity",
+          "dignity_status",
+          "tension_score",
+          "dynamic_summary_zh"
+        ],
+        "properties": {
+          "source_slot_id": {
+            "type": "integer"
+          },
+          "target_slot_id": {
+            "type": "integer"
+          },
+          "source_card_id": {
+            "type": "integer"
+          },
+          "target_card_id": {
+            "type": "integer"
+          },
+          "relation": {
+            "type": "string"
+          },
+          "source_element": {
+            "type": "string"
+          },
+          "target_element": {
+            "type": "string"
+          },
+          "affinity": {
+            "type": "string",
+            "enum": [
+              "FriendlyActive",
+              "FriendlyPassive",
+              "Intensified",
+              "ContradictoryHostile",
+              "NeutralModifying",
+              "Undefined"
+            ]
+          },
+          "dignity_status": {
+            "type": "string",
+            "enum": [
+              "WellDignified",
+              "IllDignified",
+              "NeutralDignified"
+            ]
+          },
+          "tension_score": {
+            "type": "number"
+          },
+          "dynamic_summary_zh": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "overall_harmony_score": {
+      "type": "number"
+    },
+    "balance_description_zh": {
+      "type": "string"
+    }
+  }
+}
