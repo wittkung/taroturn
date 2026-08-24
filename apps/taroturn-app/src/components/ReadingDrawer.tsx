@@ -17,8 +17,12 @@ import {
   HelpCircle,
   ChevronDown,
   ChevronUp,
+  Copy,
+  Check,
 } from 'lucide-react';
 import { Spread, ReadingSession, Card } from '../types/tarot';
+import { MarkdownRenderer } from './MarkdownRenderer';
+import { JournalStorageService } from '../services/journalStorageService';
 import {
   ChatMessage,
   streamTtagyChat,
@@ -63,6 +67,25 @@ export const ReadingDrawer: React.FC<ReadingDrawerProps> = ({
   const [inputQuery, setInputQuery] = useState<string>('');
   const [isChatStreaming, setIsChatStreaming] = useState<boolean>(false);
 
+  // Copy to clipboard state
+  const [copiedReport, setCopiedReport] = useState<boolean>(false);
+  const [copiedMsgId, setCopiedMsgId] = useState<string | null>(null);
+
+  const handleCopyText = async (text: string, isReport: boolean = true, msgId?: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      if (isReport) {
+        setCopiedReport(true);
+        setTimeout(() => setCopiedReport(false), 2000);
+      } else if (msgId) {
+        setCopiedMsgId(msgId);
+        setTimeout(() => setCopiedMsgId(null), 2000);
+      }
+    } catch (err) {
+      console.warn('Clipboard write failed:', err);
+    }
+  };
+
   const chatEndRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -101,6 +124,9 @@ export const ReadingDrawer: React.FC<ReadingDrawerProps> = ({
             setAiReport(finalContent);
             if (fullThinking) setReportThinking(fullThinking);
             setIsReportGenerating(false);
+            if (session) {
+              JournalStorageService.updateSessionAiInterpretation(session.session_id, finalContent);
+            }
           },
           onError: (err) => {
             setAiReport(`[推演异常]: ${err}`);
@@ -588,8 +614,32 @@ export const ReadingDrawer: React.FC<ReadingDrawerProps> = ({
                       )}
 
                       {aiReport ? (
-                        <div className="p-4 rounded-2xl text-[12px] font-editorial text-slate-800 dark:text-slate-100 leading-relaxed whitespace-pre-line border border-amethyst-500/25 bg-amethyst-500/5 shadow-sm space-y-3">
-                          {aiReport}
+                        <div className="space-y-2">
+                          <div className="flex items-center justify-between px-1">
+                            <span className="text-[11px] font-editorial font-bold text-amethyst-700 dark:text-amethyst-300">
+                              荣格多维深度推演报告
+                            </span>
+                            <button
+                              onClick={() => handleCopyText(aiReport, true)}
+                              className="flex items-center space-x-1 px-2.5 py-1 rounded-full bg-amethyst-500/10 hover:bg-amethyst-500/20 text-amethyst-700 dark:text-amethyst-300 border border-amethyst-500/25 text-[11px] font-editorial transition-all"
+                              title="复制完整推演报告"
+                            >
+                              {copiedReport ? (
+                                <>
+                                  <Check className="w-3 h-3 text-emerald-400" />
+                                  <span className="text-emerald-400 font-bold">已复制</span>
+                                </>
+                              ) : (
+                                <>
+                                  <Copy className="w-3 h-3" />
+                                  <span>复制报告</span>
+                                </>
+                              )}
+                            </button>
+                          </div>
+                          <div className="p-4 rounded-2xl border border-amethyst-500/25 bg-amethyst-500/5 shadow-sm select-text">
+                            <MarkdownRenderer content={aiReport} />
+                          </div>
                         </div>
                       ) : (
                         <div className="p-6 text-center text-slate-500 dark:text-slate-400 font-editorial text-[12px] border border-dashed border-amethyst-500/20 rounded-2xl">
@@ -636,17 +686,34 @@ export const ReadingDrawer: React.FC<ReadingDrawerProps> = ({
                                   msg.sender === 'user' ? 'items-end' : 'items-start'
                                 }`}
                               >
-                                <span className="text-[9px] font-mono text-slate-400 mb-1 px-1">
-                                  {msg.sender === 'user' ? '求问者' : 'TTAgy 导师'}
-                                </span>
+                                <div className="flex items-center justify-between w-full max-w-[88%] mb-1 px-1">
+                                  <span className="text-[9px] font-mono text-slate-400">
+                                    {msg.sender === 'user' ? '求问者' : 'TTAgy 导师'}
+                                  </span>
+                                  {msg.sender === 'ai' && msg.text && (
+                                    <button
+                                      onClick={() => handleCopyText(msg.text, false, msg.id)}
+                                      className="text-slate-400 hover:text-amethyst-400 transition-colors p-0.5"
+                                      title="复制此回答"
+                                    >
+                                      {copiedMsgId === msg.id ? (
+                                        <Check className="w-3 h-3 text-emerald-400" />
+                                      ) : (
+                                        <Copy className="w-3 h-3" />
+                                      )}
+                                    </button>
+                                  )}
+                                </div>
                                 <div
-                                  className={`max-w-[85%] p-3 rounded-2xl text-[12px] font-editorial leading-relaxed whitespace-pre-line ${
+                                  className={`max-w-[88%] p-3.5 rounded-2xl text-[12px] font-editorial leading-relaxed select-text ${
                                     msg.sender === 'user'
                                       ? 'bg-amethyst-600 text-white rounded-tr-sm shadow-md'
                                       : 'bg-white dark:bg-[#1A122B] text-slate-800 dark:text-slate-100 border border-amethyst-500/20 rounded-tl-sm shadow-sm'
                                   }`}
                                 >
-                                  {msg.text || (
+                                  {msg.text ? (
+                                    <MarkdownRenderer content={msg.text} />
+                                  ) : (
                                     <span className="flex items-center space-x-1.5 text-amethyst-400">
                                       <Loader2 className="w-3.5 h-3.5 animate-spin" />
                                       <span>正在沉思...</span>

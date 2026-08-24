@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Crown, Layers, Sun, Moon, ChevronDown, BookOpen, Sparkles } from 'lucide-react';
+import { Crown, Layers, Sun, Moon, ChevronDown, BookOpen, Sparkles, History } from 'lucide-react';
 import { Spread } from '../types/tarot';
 
 interface HeaderProps {
@@ -9,6 +9,7 @@ interface HeaderProps {
   isPro: boolean;
   onTogglePro: () => void;
   onOpenDeckCatalog: () => void;
+  onOpenJournal: () => void;
   isDark: boolean;
   onToggleTheme: () => void;
   onOpenDrawer?: () => void;
@@ -22,6 +23,7 @@ export const Header: React.FC<HeaderProps> = ({
   isPro,
   onTogglePro,
   onOpenDeckCatalog,
+  onOpenJournal,
   isDark,
   onToggleTheme,
   onOpenDrawer,
@@ -112,6 +114,16 @@ export const Header: React.FC<HeaderProps> = ({
           >
             <Layers className="w-3.5 h-3.5 text-amethyst-500" />
             <span>78 牌图鉴</span>
+          </button>
+
+          {/* Reading History & Journal */}
+          <button
+            onClick={onOpenJournal}
+            className="flex items-center space-x-1.5 px-3 py-1 rounded-full bg-black/5 hover:bg-black/10 dark:bg-white/5 dark:hover:bg-white/10 border border-amethyst-500/15 text-[12px] font-editorial text-slate-700 dark:text-slate-300 transition-all hover:border-amethyst-500/40"
+            title="查看历史推演记录与占卜复盘"
+          >
+            <History className="w-3.5 h-3.5 text-amber-500" />
+            <span>历史账本</span>
           </button>
 
           {/* Day / Night Mode Switcher */}

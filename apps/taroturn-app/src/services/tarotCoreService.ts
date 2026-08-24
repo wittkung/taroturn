@@ -1,4 +1,5 @@
 import canonicalCatalog from '../data/canonicalCatalog.json';
+import { CHINESE_CARD_FACETS } from '../data/chineseCardFacets';
 import {
   Card,
   DignityStatus,
@@ -12,8 +13,63 @@ import {
   Spread,
 } from '../types/tarot';
 
-const ALL_CARDS: Card[] = canonicalCatalog.cards as unknown as Card[];
+const RAW_CARDS: Card[] = canonicalCatalog.cards as unknown as Card[];
 const ALL_SPREADS: Spread[] = canonicalCatalog.spreads as unknown as Spread[];
+
+// Enrich all cards with profound Chinese facets
+const ALL_CARDS: Card[] = RAW_CARDS.map((card) => {
+  const zhFacet = CHINESE_CARD_FACETS[card.id];
+  if (zhFacet) {
+    return {
+      ...card,
+      name_zh: zhFacet.name_zh,
+      astrology: zhFacet.astrology,
+      hebrew_letter: zhFacet.hebrew_letter,
+      facets: {
+        ...card.facets,
+        general_upright: zhFacet.general_upright,
+        general_reversed: zhFacet.general_reversed,
+        love_upright: zhFacet.love_upright,
+        love_reversed: zhFacet.love_reversed,
+        career_upright: zhFacet.career_upright,
+        career_reversed: zhFacet.career_reversed,
+        spiritual_upright: zhFacet.spiritual_upright,
+        spiritual_reversed: zhFacet.spiritual_reversed,
+        shadow_aspect: zhFacet.shadow_aspect,
+      },
+    };
+  }
+
+  // Generate profound Chinese facets for Minor Arcana if not explicitly customized
+  const suitName = card.suit === 'Wands' ? '权杖' : card.suit === 'Cups' ? '圣杯' : card.suit === 'Swords' ? '宝剑' : '星币';
+  const elementName = card.element === 'Fire' ? '火元素' : card.element === 'Water' ? '水元素' : card.element === 'Air' ? '风元素' : '土元素';
+
+  return {
+    ...card,
+    facets: {
+      ...card.facets,
+      general_upright: [
+        `${suitName}正向势能`,
+        `${elementName}开创`,
+        '动态平衡',
+        '顺势而为',
+      ],
+      general_reversed: [
+        `${suitName}受阻阻滞`,
+        '内在能量反噬',
+        '急躁冒进',
+        '需要内省调和',
+      ],
+      love_upright: `在${suitName}能量指引下，关系处于积极进取与彼此滋养的状态，真诚互动。`,
+      love_reversed: `情感中出现沟通盲区或节奏脱节，需放下戒备坦诚相待以化解隔阂。`,
+      career_upright: `事业推进势头良好，充分发挥${elementName}特质，适宜把握关键合作契机。`,
+      career_reversed: `面临阶段性瓶颈或资源分配矛盾，切忌盲动冲动，宜夯实基础细节。`,
+      spiritual_upright: `在日常现实中体悟自性，将意志与行动融为一体，获得笃定宁静。`,
+      spiritual_reversed: `内在焦虑感上升，需通过静心冥想理清真实诉求与纷乱杂念。`,
+      shadow_aspect: `因对结果过度执着而忽视当下过程，将内在恐慌投射到外界环境中。`,
+    },
+  };
+});
 
 class SimpleChaCha20LikeRng {
   private state: Uint32Array;

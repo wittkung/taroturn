@@ -6,7 +6,10 @@ import { SpreadCanvas } from './components/SpreadCanvas';
 import { RitualDock } from './components/RitualDock';
 import { ReadingDrawer } from './components/ReadingDrawer';
 import { CardDeckCatalogModal } from './components/CardDeckCatalogModal';
+import { FocusIntentionModal } from './components/FocusIntentionModal';
+import { ReadingJournalModal } from './components/ReadingJournalModal';
 import { LiquidFluidBackground } from './components/LiquidFluidBackground';
+import { JournalStorageService } from './services/journalStorageService';
 
 const CANONICAL_SPREADS: Spread[] = tarotCoreService.listCanonicalSpreads();
 const ALL_CARDS: Card[] = tarotCoreService.listAllCards();
@@ -27,6 +30,8 @@ export function App() {
   const [isPro, setIsPro] = useState<boolean>(true);
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
   const [isDeckCatalogOpen, setIsDeckCatalogOpen] = useState<boolean>(false);
+  const [isFocusModalOpen, setIsFocusModalOpen] = useState<boolean>(false);
+  const [isJournalOpen, setIsJournalOpen] = useState<boolean>(false);
   const [isDark, setIsDark] = useState<boolean>(true);
 
   // Sync theme
@@ -38,8 +43,15 @@ export function App() {
     }
   }, [isDark]);
 
+  // Prompt intention modal when clicking shuffle
+  const handleOpenFocusModal = () => {
+    setIsFocusModalOpen(true);
+  };
+
   // Shuffling & Dealing with Core SSOT CSP solver
-  const handleShuffleAndDraw = () => {
+  const handleExecuteDrawWithQuestion = (targetQuestion: string) => {
+    setIsFocusModalOpen(false);
+    setQuestion(targetQuestion);
     setIsDrawing(true);
     setRevealedSlots(new Set());
     setIsDrawerOpen(false);
@@ -48,13 +60,16 @@ export function App() {
       try {
         const newSession = tarotCoreService.drawReadingSession(
           selectedSpread.id,
-          question.trim() || null,
+          targetQuestion.trim() || null,
           null,
           allowReversals ? 0.3 : 0.0
         );
 
         setSession(newSession);
         setIsDrawing(false);
+
+        // Auto-save to reading journal
+        JournalStorageService.saveSession(newSession);
 
         // Automatically reveal cards with a staggered sweep for delightful ritual
         newSession.placed_cards.forEach((_, i) => {
@@ -100,6 +115,16 @@ export function App() {
     setSelectedSlotIndex(0);
   };
 
+  const handleLoadPastSession = (pastSession: ReadingSession, pastSpread: Spread) => {
+    setSelectedSpread(pastSpread);
+    setSession(pastSession);
+    setQuestion(pastSession.question || '');
+    const allSlots = new Set<number>(pastSession.placed_cards.map((_, idx) => idx));
+    setRevealedSlots(allSlots);
+    setSelectedSlotIndex(0);
+    setIsDrawerOpen(true);
+  };
+
   const unrevealedCount = session ? session.placed_cards.length - revealedSlots.size : 0;
 
   return (
@@ -117,6 +142,7 @@ export function App() {
         isPro={isPro}
         onTogglePro={() => setIsPro(!isPro)}
         onOpenDeckCatalog={() => setIsDeckCatalogOpen(true)}
+        onOpenJournal={() => setIsJournalOpen(true)}
         onOpenDrawer={() => setIsDrawerOpen(true)}
         hasDrawnSession={!!session}
       />
@@ -142,7 +168,7 @@ export function App() {
         allowReversals={allowReversals}
         onToggleReversals={() => setAllowReversals(!allowReversals)}
         isDrawing={isDrawing}
-        onShuffleAndDraw={handleShuffleAndDraw}
+        onShuffleAndDraw={handleOpenFocusModal}
         hasSession={!!session}
         onRevealAll={handleRevealAll}
         unrevealedCount={unrevealedCount}
@@ -170,6 +196,24 @@ export function App() {
         onSelectCardPreview={(_card) => {
           // Preview card
         }}
+      />
+
+      {/* Pre-Draw Focus Intention Modal */}
+      <FocusIntentionModal
+        isOpen={isFocusModalOpen}
+        onClose={() => setIsFocusModalOpen(false)}
+        spread={selectedSpread}
+        currentQuestion={question}
+        onConfirmDraw={handleExecuteDrawWithQuestion}
+      />
+
+      {/* Reading Journal & History Modal */}
+      <ReadingJournalModal
+        isOpen={isJournalOpen}
+        onClose={() => setIsJournalOpen(false)}
+        spreads={CANONICAL_SPREADS}
+        cardsCatalog={CARDS_MAP}
+        onLoadSession={handleLoadPastSession}
       />
     </div>
   );
