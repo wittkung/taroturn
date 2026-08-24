@@ -24,174 +24,241 @@ export const SpreadCanvas: React.FC<SpreadCanvasProps> = ({
 }) => {
   const cardCount = spread?.slots?.length || 0;
 
-  // Determine card dimension based on card density
-  const getCardSize = () => {
-    if (cardCount >= 10) return { w: 84, h: 142, labelMaxW: 100, textSize: 'text-[10px]', badgeSize: 'text-[8px]' };
-    if (cardCount >= 7) return { w: 96, h: 162, labelMaxW: 110, textSize: 'text-[11px]', badgeSize: 'text-[8px]' };
-    if (cardCount >= 4) return { w: 115, h: 194, labelMaxW: 130, textSize: 'text-[12px]', badgeSize: 'text-[9px]' };
-    if (cardCount === 3) return { w: 140, h: 236, labelMaxW: 150, textSize: 'text-[13px]', badgeSize: 'text-[9px]' };
-    return { w: 170, h: 285, labelMaxW: 180, textSize: 'text-[14px]', badgeSize: 'text-[10px]' };
+  // Determine card dimension based on card count to ensure zero visual collision
+  const getCardDimensions = () => {
+    if (cardCount >= 10) {
+      return { w: 76, h: 128, labelMaxW: 88, textSize: 'text-[9px]', badgeSize: 'text-[7px]' };
+    }
+    if (cardCount >= 7) {
+      return { w: 88, h: 148, labelMaxW: 100, textSize: 'text-[10px]', badgeSize: 'text-[8px]' };
+    }
+    if (cardCount >= 4) {
+      return { w: 104, h: 176, labelMaxW: 118, textSize: 'text-[11px]', badgeSize: 'text-[8px]' };
+    }
+    if (cardCount === 3) {
+      return { w: 128, h: 216, labelMaxW: 140, textSize: 'text-[12px]', badgeSize: 'text-[9px]' };
+    }
+    return { w: 154, h: 260, labelMaxW: 165, textSize: 'text-[13px]', badgeSize: 'text-[10px]' };
   };
 
-  const cardDim = getCardSize();
+  const cardDim = getCardDimensions();
 
-  // Compute layout coordinates for each slot
+  // Precise geometric layout positioning engine
   const getSlotPosition = (slot: SpreadSlot) => {
-    const isCelticCross = spread.id === 'celtic-cross' || cardCount === 10;
-    const isTimeStream = spread.id === 'time-stream' || (cardCount === 3 && spread.id.includes('time'));
-    const isHolyTriangle = spread.id === 'holy-triangle' || (cardCount === 3 && spread.id.includes('triangle'));
+    const isCeltic = spread.id === 'celtic_cross' || spread.id === 'celtic-cross' || cardCount === 10;
+    const isHexagram = spread.id === 'hexagram_7' || (cardCount === 7 && spread.id.includes('hexagram'));
+    const isHorseshoe = spread.id === 'horseshoe_7' || (cardCount === 7 && spread.id.includes('horseshoe'));
+    const isTwoChoices = spread.id === 'two_choices' || cardCount === 5;
+    const isFourElements = spread.id === 'four_elements' || cardCount === 4;
+    const isHolyTriangle = spread.id === 'holy_triangle' || spread.id === 'holy-triangle';
+    const isTimeStream = spread.id === 'three_cards_time' || spread.id === 'time-stream' || cardCount === 3;
+    const isSingle = cardCount === 1;
 
-    if (isCelticCross) {
+    // 1. Classical Celtic Cross (10 Cards)
+    if (isCeltic) {
       const celticCoords: Record<number, { top: string; left: string; rotate?: number; zIndex?: number }> = {
-        0: { top: '50%', left: '35%', rotate: 0, zIndex: 5 }, // 1. Center
-        1: { top: '50%', left: '35%', rotate: 90, zIndex: 15 }, // 2. Cross Obstacle
-        2: { top: '78%', left: '35%', rotate: 0, zIndex: 4 }, // 3. Subconscious Root
-        3: { top: '50%', left: '18%', rotate: 0, zIndex: 4 }, // 4. Past
-        4: { top: '22%', left: '35%', rotate: 0, zIndex: 4 }, // 5. Crown
-        5: { top: '50%', left: '52%', rotate: 0, zIndex: 4 }, // 6. Near Future
-        6: { top: '80%', left: '76%', rotate: 0, zIndex: 4 }, // 7. Self
-        7: { top: '60%', left: '76%', rotate: 0, zIndex: 4 }, // 8. Environment
-        8: { top: '40%', left: '76%', rotate: 0, zIndex: 4 }, // 9. Hopes/Fears
-        9: { top: '20%', left: '76%', rotate: 0, zIndex: 4 }, // 10. Outcome
+        0: { top: '50%', left: '33%', rotate: 0, zIndex: 5 }, // 1. Present Heart
+        1: { top: '50%', left: '33%', rotate: 90, zIndex: 20 }, // 2. Cross Obstacle (90deg)
+        2: { top: '82%', left: '33%', rotate: 0, zIndex: 4 }, // 3. Root / Subconscious
+        3: { top: '50%', left: '15%', rotate: 0, zIndex: 4 }, // 4. Past Influence
+        4: { top: '18%', left: '33%', rotate: 0, zIndex: 4 }, // 5. Crown / Goal
+        5: { top: '50%', left: '51%', rotate: 0, zIndex: 4 }, // 6. Near Future
+        6: { top: '82%', left: '78%', rotate: 0, zIndex: 4 }, // 7. Self Attitude
+        7: { top: '61%', left: '78%', rotate: 0, zIndex: 4 }, // 8. Environment
+        8: { top: '39%', left: '78%', rotate: 0, zIndex: 4 }, // 9. Hopes & Fears
+        9: { top: '18%', left: '78%', rotate: 0, zIndex: 4 }, // 10. Outcome
       };
-      return celticCoords[slot.slot_id] || { top: '50%', left: '50%' };
+      return celticCoords[slot.slot_id] || { top: `${slot.y * 100}%`, left: `${slot.x * 100}%`, rotate: slot.rotation_deg || 0, zIndex: slot.z_index || 1 };
     }
 
-    if (isTimeStream) {
-      const streamCoords: Record<number, { top: string; left: string; rotate?: number; zIndex?: number }> = {
-        0: { top: '50%', left: '22%', rotate: 0, zIndex: 1 },
-        1: { top: '50%', left: '50%', rotate: 0, zIndex: 1 },
-        2: { top: '50%', left: '78%', rotate: 0, zIndex: 1 },
+    // 2. Star of David / Hexagram (7 Cards)
+    if (isHexagram) {
+      const hexCoords: Record<number, { top: string; left: string; rotate?: number; zIndex?: number }> = {
+        0: { top: '16%', left: '50%', rotate: 0, zIndex: 2 }, // Top
+        1: { top: '64%', left: '78%', rotate: 0, zIndex: 2 }, // Bottom Right
+        2: { top: '64%', left: '22%', rotate: 0, zIndex: 2 }, // Bottom Left
+        3: { top: '84%', left: '50%', rotate: 0, zIndex: 2 }, // Bottom Apex
+        4: { top: '36%', left: '22%', rotate: 0, zIndex: 2 }, // Top Left
+        5: { top: '36%', left: '78%', rotate: 0, zIndex: 2 }, // Top Right
+        6: { top: '50%', left: '50%', rotate: 0, zIndex: 10 }, // Center
       };
-      return streamCoords[slot.slot_id] || { top: '50%', left: '50%', rotate: 0, zIndex: 1 };
+      return hexCoords[slot.slot_id] || { top: `${slot.y * 100}%`, left: `${slot.x * 100}%`, rotate: 0, zIndex: 1 };
     }
 
+    // 3. Horseshoe Arch (7 Cards)
+    if (isHorseshoe) {
+      const horseCoords: Record<number, { top: string; left: string; rotate?: number; zIndex?: number }> = {
+        0: { top: '74%', left: '16%', rotate: 0, zIndex: 2 },
+        1: { top: '44%', left: '24%', rotate: 0, zIndex: 2 },
+        2: { top: '24%', left: '36%', rotate: 0, zIndex: 2 },
+        3: { top: '16%', left: '50%', rotate: 0, zIndex: 2 },
+        4: { top: '24%', left: '64%', rotate: 0, zIndex: 2 },
+        5: { top: '44%', left: '76%', rotate: 0, zIndex: 2 },
+        6: { top: '74%', left: '84%', rotate: 0, zIndex: 2 },
+      };
+      return horseCoords[slot.slot_id] || { top: `${slot.y * 100}%`, left: `${slot.x * 100}%`, rotate: 0, zIndex: 1 };
+    }
+
+    // 4. Two Choices Crossroads (5 Cards)
+    if (isTwoChoices) {
+      const choiceCoords: Record<number, { top: string; left: string; rotate?: number; zIndex?: number }> = {
+        0: { top: '78%', left: '50%', rotate: 0, zIndex: 2 }, // Current Nexus
+        1: { top: '50%', left: '28%', rotate: 0, zIndex: 2 }, // Choice A Process
+        2: { top: '22%', left: '28%', rotate: 0, zIndex: 2 }, // Choice A Result
+        3: { top: '50%', left: '72%', rotate: 0, zIndex: 2 }, // Choice B Process
+        4: { top: '22%', left: '72%', rotate: 0, zIndex: 2 }, // Choice B Result
+      };
+      return choiceCoords[slot.slot_id] || { top: `${slot.y * 100}%`, left: `${slot.x * 100}%`, rotate: 0, zIndex: 1 };
+    }
+
+    // 5. Four Elements Diamond (4 Cards)
+    if (isFourElements) {
+      const elemCoords: Record<number, { top: string; left: string; rotate?: number; zIndex?: number }> = {
+        0: { top: '20%', left: '50%', rotate: 0, zIndex: 2 }, // Fire Top
+        1: { top: '50%', left: '80%', rotate: 0, zIndex: 2 }, // Water Right
+        2: { top: '50%', left: '20%', rotate: 0, zIndex: 2 }, // Air Left
+        3: { top: '80%', left: '50%', rotate: 0, zIndex: 2 }, // Earth Bottom
+      };
+      return elemCoords[slot.slot_id] || { top: `${slot.y * 100}%`, left: `${slot.x * 100}%`, rotate: 0, zIndex: 1 };
+    }
+
+    // 6. Holy Triangle (3 Cards)
     if (isHolyTriangle) {
       const triCoords: Record<number, { top: string; left: string; rotate?: number; zIndex?: number }> = {
-        0: { top: '68%', left: '30%', rotate: 0, zIndex: 1 },
-        1: { top: '68%', left: '70%', rotate: 0, zIndex: 1 },
-        2: { top: '26%', left: '50%', rotate: 0, zIndex: 1 },
+        0: { top: '70%', left: '30%', rotate: 0, zIndex: 2 }, // Situation Left
+        1: { top: '70%', left: '70%', rotate: 0, zIndex: 2 }, // Obstacle Right
+        2: { top: '26%', left: '50%', rotate: 0, zIndex: 2 }, // Advice Apex
       };
-      return triCoords[slot.slot_id] || { top: '50%', left: '50%', rotate: 0, zIndex: 1 };
+      return triCoords[slot.slot_id] || { top: `${slot.y * 100}%`, left: `${slot.x * 100}%`, rotate: 0, zIndex: 1 };
     }
 
-    // Default Universal Normalized Mathematical Projection (slot.x in [-1, 1], slot.y in [-1, 1])
-    const xRatio = typeof slot.x === 'number' ? slot.x : 0;
-    const yRatio = typeof slot.y === 'number' ? slot.y : 0;
-    const leftPct = 50 + xRatio * 38;
-    const topPct = 50 + yRatio * 36;
-    const rot = slot.rotation_deg || 0;
+    // 7. Time Stream (3 Cards Horizontal)
+    if (isTimeStream) {
+      const streamCoords: Record<number, { top: string; left: string; rotate?: number; zIndex?: number }> = {
+        0: { top: '50%', left: '24%', rotate: 0, zIndex: 1 },
+        1: { top: '50%', left: '50%', rotate: 0, zIndex: 1 },
+        2: { top: '50%', left: '76%', rotate: 0, zIndex: 1 },
+      };
+      return streamCoords[slot.slot_id] || { top: `${slot.y * 100}%`, left: `${slot.x * 100}%`, rotate: 0, zIndex: 1 };
+    }
 
+    // 8. Single Oracle (1 Card)
+    if (isSingle) {
+      return { top: '50%', left: '50%', rotate: 0, zIndex: 2 };
+    }
+
+    // Fallback: Direct Percentage from Catalog
     return {
-      top: `${topPct}%`,
-      left: `${leftPct}%`,
-      rotate: rot,
+      top: `${(slot.y ?? 0.5) * 100}%`,
+      left: `${(slot.x ?? 0.5) * 100}%`,
+      rotate: slot.rotation_deg || 0,
       zIndex: slot.z_index || 1,
     };
   };
 
   return (
-    <main className="flex-1 w-full h-full relative flex items-center justify-center overflow-hidden select-none p-4 md:p-6 z-10 min-h-[560px]">
+    <div className="w-full flex-1 flex items-center justify-center relative select-none p-2 md:p-4">
       {session && spread ? (
-        <div className="w-full h-full max-w-6xl max-h-[820px] relative flex items-center justify-center">
-          {/* Render Spread Cards Matrix */}
-          <div className="w-full h-full relative flex items-center justify-center">
-            {spread.slots.map((slot: SpreadSlot, idx: number) => {
-              const placed = session.placed_cards.find((p: PlacedCard) => p.slot_id === slot.slot_id);
-              const card = placed ? cardsCatalog[placed.drawn_card.card_id] : null;
-              const isSelected = selectedSlotIndex === idx;
-              const isFlipped = revealedSlots.has(idx);
-              const pos = getSlotPosition(slot);
+        /* Explicit Fixed Canvas Workspace to guarantee precise CSS percentage calculations */
+        <div className="w-full max-w-5xl h-[560px] md:h-[620px] relative mx-auto flex items-center justify-center">
+          {spread.slots.map((slot: SpreadSlot, idx: number) => {
+            const placed = session.placed_cards.find((p: PlacedCard) => p.slot_id === slot.slot_id);
+            const card = placed ? cardsCatalog[placed.drawn_card.card_id] : null;
+            const isSelected = selectedSlotIndex === idx;
+            const isFlipped = revealedSlots.has(idx);
+            const pos = getSlotPosition(slot);
 
-              return (
+            return (
+              <div
+                key={slot.slot_id}
+                onClick={() => {
+                  if (!isFlipped) onFlipCard(idx);
+                  onSelectSlot(idx);
+                }}
+                className="absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer transition-all duration-300 flex flex-col items-center perspective-1000"
+                style={{
+                  top: pos.top,
+                  left: pos.left,
+                  zIndex: isSelected ? 40 : (pos.zIndex ?? 1) + 2,
+                }}
+              >
+                {/* 3D Card Shell */}
                 <div
-                  key={slot.slot_id}
-                  onClick={() => {
-                    if (!isFlipped) onFlipCard(idx);
-                    onSelectSlot(idx);
-                  }}
-                  className="absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer transition-all duration-300 flex flex-col items-center perspective-1000"
+                  className={`relative rounded-2xl transition-all duration-500 card-tactile ${
+                    isSelected
+                      ? 'ring-2 ring-amber-400 shadow-amber-glow scale-105'
+                      : 'shadow-card-float-light dark:shadow-card-float hover:scale-103'
+                  }`}
                   style={{
-                    top: pos.top,
-                    left: pos.left,
-                    zIndex: isSelected ? 35 : (pos.zIndex ?? 1) + 2,
+                    width: `${cardDim.w}px`,
+                    height: `${cardDim.h}px`,
+                    transform: `rotate(${pos.rotate ?? 0}deg)`,
                   }}
                 >
-                  {/* 3D Card Shell */}
-                  <div
-                    className={`relative rounded-2xl transition-all duration-500 card-tactile ${
-                      isSelected
-                        ? 'ring-2 ring-amber-400 shadow-amber-glow scale-105'
-                        : 'shadow-card-float-light dark:shadow-card-float hover:scale-103'
-                    }`}
-                    style={{
-                      width: `${cardDim.w}px`,
-                      height: `${cardDim.h}px`,
-                      transform: `rotate(${pos.rotate ?? 0}deg)`,
-                    }}
-                  >
-                    <div className={`w-full h-full relative card-container-3d ${isFlipped ? 'flipped' : ''}`}>
-                      {/* Card Back Face */}
-                      <div className="absolute inset-0 w-full h-full rounded-2xl overflow-hidden card-face card-back-face border border-amber-500/30 bg-sanctuary-dark shadow-md">
-                        <img
-                          src="/cards/card_back.svg"
-                          alt="Card Back"
-                          className="w-full h-full object-cover rounded-2xl"
-                        />
-                        <div className="absolute top-1.5 left-1.5 bg-black/80 text-amber-300 backdrop-blur-md px-1.5 py-0.2 rounded text-[9px] font-mono font-bold border border-amber-500/30 shadow-sm">
-                          {idx + 1}
-                        </div>
+                  <div className={`w-full h-full relative card-container-3d ${isFlipped ? 'flipped' : ''}`}>
+                    {/* Card Back Face */}
+                    <div className="absolute inset-0 w-full h-full rounded-2xl overflow-hidden card-face card-back-face border border-amber-500/30 bg-sanctuary-dark shadow-md">
+                      <img
+                        src="/cards/card_back.svg"
+                        alt="Card Back"
+                        className="w-full h-full object-cover rounded-2xl"
+                      />
+                      <div className="absolute top-1 left-1 bg-black/85 text-amber-300 backdrop-blur-md px-1.5 py-0.2 rounded text-[9px] font-mono font-bold border border-amber-500/30 shadow-sm">
+                        {idx + 1}
                       </div>
+                    </div>
 
-                      {/* Card Front Face */}
-                      <div className="absolute inset-0 w-full h-full rounded-2xl overflow-hidden card-face card-front-face border border-amber-500/40 bg-black shadow-md">
-                        <img
-                          src={`/cards/${card?.id ?? idx}.jpg`}
-                          alt={card?.name_zh ?? ''}
-                          className="w-full h-full object-cover rounded-2xl transition-transform duration-300"
-                          style={{
-                            transform: placed?.drawn_card.orientation === 'Reversed' ? 'rotate(180deg)' : 'none',
-                          }}
-                          onError={(e) => {
-                            e.currentTarget.src = '/cards/card_back.svg';
-                          }}
-                        />
-                        <div className="absolute top-1.5 left-1.5 bg-black/80 text-amber-300 backdrop-blur-md px-1.5 py-0.2 rounded text-[9px] font-mono font-bold border border-amber-500/30 shadow-sm">
-                          {idx + 1}
-                        </div>
+                    {/* Card Front Face */}
+                    <div className="absolute inset-0 w-full h-full rounded-2xl overflow-hidden card-face card-front-face border border-amber-500/40 bg-black shadow-md">
+                      <img
+                        src={`/cards/${card?.id ?? idx}.jpg`}
+                        alt={card?.name_zh ?? ''}
+                        className="w-full h-full object-cover rounded-2xl transition-transform duration-300"
+                        style={{
+                          transform: placed?.drawn_card.orientation === 'Reversed' ? 'rotate(180deg)' : 'none',
+                        }}
+                        onError={(e) => {
+                          e.currentTarget.src = '/cards/card_back.svg';
+                        }}
+                      />
+                      <div className="absolute top-1 left-1 bg-black/85 text-amber-300 backdrop-blur-md px-1.5 py-0.2 rounded text-[9px] font-mono font-bold border border-amber-500/30 shadow-sm">
+                        {idx + 1}
                       </div>
                     </div>
                   </div>
-
-                  {/* Card Title & Orientation Label Underneath */}
-                  <div
-                    className="mt-2 text-center flex flex-col items-center pointer-events-none select-none transition-all"
-                    style={{ maxWidth: `${cardDim.labelMaxW}px` }}
-                  >
-                    <span className={`${cardDim.textSize} font-editorial font-medium text-slate-700 dark:text-slate-300 truncate w-full`}>
-                      {slot.title_zh}
-                    </span>
-                    {isFlipped && card && (
-                      <div className="flex items-center gap-1 mt-0.5 bg-slate-950/80 dark:bg-black/80 backdrop-blur-md px-2 py-0.5 rounded-full border border-amber-500/30 shadow-sm">
-                        <span className={`${cardDim.textSize} font-editorial font-bold text-slate-100 whitespace-nowrap`}>
-                          {card.name_zh}
-                        </span>
-                        <span
-                          className={`${cardDim.badgeSize} px-1.5 py-0.2 rounded font-editorial font-bold leading-tight ${
-                            placed?.drawn_card.orientation === 'Upright'
-                              ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/40'
-                              : 'bg-rose-500/20 text-rose-400 border border-rose-500/40'
-                          }`}
-                        >
-                          {placed?.drawn_card.orientation === 'Upright' ? '正位' : '逆位'}
-                        </span>
-                      </div>
-                    )}
-                  </div>
                 </div>
-              );
-            })}
-          </div>
+
+                {/* Card Title & Orientation Badge */}
+                {/* For Crossed Card 1 in Celtic Cross, offset label slightly to avoid colliding with Card 0 */}
+                <div
+                  className={`mt-1.5 text-center flex flex-col items-center pointer-events-none select-none transition-all ${
+                    pos.rotate === 90 ? 'translate-y-4' : ''
+                  }`}
+                  style={{ maxWidth: `${cardDim.labelMaxW}px` }}
+                >
+                  <span className={`${cardDim.textSize} font-editorial font-medium text-slate-700 dark:text-slate-300 truncate w-full`}>
+                    {slot.title_zh}
+                  </span>
+                  {isFlipped && card && (
+                    <div className="flex items-center gap-1 mt-0.5 bg-slate-950/90 dark:bg-black/90 backdrop-blur-md px-1.5 py-0.2 rounded-full border border-amber-500/30 shadow-sm">
+                      <span className={`${cardDim.textSize} font-editorial font-bold text-slate-100 whitespace-nowrap`}>
+                        {card.name_zh}
+                      </span>
+                      <span
+                        className={`${cardDim.badgeSize} px-1 rounded font-editorial font-bold leading-tight ${
+                          placed?.drawn_card.orientation === 'Upright'
+                            ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/40'
+                            : 'bg-rose-500/20 text-rose-400 border border-rose-500/40'
+                        }`}
+                      >
+                        {placed?.drawn_card.orientation === 'Upright' ? '正' : '逆'}
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            );
+          })}
         </div>
       ) : (
         /* Empty Sanctuary Altar State */
@@ -239,6 +306,6 @@ export const SpreadCanvas: React.FC<SpreadCanvasProps> = ({
           </p>
         </div>
       )}
-    </main>
+    </div>
   );
 };
