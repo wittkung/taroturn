@@ -30,15 +30,17 @@ body {
 
 /* Translucent Glass Panels with Fluid Backdrop Blur */
 .glass-header {
-  background: rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .dark .glass-header {
-  background: rgba(10, 6, 18, 0.78);
-  border-bottom: 1px solid rgba(168, 85, 247, 0.15);
+  background: rgba(10, 5, 18, 0.18);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(168, 85, 247, 0.12);
 }
 
 .glass-dock {
@@ -70,14 +72,15 @@ body {
 }
 
 /* TT-Series 52pt Header Golden & Amethyst Rule Line */
-.ttzip-golden-line {
+.ttzip-golden-line,
+.golden-rule-line {
   height: 1px;
   background: linear-gradient(
     90deg,
     transparent 0%,
     rgba(212, 175, 55, 0.15) 15%,
-    rgba(212, 175, 55, 0.65) 50%,
-    rgba(168, 85, 247, 0.45) 85%,
+    rgba(212, 175, 55, 0.50) 50%,
+    rgba(168, 85, 247, 0.35) 85%,
     transparent 100%
   );
 }
