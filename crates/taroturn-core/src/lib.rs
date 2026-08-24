@@ -3,13 +3,19 @@
 //! Pure, memory-safe, deterministic Tarot domain logic with UniFFI and WASM support.
 
 pub mod card;
+pub mod deck_system;
 pub mod dignity;
 pub mod error;
 pub mod facets;
 pub mod ffi;
+pub mod marseille_deck;
+pub mod otp_deck;
+pub mod otp_loader;
+pub mod rws_deck;
 pub mod session;
 pub mod shuffling;
 pub mod spread;
+pub mod thoth_deck;
 
 pub use card::{ArcanaType, Card, CardDeck, Element, Orientation, Rank, Suit};
 pub use dignity::{

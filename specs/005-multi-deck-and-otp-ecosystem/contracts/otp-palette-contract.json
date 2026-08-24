@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OtpPaletteContract",
+  "description": "Schema for Open Tarot Package palette.json",
+  "type": "object",
+  "required": ["theme_id", "dark_mode", "light_mode"],
+  "properties": {
+    "theme_id": { "type": "string" },
+    "dark_mode": {
+      "type": "object",
+      "required": ["surface_background", "card_rim_border", "card_glow_primary", "text_primary"],
+      "properties": {
+        "surface_background": { "type": "string" },
+        "card_rim_border": { "type": "string" },
+        "card_glow_primary": { "type": "string" },
+        "accent_highlight": { "type": "string" },
+        "text_primary": { "type": "string" },
+        "text_secondary": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "light_mode": {
+      "type": "object",
+      "required": ["surface_background", "card_rim_border", "card_glow_primary", "text_primary"],
+      "properties": {
+        "surface_background": { "type": "string" },
+        "card_rim_border": { "type": "string" },
+        "card_glow_primary": { "type": "string" },
+        "accent_highlight": { "type": "string" },
+        "text_primary": { "type": "string" },
+        "text_secondary": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "motion_haptics": {
+      "type": "object",
+      "properties": {
+        "card_flip_spring_damping": { "type": "number" },
+        "card_flip_duration_ms": { "type": "integer" },
+        "particle_density": { "type": "integer" },
+        "haptic_intensity": { "type": "string" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

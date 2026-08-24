@@ -33,6 +33,27 @@ pub enum TarotError {
 
     #[error("Unauthorized access: {0}")]
     Unauthorized(String),
+
+    #[error("Deck system not found: {0}")]
+    DeckNotFound(String),
+
+    #[error("OTP Archive corrupted: {0}")]
+    OtpArchiveCorrupted(String),
+
+    #[error("OTP Manifest missing")]
+    OtpManifestMissing,
+
+    #[error("OTP Manifest invalid: {0}")]
+    OtpManifestInvalid(String),
+
+    #[error("OTP Incomplete deck: expected 78 cards, got {0}")]
+    OtpIncompleteDeck(u32),
+
+    #[error("Internal Lock Error")]
+    InternalLockError,
+
+    #[error("IO Error: {0}")]
+    IoError(String),
 }
 
 pub type TarotResult<T> = Result<T, TarotError>;

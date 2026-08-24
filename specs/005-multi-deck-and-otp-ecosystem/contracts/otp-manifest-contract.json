@@ -1,0 +1,74 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OtpManifestContract",
+  "description": "Schema for Open Tarot Package manifest.json",
+  "type": "object",
+  "required": ["otp_version", "meta", "cards"],
+  "properties": {
+    "otp_version": {
+      "type": "string"
+    },
+    "meta": {
+      "type": "object",
+      "required": ["uuid", "slug", "name", "family", "author", "version"],
+      "properties": {
+        "uuid": { "type": "string", "format": "uuid" },
+        "slug": { "type": "string" },
+        "name": { "type": "string" },
+        "name_zh": { "type": "string" },
+        "family": {
+          "type": "string",
+          "enum": ["rider_waite_smith", "crowley_thoth", "tarot_de_marseille", "custom"]
+        },
+        "author": { "type": "string" },
+        "version": { "type": "string" },
+        "license": { "type": "string" },
+        "description_zh": { "type": "string" },
+        "court_hierarchy": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "cards": {
+      "type": "array",
+      "minItems": 78,
+      "maxItems": 78,
+      "items": {
+        "type": "object",
+        "required": ["canonical_id", "key", "arcana", "name_en", "name_zh", "element", "image_path", "facets"],
+        "properties": {
+          "canonical_id": { "type": "integer", "minimum": 0, "maximum": 77 },
+          "key": { "type": "string" },
+          "arcana": { "type": "string", "enum": ["major", "minor"] },
+          "display_number": { "type": "string" },
+          "name_en": { "type": "string" },
+          "name_zh": { "type": "string" },
+          "subtitle": { "type": "string" },
+          "element": { "type": "string", "enum": ["fire", "water", "air", "earth"] },
+          "astrology": { "type": "string" },
+          "hebrew_letter": { "type": "string" },
+          "tree_path": { "type": "integer" },
+          "image_path": { "type": "string" },
+          "facets": {
+            "type": "object",
+            "required": ["upright_keywords", "reversed_keywords", "shadow_aspect"],
+            "properties": {
+              "upright_keywords": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "reversed_keywords": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "shadow_aspect": { "type": "string" },
+              "esoteric_formula": { "type": "string" }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
