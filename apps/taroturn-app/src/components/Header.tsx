@@ -57,11 +57,14 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
 
             {spreadMenuOpen && (
-              <div className="absolute top-full mt-2 left-0 w-64 bg-white/95 dark:bg-sanctuary-cardDark/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-amethyst-500/20 p-2 z-50 animate-in fade-in zoom-in-95 duration-150">
-                <div className="text-[10px] font-bold font-editorial uppercase tracking-wider text-amethyst-700 dark:text-amethyst-300 px-2.5 py-1 mb-1">
-                  选择占卜牌阵
+              <div className="absolute top-full mt-2 left-0 w-[420px] max-h-[80vh] overflow-y-auto bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl rounded-3xl shadow-2xl border border-amethyst-500/25 p-3 z-50 animate-in fade-in zoom-in-95 duration-150 space-y-2">
+                <div className="flex items-center justify-between px-2.5 py-1 border-b border-amethyst-500/15">
+                  <span className="text-[11px] font-bold font-editorial uppercase tracking-wider text-amethyst-700 dark:text-amethyst-300">
+                    圣所牌阵图谱 · 架构与用途解析
+                  </span>
+                  <span className="text-[10px] font-mono text-slate-500">共 {spreads.length} 款牌阵</span>
                 </div>
-                <div className="space-y-1">
+                <div className="space-y-1.5 pt-1">
                   {spreads.map((sp) => {
                     const isCurrent = sp.id === selectedSpread.id;
                     return (
@@ -71,19 +74,49 @@ export const Header: React.FC<HeaderProps> = ({
                           onSelectSpread(sp);
                           setSpreadMenuOpen(false);
                         }}
-                        className={`w-full text-left px-2.5 py-2 rounded-xl text-[12px] font-editorial transition-all flex items-center justify-between ${
+                        className={`w-full text-left p-3 rounded-2xl text-[12px] font-editorial transition-all flex flex-col space-y-1.5 ${
                           isCurrent
-                            ? 'bg-amethyst-500/20 text-amethyst-700 dark:text-amethyst-300 font-bold border border-amethyst-500/30'
-                            : 'text-slate-700 dark:text-slate-300 hover:bg-amethyst-500/10'
+                            ? 'bg-amethyst-500/15 text-slate-900 dark:text-slate-100 font-bold border border-amethyst-500/40 shadow-sm'
+                            : 'text-slate-700 dark:text-slate-300 hover:bg-white/5 hover:border-white/10 border border-transparent'
                         }`}
                       >
-                        <div>
-                          <div className="font-bold">{sp.name_zh}</div>
-                          <div className="text-[10px] text-slate-500 line-clamp-1">{sp.description}</div>
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center space-x-2">
+                            <span className="font-bold text-[13px] text-slate-900 dark:text-slate-100 group-hover:text-amber-400">
+                              {sp.name_zh}
+                            </span>
+                            {sp.tag && (
+                              <span className="text-[9px] px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/30">
+                                {sp.tag}
+                              </span>
+                            )}
+                          </div>
+                          <div className="flex items-center space-x-1.5">
+                            {sp.difficulty && (
+                              <span className={`text-[9px] px-1.5 py-0.2 rounded font-mono ${
+                                sp.difficulty === '大师' ? 'bg-rose-500/20 text-rose-300' : sp.difficulty === '进阶' ? 'bg-purple-500/20 text-purple-300' : 'bg-emerald-500/20 text-emerald-300'
+                              }`}>
+                                {sp.difficulty}
+                              </span>
+                            )}
+                            <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/5 text-slate-500 dark:text-slate-400">
+                              {sp.slots.length} 张
+                            </span>
+                          </div>
                         </div>
-                        <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/5 text-slate-500">
-                          {sp.slots.length}
-                        </span>
+
+                        {/* Chinese Purpose & Guidance */}
+                        <div className="text-[11px] font-editorial text-slate-600 dark:text-slate-400 leading-relaxed">
+                          {sp.description || sp.purpose}
+                        </div>
+
+                        {/* Best for scenarios */}
+                        {sp.best_for && (
+                          <div className="text-[10px] font-editorial text-amber-700 dark:text-amber-400/90 flex items-center gap-1 pt-0.5">
+                            <span className="font-bold">适用：</span>
+                            <span className="truncate">{sp.best_for}</span>
+                          </div>
+                        )}
                       </button>
                     );
                   })}

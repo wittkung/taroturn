@@ -1,5 +1,6 @@
 import canonicalCatalog from '../data/canonicalCatalog.json';
 import { CHINESE_CARD_FACETS } from '../data/chineseCardFacets';
+import { CHINESE_SPREAD_CATALOG } from '../data/chineseSpreadCatalog';
 import {
   Card,
   DignityStatus,
@@ -14,7 +15,34 @@ import {
 } from '../types/tarot';
 
 const RAW_CARDS: Card[] = canonicalCatalog.cards as unknown as Card[];
-const ALL_SPREADS: Spread[] = canonicalCatalog.spreads as unknown as Spread[];
+const RAW_SPREADS: Spread[] = canonicalCatalog.spreads as unknown as Spread[];
+
+// Enrich all canonical spreads with profound Chinese purposes & use cases
+const ALL_SPREADS: Spread[] = RAW_SPREADS.map((spread) => {
+  // Try direct match or key lookup
+  const meta =
+    CHINESE_SPREAD_CATALOG[spread.id] ||
+    CHINESE_SPREAD_CATALOG[spread.id.replace('-', '_')] ||
+    Object.values(CHINESE_SPREAD_CATALOG).find(
+      (m) => m.card_count === spread.slots.length || m.name_zh === spread.name_zh
+    );
+
+  if (meta) {
+    return {
+      ...spread,
+      name_zh: meta.name_zh,
+      description: meta.purpose,
+      tag: meta.tag,
+      purpose: meta.purpose,
+      best_for: meta.best_for,
+      difficulty: meta.difficulty,
+      structure_explanation: meta.structure_explanation,
+      recommended_inquiries: meta.recommended_inquiries,
+    };
+  }
+
+  return spread;
+});
 
 // Enrich all cards with profound Chinese facets
 const ALL_CARDS: Card[] = RAW_CARDS.map((card) => {

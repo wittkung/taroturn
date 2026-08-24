@@ -73,6 +73,12 @@ export interface Spread {
   name_zh: string;
   description: string;
   category: 'Daily' | 'Decision' | 'Relationship' | 'Comprehensive' | 'Custom';
+  tag?: string;
+  purpose?: string;
+  best_for?: string;
+  difficulty?: '入门' | '进阶' | '大师';
+  structure_explanation?: string;
+  recommended_inquiries?: string[];
   slots: SpreadSlot[];
   edges: SlotEdge[];
 }

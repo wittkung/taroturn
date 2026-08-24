@@ -195,15 +195,47 @@ export const SpreadCanvas: React.FC<SpreadCanvasProps> = ({
         </div>
       ) : (
         /* Empty Sanctuary Altar State */
-        <div className="flex flex-col items-center justify-center text-center space-y-4 max-w-[480px] z-10">
-          <div className="w-16 h-16 rounded-full border border-amber-500/40 flex items-center justify-center bg-amber-500/10 shadow-amber-subtle animate-pulse-slow">
+        <div className="flex flex-col items-center justify-center text-center space-y-4 max-w-[560px] z-10 p-6 rounded-3xl bg-black/20 dark:bg-white/[0.02] border border-amber-500/20 backdrop-blur-md animate-in fade-in zoom-in-95 duration-300">
+          <div className="w-14 h-14 rounded-full border border-amber-500/40 flex items-center justify-center bg-amber-500/10 shadow-amber-subtle animate-pulse-slow">
             <Sparkles className="w-6 h-6 text-amber-400" />
           </div>
-          <h2 className="text-xl font-editorial font-bold tracking-wider text-slate-800 dark:text-slate-100">
-            静心凝神 · 开启圣所推演
-          </h2>
-          <p className="text-xs text-slate-600 dark:text-slate-400 font-editorial leading-relaxed max-w-[380px]">
-            当前牌阵：{spread ? spread.name_zh : '时间之流 (过去-现在-未来)'}（{spread ? spread.slots.length : 3}张卡位）。请点击下方「开始密码学抽牌」确立焦点议题并完成发牌仪式。
+          <div className="space-y-1">
+            <div className="flex items-center justify-center gap-2">
+              <h2 className="text-xl font-editorial font-bold tracking-wider text-slate-800 dark:text-slate-100">
+                {spread ? spread.name_zh : '每日启示'}
+              </h2>
+              {spread?.tag && (
+                <span className="text-[10px] px-2.5 py-0.5 rounded-full bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/30 font-editorial font-bold">
+                  {spread.tag}
+                </span>
+              )}
+            </div>
+            <p className="text-[11px] font-mono text-purple-400">
+              {spread ? `${spread.slots.length} 张卡位 · ${spread.difficulty || '标准'}级牌阵` : ''}
+            </p>
+          </div>
+
+          <div className="space-y-2 text-left bg-black/30 p-4 rounded-2xl border border-white/5 w-full">
+            <div className="text-xs text-slate-300 font-editorial leading-relaxed">
+              <span className="text-amber-400 font-bold">【牌阵用途】：</span>
+              {spread?.description || spread?.purpose || '用于探寻心智与事件的演变规律。'}
+            </div>
+            {spread?.best_for && (
+              <div className="text-[11px] text-slate-400 font-editorial leading-relaxed">
+                <span className="text-purple-300 font-bold">【适用场景】：</span>
+                {spread.best_for}
+              </div>
+            )}
+            {spread?.structure_explanation && (
+              <div className="text-[10px] text-slate-500 font-editorial leading-relaxed border-t border-white/5 pt-2">
+                <span className="text-slate-400 font-bold">【卡位拓扑】：</span>
+                {spread.structure_explanation}
+              </div>
+            )}
+          </div>
+
+          <p className="text-[11px] text-slate-500 font-editorial">
+            请在下方输入意图或直接点击「开始密码学抽牌」完成神圣发牌。
           </p>
         </div>
       )}

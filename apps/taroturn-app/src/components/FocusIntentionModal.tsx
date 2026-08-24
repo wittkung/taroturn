@@ -88,10 +88,57 @@ export const FocusIntentionModal: React.FC<FocusIntentionModalProps> = ({
 
         {/* Modal Body */}
         <div className="p-6 space-y-4 max-h-[75vh] overflow-y-auto">
+          {/* Spread Purpose Explainer Card */}
+          <div className="p-3.5 rounded-2xl bg-amber-500/10 border border-amber-500/25 space-y-1.5">
+            <div className="flex items-center justify-between text-xs font-editorial">
+              <span className="font-bold text-amber-300">
+                【{spread.name_zh}】用途解析
+              </span>
+              {spread.tag && (
+                <span className="text-[10px] px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-400 font-mono">
+                  {spread.tag}
+                </span>
+              )}
+            </div>
+            <p className="text-[11px] font-editorial text-slate-300 leading-relaxed">
+              {spread.description || spread.purpose}
+            </p>
+            {spread.best_for && (
+              <p className="text-[10px] font-editorial text-amber-400/90 pt-0.5">
+                <span className="font-bold">适合：</span>
+                {spread.best_for}
+              </p>
+            )}
+          </div>
+
+          {/* Spread-Specific Recommended Inquiries (if available) */}
+          {spread.recommended_inquiries && spread.recommended_inquiries.length > 0 && (
+            <div className="space-y-1.5">
+              <span className="text-[11px] font-editorial font-bold text-amber-400/90 block">
+                ✦ 该牌阵专属推演建议焦点：
+              </span>
+              <div className="flex flex-col gap-1">
+                {spread.recommended_inquiries.map((inq, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setQuestionText(inq)}
+                    className={`text-left text-[11px] font-editorial px-3 py-1.5 rounded-xl transition-all ${
+                      questionText === inq
+                        ? 'bg-amber-500/25 text-amber-300 border border-amber-500/50 font-medium shadow-sm'
+                        : 'bg-purple-950/30 hover:bg-purple-900/40 text-slate-300 hover:text-white border border-purple-500/20'
+                    }`}
+                  >
+                    ✦ {inq}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* Question Text Area */}
           <div className="space-y-1.5">
             <label className="text-xs font-editorial font-medium text-slate-300 flex items-center justify-between">
-              <span>心中焦点议题 (Question / Focus Intent):</span>
+              <span>输入或微调心中的焦点议题 (Question / Intent):</span>
               <span className="text-[10px] text-slate-500">AI 将严格基于此议题深度解构</span>
             </label>
             <div className="relative">
@@ -107,8 +154,8 @@ export const FocusIntentionModal: React.FC<FocusIntentionModalProps> = ({
 
           {/* Quick Preset Selector */}
           <div className="space-y-2 pt-1">
-            <span className="text-[11px] font-editorial font-bold text-amber-400/90 block">
-              或直接选取经典情境预设：
+            <span className="text-[11px] font-editorial font-bold text-slate-400 block">
+              或从其他经典情境库中选取：
             </span>
             <div className="space-y-2.5">
               {PRESET_TOPICS.map((topic, i) => {
