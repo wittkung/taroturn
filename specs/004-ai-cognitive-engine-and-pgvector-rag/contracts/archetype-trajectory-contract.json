@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ArchetypeTrajectoryContract",
+  "description": "Schema for longitudinal archetype evolution and karmic loop diagnostics",
+  "type": "object",
+  "required": ["currentElementalBalance", "elementalShiftVelocity", "detectedKarmicLoops", "individuationStage"],
+  "properties": {
+    "currentElementalBalance": {
+      "type": "object",
+      "required": ["fire", "water", "air", "earth"],
+      "properties": {
+        "fire": { "type": "number" },
+        "water": { "type": "number" },
+        "air": { "type": "number" },
+        "earth": { "type": "number" }
+      },
+      "additionalProperties": false
+    },
+    "elementalShiftVelocity": {
+      "type": "string"
+    },
+    "detectedKarmicLoops": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["loopName", "recurringTheme", "shadowArchetypes", "occurrencesCount", "recommendations"],
+        "properties": {
+          "loopName": { "type": "string" },
+          "recurringTheme": { "type": "string" },
+          "shadowArchetypes": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "occurrencesCount": { "type": "integer" },
+          "recommendations": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "individuationStage": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

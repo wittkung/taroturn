@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PgvectorMemoryRagContract",
+  "description": "Schema for historical subconscious memory echo items retrieved from pgvector",
+  "type": "object",
+  "required": ["sessionId", "spreadId", "daysAgo", "rawCosineSimilarity", "hybridRelevanceScore", "cardSummary"],
+  "properties": {
+    "sessionId": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "question": {
+      "type": ["string", "null"]
+    },
+    "spreadId": {
+      "type": "string"
+    },
+    "daysAgo": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "rawCosineSimilarity": {
+      "type": "number",
+      "minimum": -1.0,
+      "maximum": 1.0
+    },
+    "hybridRelevanceScore": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0
+    },
+    "cardSummary": {
+      "type": "string"
+    },
+    "userNotes": {
+      "type": ["string", "null"]
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AiSseStreamContract",
+  "description": "Schema for AI streaming interpretation SSE data frames",
+  "type": "object",
+  "properties": {
+    "delta": {
+      "type": "string",
+      "description": "Markdown token increment"
+    },
+    "requestId": {
+      "type": "string"
+    },
+    "model": {
+      "type": "string"
+    },
+    "finishReason": {
+      "type": "string",
+      "enum": ["stop", "length", "fallback", "error"]
+    },
+    "promptTokens": {
+      "type": "integer"
+    },
+    "completionTokens": {
+      "type": "integer"
+    },
+    "totalLatencyMs": {
+      "type": "integer"
+    },
+    "code": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}
