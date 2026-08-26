@@ -4,11 +4,18 @@ import TaroturnCore
 
 public struct Card3DFlipView: View {
     let placedCard: PlacedCard
+    let slotTitleZh: String
     let isFlipped: Bool
     let onFlip: () -> Void
 
-    public init(placedCard: PlacedCard, isFlipped: Bool, onFlip: @escaping () -> Void) {
+    public init(
+        placedCard: PlacedCard,
+        slotTitleZh: String = "推演卡位",
+        isFlipped: Bool,
+        onFlip: @escaping () -> Void
+    ) {
         self.placedCard = placedCard
+        self.slotTitleZh = slotTitleZh
         self.isFlipped = isFlipped
         self.onFlip = onFlip
     }
@@ -41,7 +48,7 @@ public struct Card3DFlipView: View {
                 .fill(Color(red: 0.10, green: 0.06, blue: 0.18))
                 .overlay {
                     VStack(spacing: 6) {
-                        Text(placedCard.slot.titleZh)
+                        Text(slotTitleZh)
                             .font(.caption2)
                             .foregroundStyle(Color(red: 0.85, green: 0.70, blue: 0.30))
                         Text("Card #\(placedCard.drawnCard.cardId)")

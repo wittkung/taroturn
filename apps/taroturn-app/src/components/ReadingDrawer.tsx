@@ -19,16 +19,19 @@ import {
   ChevronUp,
   Copy,
   Check,
+  Radio,
 } from 'lucide-react';
 import { Spread, ReadingSession, Card } from '../types/tarot';
 import { MarkdownRenderer } from './MarkdownRenderer';
 import { JournalStorageService } from '../services/journalStorageService';
 import {
   ChatMessage,
-  streamTtagyChat,
+  streamTarotAi,
   buildTarotInterpretationPrompt,
   buildTarotDialoguePrompt,
 } from '../services/ttagyService';
+import { UserSettingsService } from '../services/userSettingsService';
+import { AiPersona, CANONICAL_AI_PERSONAS } from '../types/settings';
 
 interface ReadingDrawerProps {
   isOpen: boolean;
@@ -40,6 +43,7 @@ interface ReadingDrawerProps {
   cardsCatalog: Record<number, Card>;
   isPro: boolean;
   onTogglePro: () => void;
+  onOpenSettings?: () => void;
 }
 
 export const ReadingDrawer: React.FC<ReadingDrawerProps> = ({
@@ -52,15 +56,19 @@ export const ReadingDrawer: React.FC<ReadingDrawerProps> = ({
   cardsCatalog,
   isPro,
   onTogglePro,
+  onOpenSettings,
 }) => {
   const [activeSection, setActiveSection] = useState<'card' | 'elements' | 'ai'>('card');
   const [aiSubTab, setAiSubTab] = useState<'report' | 'chat'>('report');
+
+  const [settings, setSettings] = useState(UserSettingsService.getSettings());
+  const [selectedPersona, setSelectedPersona] = useState<AiPersona>(settings.ai.persona || 'jungian');
 
   // AI Report State
   const [aiReport, setAiReport] = useState<string>('');
   const [isReportGenerating, setIsReportGenerating] = useState<boolean>(false);
   const [reportThinking, setReportThinking] = useState<string>('');
-  const [showThinking, setShowThinking] = useState<boolean>(false);
+  const [showThinking, setShowThinking] = useState<boolean>(settings.ai.showThinking ?? true);
 
   // AI Chat Dialogue State
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>([]);
@@ -70,6 +78,15 @@ export const ReadingDrawer: React.FC<ReadingDrawerProps> = ({
   // Copy to clipboard state
   const [copiedReport, setCopiedReport] = useState<boolean>(false);
   const [copiedMsgId, setCopiedMsgId] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (isOpen) {
+      const current = UserSettingsService.getSettings();
+      setSettings(current);
+      setSelectedPersona(current.ai.persona || 'jungian');
+      setShowThinking(current.ai.showThinking ?? true);
+    }
+  }, [isOpen]);
 
   const handleCopyText = async (text: string, isReport: boolean = true, msgId?: string) => {
     try {
@@ -98,6 +115,23 @@ export const ReadingDrawer: React.FC<ReadingDrawerProps> = ({
   const placed = session.placed_cards.find((p) => p.slot_id === slot?.slot_id);
   const card = placed ? cardsCatalog[placed.drawn_card.card_id] : null;
 
+  const currentPersonaMeta =
+    CANONICAL_AI_PERSONAS.find((p) => p.id === selectedPersona) || CANONICAL_AI_PERSONAS[0];
+
+  const getProviderBadgeLabel = () => {
+    switch (settings.ai.providerMode) {
+      case 'ttagy_remote':
+        return 'TTAgy 远程节点 (IPv6)';
+      case 'byok_gemini':
+        return 'Google Gemini API';
+      case 'byok_openai':
+        return 'OpenAI / DeepSeek';
+      case 'ttagy_local':
+      default:
+        return 'TTAgy 本地守护进程';
+    }
+  };
+
   // 1. 发起 AI 全景推演报告流式生成
   const handleGenerateReport = async () => {
     if (!isPro) {
@@ -108,10 +142,15 @@ export const ReadingDrawer: React.FC<ReadingDrawerProps> = ({
     setAiReport('');
     setReportThinking('');
 
-    const prompt = buildTarotInterpretationPrompt(spread, session, cardsCatalog);
+    const prompt = buildTarotInterpretationPrompt(
+      spread,
+      session,
+      cardsCatalog,
+      selectedPersona
+    );
 
     try {
-      await streamTtagyChat(
+      await streamTarotAi(
         prompt,
         {
           onThinkingDelta: (delta) => {
@@ -133,7 +172,7 @@ export const ReadingDrawer: React.FC<ReadingDrawerProps> = ({
             setIsReportGenerating(false);
           },
         },
-        { model: 'gemini-3.7-flash', effort: 'low', timeoutSecs: 45 }
+        settings
       );
     } catch (_err) {
       setIsReportGenerating(false);
@@ -171,10 +210,17 @@ export const ReadingDrawer: React.FC<ReadingDrawerProps> = ({
     };
     setChatMessages((prev) => [...prev, aiPlaceholder]);
 
-    const prompt = buildTarotDialoguePrompt(spread, session, cardsCatalog, newHistory, textToSend);
+    const prompt = buildTarotDialoguePrompt(
+      spread,
+      session,
+      cardsCatalog,
+      newHistory,
+      textToSend,
+      selectedPersona
+    );
 
     try {
-      await streamTtagyChat(
+      await streamTarotAi(
         prompt,
         {
           onContentDelta: (_delta, accumulated) => {
@@ -191,13 +237,13 @@ export const ReadingDrawer: React.FC<ReadingDrawerProps> = ({
           onError: (err) => {
             setChatMessages((prev) =>
               prev.map((m) =>
-                m.id === aiMsgId ? { ...m, text: `[TTAgy 交互异常]: ${err}` } : m
+                m.id === aiMsgId ? { ...m, text: `[交互异常]: ${err}` } : m
               )
             );
             setIsChatStreaming(false);
           },
         },
-        { model: 'gemini-3.7-flash', effort: 'low', timeoutSecs: 35 }
+        settings
       );
     } catch (_err) {
       setIsChatStreaming(false);
@@ -213,7 +259,7 @@ export const ReadingDrawer: React.FC<ReadingDrawerProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex justify-end bg-black/40 backdrop-blur-sm select-none animate-in fade-in duration-200">
-      <div className="w-[520px] max-w-[92vw] h-full glass-drawer flex flex-col overflow-hidden shadow-2xl animate-in slide-in-from-right duration-300">
+      <div className="w-[540px] max-w-[94vw] h-full glass-drawer flex flex-col overflow-hidden shadow-2xl animate-in slide-in-from-right duration-300">
         {/* Drawer Header */}
         <div className="px-6 py-4 border-b border-amethyst-500/15 flex items-center justify-between bg-black/2 dark:bg-black/40 flex-shrink-0">
           <div className="flex items-center space-x-3">
@@ -293,12 +339,13 @@ export const ReadingDrawer: React.FC<ReadingDrawerProps> = ({
             }`}
           >
             <Sparkles className="w-3.5 h-3.5 text-amethyst-500" />
-            <span>TTAgy 深度推演</span>
+            <span>AI 认知推演</span>
           </button>
         </div>
 
         {/* Drawer Body */}
         <div className="flex-1 p-6 overflow-y-auto space-y-5">
+          {/* ── 1. CARD SECTION ── */}
           {activeSection === 'card' && (
             <div className="space-y-4">
               {card ? (
@@ -325,7 +372,10 @@ export const ReadingDrawer: React.FC<ReadingDrawerProps> = ({
                         alt={card.name_zh}
                         className="w-full h-full object-cover rounded-xl"
                         style={{
-                          transform: placed?.drawn_card.orientation === 'Reversed' ? 'rotate(180deg)' : 'none',
+                          transform:
+                            placed?.drawn_card.orientation === 'Reversed'
+                              ? 'rotate(180deg)'
+                              : 'none',
                         }}
                       />
                     </div>
@@ -352,7 +402,9 @@ export const ReadingDrawer: React.FC<ReadingDrawerProps> = ({
                               : 'bg-cinnabar/20 text-cinnabar dark:text-cinnabar-light border border-cinnabar/40'
                           }`}
                         >
-                          {placed?.drawn_card.orientation === 'Upright' ? '正位 (Upright)' : '逆位 (Reversed)'}
+                          {placed?.drawn_card.orientation === 'Upright'
+                            ? '正位 (Upright)'
+                            : '逆位 (Reversed)'}
                         </span>
                       </div>
                     </div>
@@ -420,6 +472,7 @@ export const ReadingDrawer: React.FC<ReadingDrawerProps> = ({
             </div>
           )}
 
+          {/* ── 2. ELEMENTS SECTION ── */}
           {activeSection === 'elements' && (
             <div className="space-y-4">
               <div className="p-4 rounded-xl border border-amethyst-500/20 bg-amethyst-500/5 space-y-3">
@@ -434,7 +487,9 @@ export const ReadingDrawer: React.FC<ReadingDrawerProps> = ({
                       <Flame className="w-4 h-4" />
                       <span className="font-bold">火 (意志 / 开创):</span>
                     </div>
-                    <span className="font-bold font-mono">{(session.dignity_summary.fire_ratio * 100).toFixed(0)}%</span>
+                    <span className="font-bold font-mono">
+                      {(session.dignity_summary.fire_ratio * 100).toFixed(0)}%
+                    </span>
                   </div>
                   <div className="w-full bg-black/10 dark:bg-white/10 h-2 rounded-full overflow-hidden">
                     <div
@@ -449,7 +504,9 @@ export const ReadingDrawer: React.FC<ReadingDrawerProps> = ({
                       <Droplet className="w-4 h-4" />
                       <span className="font-bold">水 (情感 / 直觉):</span>
                     </div>
-                    <span className="font-bold font-mono">{(session.dignity_summary.water_ratio * 100).toFixed(0)}%</span>
+                    <span className="font-bold font-mono">
+                      {(session.dignity_summary.water_ratio * 100).toFixed(0)}%
+                    </span>
                   </div>
                   <div className="w-full bg-black/10 dark:bg-white/10 h-2 rounded-full overflow-hidden">
                     <div
@@ -464,7 +521,9 @@ export const ReadingDrawer: React.FC<ReadingDrawerProps> = ({
                       <Wind className="w-4 h-4" />
                       <span className="font-bold">风 (心智 / 策略):</span>
                     </div>
-                    <span className="font-bold font-mono">{(session.dignity_summary.air_ratio * 100).toFixed(0)}%</span>
+                    <span className="font-bold font-mono">
+                      {(session.dignity_summary.air_ratio * 100).toFixed(0)}%
+                    </span>
                   </div>
                   <div className="w-full bg-black/10 dark:bg-white/10 h-2 rounded-full overflow-hidden">
                     <div
@@ -479,7 +538,9 @@ export const ReadingDrawer: React.FC<ReadingDrawerProps> = ({
                       <Mountain className="w-4 h-4" />
                       <span className="font-bold">土 (现实 / 根基):</span>
                     </div>
-                    <span className="font-bold font-mono">{(session.dignity_summary.earth_ratio * 100).toFixed(0)}%</span>
+                    <span className="font-bold font-mono">
+                      {(session.dignity_summary.earth_ratio * 100).toFixed(0)}%
+                    </span>
                   </div>
                   <div className="w-full bg-black/10 dark:bg-white/10 h-2 rounded-full overflow-hidden">
                     <div
@@ -494,7 +555,9 @@ export const ReadingDrawer: React.FC<ReadingDrawerProps> = ({
               <div className="p-4 rounded-xl border border-amethyst-500/20 bg-amethyst-500/5 space-y-2">
                 <div className="flex justify-between items-center text-[12px] font-editorial">
                   <span className="text-slate-600 dark:text-slate-400">主导态势:</span>
-                  <span className="font-bold text-amethyst-700 dark:text-amethyst-300">{session.dignity_summary.dominant_element}</span>
+                  <span className="font-bold text-amethyst-700 dark:text-amethyst-300">
+                    {session.dignity_summary.dominant_element}
+                  </span>
                 </div>
                 {session.dignity_summary.shadow_card_id !== undefined && (
                   <div className="pt-2 border-t border-amethyst-500/10 flex justify-between items-center text-[12px] font-editorial">
@@ -511,6 +574,7 @@ export const ReadingDrawer: React.FC<ReadingDrawerProps> = ({
             </div>
           )}
 
+          {/* ── 3. AI SECTION ── */}
           {activeSection === 'ai' && (
             <div className="space-y-4">
               {!isPro ? (
@@ -519,20 +583,58 @@ export const ReadingDrawer: React.FC<ReadingDrawerProps> = ({
                     <Lock className="w-5 h-5 text-amethyst-500" />
                   </div>
                   <h4 className="text-[15px] font-editorial font-bold text-slate-900 dark:text-slate-100">
-                    TTAgy AI 深度推演与圣所对话 (PRO 专享)
+                    AI 深度推演与圣所对话 (PRO 专享)
                   </h4>
                   <p className="text-[12px] font-editorial text-slate-700 dark:text-slate-300 leading-relaxed">
-                    全面接入通用基础设施 TTAgy (Antigravity CLI / Gemini 3.7 Flash) 守护节点，支持全景多维荣格报告推演与实时长程多轮对话问答。
+                    支持自建 TTAgy 私有节点、公网 IPv6 电脑直连与四大流派多维报告推演。
                   </p>
                   <button
                     onClick={onTogglePro}
                     className="w-full py-2.5 rounded-full bg-gradient-to-r from-amethyst-600 to-purple-700 text-white font-bold text-[12px] font-editorial shadow-amethyst-glow transform active:scale-95 transition-all"
                   >
-                    免费解锁 PRO 模式 (体验 TTAgy)
+                    免费解锁 PRO 模式
                   </button>
                 </div>
               ) : (
                 <div className="space-y-4">
+                  {/* Persona Selector & Provider Node Status Bar */}
+                  <div className="p-3 rounded-2xl bg-purple-500/10 border border-purple-500/20 space-y-2">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-2">
+                        <span className="text-[10px] font-bold font-editorial text-purple-300 uppercase">
+                          当前推演流派:
+                        </span>
+                        <select
+                          value={selectedPersona}
+                          onChange={(e) => {
+                            const p = e.target.value as AiPersona;
+                            setSelectedPersona(p);
+                            UserSettingsService.setAiPersona(p);
+                          }}
+                          className="px-2 py-0.5 rounded-full bg-black/40 border border-purple-500/30 text-[11px] font-editorial font-bold text-slate-100 focus:outline-none"
+                        >
+                          {CANONICAL_AI_PERSONAS.map((cp) => (
+                            <option key={cp.id} value={cp.id} className="bg-slate-900">
+                              {cp.nameZh}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+
+                      <button
+                        onClick={onOpenSettings}
+                        className="text-[10px] font-editorial text-purple-400 hover:text-purple-300 transition-colors flex items-center space-x-1"
+                      >
+                        <Radio className="w-3 h-3" />
+                        <span>{getProviderBadgeLabel()}</span>
+                      </button>
+                    </div>
+
+                    <p className="text-[10px] font-editorial text-slate-400">
+                      {currentPersonaMeta.taglineZh}
+                    </p>
+                  </div>
+
                   {/* AI Sub-navigation Tabs */}
                   <div className="flex items-center justify-between border-b border-amethyst-500/15 pb-2">
                     <div className="flex items-center space-x-2">
@@ -545,7 +647,7 @@ export const ReadingDrawer: React.FC<ReadingDrawerProps> = ({
                         }`}
                       >
                         <FileText className="w-3 h-3" />
-                        <span>多维推演报告</span>
+                        <span>全景推演报告</span>
                       </button>
                       <button
                         onClick={() => setAiSubTab('chat')}
@@ -565,9 +667,9 @@ export const ReadingDrawer: React.FC<ReadingDrawerProps> = ({
                       </button>
                     </div>
 
-                    <div className="flex items-center space-x-1 text-[10px] font-mono text-amethyst-600 dark:text-amethyst-400">
+                    <div className="flex items-center space-x-1 text-[10px] font-mono text-purple-400">
                       <BrainCircuit className="w-3.5 h-3.5" />
-                      <span>TTAgy Daemon</span>
+                      <span>{currentPersonaMeta.nameZh.slice(0, 4)}</span>
                     </div>
                   </div>
 
@@ -582,7 +684,7 @@ export const ReadingDrawer: React.FC<ReadingDrawerProps> = ({
                         {isReportGenerating ? (
                           <>
                             <Loader2 className="w-4 h-4 animate-spin" />
-                            <span>TTAgy 守护节点流式推演中...</span>
+                            <span>AI 认知节点流式推演中...</span>
                           </>
                         ) : (
                           <>
@@ -601,9 +703,13 @@ export const ReadingDrawer: React.FC<ReadingDrawerProps> = ({
                           >
                             <span className="flex items-center space-x-1.5">
                               <BrainCircuit className="w-3.5 h-3.5 text-amethyst-500" />
-                              <span>Gemini 3.7 Flash 深度推演心智链</span>
+                              <span>深度推演心智链</span>
                             </span>
-                            {showThinking ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
+                            {showThinking ? (
+                              <ChevronUp className="w-3.5 h-3.5" />
+                            ) : (
+                              <ChevronDown className="w-3.5 h-3.5" />
+                            )}
                           </button>
                           {showThinking && (
                             <div className="px-3 py-2 border-t border-amethyst-500/10 font-mono text-[10px] text-slate-500 dark:text-slate-400 whitespace-pre-wrap leading-relaxed max-h-40 overflow-y-auto">
@@ -617,7 +723,7 @@ export const ReadingDrawer: React.FC<ReadingDrawerProps> = ({
                         <div className="space-y-2">
                           <div className="flex items-center justify-between px-1">
                             <span className="text-[11px] font-editorial font-bold text-amethyst-700 dark:text-amethyst-300">
-                              荣格多维深度推演报告
+                              {currentPersonaMeta.nameZh} · 推演报告
                             </span>
                             <button
                               onClick={() => handleCopyText(aiReport, true)}
@@ -643,7 +749,7 @@ export const ReadingDrawer: React.FC<ReadingDrawerProps> = ({
                         </div>
                       ) : (
                         <div className="p-6 text-center text-slate-500 dark:text-slate-400 font-editorial text-[12px] border border-dashed border-amethyst-500/20 rounded-2xl">
-                          点击上方按钮，基于 Gemini 3.7 Flash 深度模型对当前 {spread.slots.length} 张牌面与四要素分布进行深度心理学解构。
+                          点击上方按钮，以【{currentPersonaMeta.nameZh}】视角对当前 {spread.slots.length} 张牌面、DAG 空间连线与四要素分布进行深度心理学解构。
                         </div>
                       )}
                     </div>
@@ -662,7 +768,7 @@ export const ReadingDrawer: React.FC<ReadingDrawerProps> = ({
                                 开启连续多轮追问
                               </p>
                               <p className="text-[11px] font-editorial text-slate-500 mt-1 max-w-[280px]">
-                                就具体卡位关系、行动时机、个人困惑向推演导师自由提问，TTAgy 将结合当前牌阵上下文进行精准答复。
+                                就具体卡位关系、行动时机、个人困惑向【{currentPersonaMeta.nameZh}】导师自由提问。
                               </p>
                             </div>
                             <div className="flex flex-wrap gap-1.5 justify-center max-w-[340px] pt-1">
@@ -688,7 +794,7 @@ export const ReadingDrawer: React.FC<ReadingDrawerProps> = ({
                               >
                                 <div className="flex items-center justify-between w-full max-w-[88%] mb-1 px-1">
                                   <span className="text-[9px] font-mono text-slate-400">
-                                    {msg.sender === 'user' ? '求问者' : 'TTAgy 导师'}
+                                    {msg.sender === 'user' ? '求问者' : `${currentPersonaMeta.nameZh.slice(0, 4)}导师`}
                                   </span>
                                   {msg.sender === 'ai' && msg.text && (
                                     <button

@@ -15,13 +15,15 @@ public struct SpreadDAGCanvasView: View {
 
     public var body: some View {
         Canvas { context, size in
-            let slotMap = Dictionary(uniqueKeysWithValues: spread.slots.map { ($0.slotId, $0) })
+            let slots = spread.slots
+            guard slots.count > 1 else { return }
+
             let center = CGPoint(x: size.width / 2, y: size.height / 2)
             let scale: CGFloat = min(size.width, size.height) * 0.42
 
-            for edge in spread.edges {
-                guard let srcSlot = slotMap[edge.sourceSlotId],
-                      let tgtSlot = slotMap[edge.targetSlotId] else { continue }
+            for i in 0..<(slots.count - 1) {
+                let srcSlot = slots[i]
+                let tgtSlot = slots[i + 1]
 
                 let srcPt = CGPoint(
                     x: center.x + CGFloat(srcSlot.x) * scale,
@@ -44,25 +46,12 @@ public struct SpreadDAGCanvasView: View {
 
                 path.addQuadCurve(to: tgtPt, control: control)
 
-                let isHighlighted = (activeSlotId == edge.sourceSlotId || activeSlotId == edge.targetSlotId)
-                let color = edgeColor(for: edge.relation, isHighlighted: isHighlighted)
+                let isHighlighted = (activeSlotId == srcSlot.slotId || activeSlotId == tgtSlot.slotId)
+                let color = isHighlighted ? Color(red: 0.95, green: 0.85, blue: 0.45) : Color.cyan.opacity(0.5)
                 let style = StrokeStyle(lineWidth: isHighlighted ? 2.5 : 1.2, lineCap: .round)
 
                 context.stroke(path, with: .color(color), style: style)
             }
-        }
-    }
-
-    private func edgeColor(for relation: SlotRelationType, isHighlighted: Bool) -> Color {
-        if isHighlighted { return Color(red: 0.95, green: 0.85, blue: 0.45) }
-        switch relation {
-        case .crosses: return Color.red.opacity(0.6)
-        case .flowsTo: return Color.cyan.opacity(0.5)
-        case .supports: return Color.green.opacity(0.5)
-        case .opposes: return Color.purple.opacity(0.6)
-        case .illuminates: return Color.yellow.opacity(0.6)
-        case .synthesizes: return Color.orange.opacity(0.5)
-        case .reflects: return Color.blue.opacity(0.5)
         }
     }
 }

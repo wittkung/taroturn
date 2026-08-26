@@ -31,7 +31,7 @@ public struct ReadingArtCardView: View {
                     .foregroundStyle(.secondary)
             }
 
-            Text("主导能量: \(session.dignitySummary.dominantElement)")
+            Text("主导能量: \(String(describing: session.dignitySummary.dominantElement))")
                 .font(.headline)
                 .foregroundStyle(Color.green)
 

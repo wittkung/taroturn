@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ZenNavigationContract",
+  "description": "Navigation state contract for TTZip-style Zen sidebar and multi-tab workspaces",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "activeTab",
+    "tabs"
+  ],
+  "properties": {
+    "activeTab": {
+      "type": "string",
+      "enum": ["divination", "journal", "catalog", "profiles", "settings"],
+      "description": "Currently selected top-level workspace tab"
+    },
+    "tabs": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "nameZh", "nameEn", "sectionCode", "iconName"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "enum": ["divination", "journal", "catalog", "profiles", "settings"]
+          },
+          "nameZh": { "type": "string" },
+          "nameEn": { "type": "string" },
+          "sectionCode": { "type": "string" },
+          "iconName": { "type": "string" },
+          "badgeCount": { "type": "integer" }
+        }
+      }
+    }
+  }
+}

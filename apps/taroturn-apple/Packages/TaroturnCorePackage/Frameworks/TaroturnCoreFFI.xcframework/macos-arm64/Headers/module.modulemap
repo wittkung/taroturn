@@ -1,0 +1,4 @@
+module taroturn_coreFFI {
+    header "taroturn_coreFFI.h"
+    export *
+}

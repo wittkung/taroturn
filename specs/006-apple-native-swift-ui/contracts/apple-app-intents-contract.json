@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AppleAppIntentsContract",
+  "description": "Schema for Siri App Intents and Spotlight Indexing Payloads",
+  "type": "object",
+  "required": ["intentType", "invocationTime", "parameters", "resultPayload"],
+  "properties": {
+    "intentType": {
+      "type": "string",
+      "enum": ["DrawDailyCardIntent", "PerformSpreadReadingIntent", "QueryElementalDignityIntent"]
+    },
+    "invocationTime": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "parameters": {
+      "type": "object",
+      "required": ["spreadId"],
+      "properties": {
+        "spreadId": {
+          "type": "string"
+        },
+        "customQuestion": {
+          "type": ["string", "null"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "resultPayload": {
+      "type": "object",
+      "required": ["dialogSpokenText", "cardNames", "seedHex"],
+      "properties": {
+        "dialogSpokenText": {
+          "type": "string"
+        },
+        "cardNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "seedHex": {
+          "type": "string",
+          "pattern": "^[0-9a-fA-F]{64}$"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

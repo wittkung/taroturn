@@ -430,6 +430,22 @@ private struct FfiConverterInt16: FfiConverterPrimitive {
 #if swift(>=5.8)
     @_documentation(visibility: private)
 #endif
+private struct FfiConverterUInt32: FfiConverterPrimitive {
+    typealias FfiType = UInt32
+    typealias SwiftType = UInt32
+
+    static func read(from buf: inout (data: Data, offset: Data.Index)) throws -> UInt32 {
+        return try lift(readInt(&buf))
+    }
+
+    static func write(_ value: SwiftType, into buf: inout [UInt8]) {
+        writeInt(&buf, lower(value))
+    }
+}
+
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 private struct FfiConverterUInt64: FfiConverterPrimitive {
     typealias FfiType = UInt64
     typealias SwiftType = UInt64
@@ -844,11 +860,13 @@ public struct ElementalDignitySummary {
     public var reversedRatio: Float
     public var dominantElement: DominantElement
     public var shadowCardId: UInt8?
+    public var pairwiseDignities: [PairwiseDignity]
+    public var overallHarmonyScore: Float
     public var balanceDescriptionZh: String
 
     /// Default memberwise initializers are never public by default, so we
     /// declare one manually.
-    public init(fireRatio: Float, waterRatio: Float, airRatio: Float, earthRatio: Float, majorRatio: Float, reversedRatio: Float, dominantElement: DominantElement, shadowCardId: UInt8?, balanceDescriptionZh: String) {
+    public init(fireRatio: Float, waterRatio: Float, airRatio: Float, earthRatio: Float, majorRatio: Float, reversedRatio: Float, dominantElement: DominantElement, shadowCardId: UInt8?, pairwiseDignities: [PairwiseDignity], overallHarmonyScore: Float, balanceDescriptionZh: String) {
         self.fireRatio = fireRatio
         self.waterRatio = waterRatio
         self.airRatio = airRatio
@@ -857,6 +875,8 @@ public struct ElementalDignitySummary {
         self.reversedRatio = reversedRatio
         self.dominantElement = dominantElement
         self.shadowCardId = shadowCardId
+        self.pairwiseDignities = pairwiseDignities
+        self.overallHarmonyScore = overallHarmonyScore
         self.balanceDescriptionZh = balanceDescriptionZh
     }
 }
@@ -887,6 +907,12 @@ extension ElementalDignitySummary: Equatable, Hashable {
         if lhs.shadowCardId != rhs.shadowCardId {
             return false
         }
+        if lhs.pairwiseDignities != rhs.pairwiseDignities {
+            return false
+        }
+        if lhs.overallHarmonyScore != rhs.overallHarmonyScore {
+            return false
+        }
         if lhs.balanceDescriptionZh != rhs.balanceDescriptionZh {
             return false
         }
@@ -902,6 +928,8 @@ extension ElementalDignitySummary: Equatable, Hashable {
         hasher.combine(reversedRatio)
         hasher.combine(dominantElement)
         hasher.combine(shadowCardId)
+        hasher.combine(pairwiseDignities)
+        hasher.combine(overallHarmonyScore)
         hasher.combine(balanceDescriptionZh)
     }
 }
@@ -921,6 +949,8 @@ public struct FfiConverterTypeElementalDignitySummary: FfiConverterRustBuffer {
                 reversedRatio: FfiConverterFloat.read(from: &buf),
                 dominantElement: FfiConverterTypeDominantElement.read(from: &buf),
                 shadowCardId: FfiConverterOptionUInt8.read(from: &buf),
+                pairwiseDignities: FfiConverterSequenceTypePairwiseDignity.read(from: &buf),
+                overallHarmonyScore: FfiConverterFloat.read(from: &buf),
                 balanceDescriptionZh: FfiConverterString.read(from: &buf)
             )
     }
@@ -934,6 +964,8 @@ public struct FfiConverterTypeElementalDignitySummary: FfiConverterRustBuffer {
         FfiConverterFloat.write(value.reversedRatio, into: &buf)
         FfiConverterTypeDominantElement.write(value.dominantElement, into: &buf)
         FfiConverterOptionUInt8.write(value.shadowCardId, into: &buf)
+        FfiConverterSequenceTypePairwiseDignity.write(value.pairwiseDignities, into: &buf)
+        FfiConverterFloat.write(value.overallHarmonyScore, into: &buf)
         FfiConverterString.write(value.balanceDescriptionZh, into: &buf)
     }
 }
@@ -950,6 +982,139 @@ public func FfiConverterTypeElementalDignitySummary_lift(_ buf: RustBuffer) thro
 #endif
 public func FfiConverterTypeElementalDignitySummary_lower(_ value: ElementalDignitySummary) -> RustBuffer {
     return FfiConverterTypeElementalDignitySummary.lower(value)
+}
+
+public struct PairwiseDignity {
+    public var sourceSlotId: UInt8
+    public var targetSlotId: UInt8
+    public var sourceCardId: UInt8
+    public var targetCardId: UInt8
+    public var relation: SlotRelationType
+    public var sourceElement: Element
+    public var targetElement: Element
+    public var affinity: ElementalAffinity
+    public var dignityStatus: DignityStatus
+    public var tensionScore: Float
+    public var dynamicSummaryZh: String
+
+    /// Default memberwise initializers are never public by default, so we
+    /// declare one manually.
+    public init(sourceSlotId: UInt8, targetSlotId: UInt8, sourceCardId: UInt8, targetCardId: UInt8, relation: SlotRelationType, sourceElement: Element, targetElement: Element, affinity: ElementalAffinity, dignityStatus: DignityStatus, tensionScore: Float, dynamicSummaryZh: String) {
+        self.sourceSlotId = sourceSlotId
+        self.targetSlotId = targetSlotId
+        self.sourceCardId = sourceCardId
+        self.targetCardId = targetCardId
+        self.relation = relation
+        self.sourceElement = sourceElement
+        self.targetElement = targetElement
+        self.affinity = affinity
+        self.dignityStatus = dignityStatus
+        self.tensionScore = tensionScore
+        self.dynamicSummaryZh = dynamicSummaryZh
+    }
+}
+
+extension PairwiseDignity: Equatable, Hashable {
+    public static func == (lhs: PairwiseDignity, rhs: PairwiseDignity) -> Bool {
+        if lhs.sourceSlotId != rhs.sourceSlotId {
+            return false
+        }
+        if lhs.targetSlotId != rhs.targetSlotId {
+            return false
+        }
+        if lhs.sourceCardId != rhs.sourceCardId {
+            return false
+        }
+        if lhs.targetCardId != rhs.targetCardId {
+            return false
+        }
+        if lhs.relation != rhs.relation {
+            return false
+        }
+        if lhs.sourceElement != rhs.sourceElement {
+            return false
+        }
+        if lhs.targetElement != rhs.targetElement {
+            return false
+        }
+        if lhs.affinity != rhs.affinity {
+            return false
+        }
+        if lhs.dignityStatus != rhs.dignityStatus {
+            return false
+        }
+        if lhs.tensionScore != rhs.tensionScore {
+            return false
+        }
+        if lhs.dynamicSummaryZh != rhs.dynamicSummaryZh {
+            return false
+        }
+        return true
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(sourceSlotId)
+        hasher.combine(targetSlotId)
+        hasher.combine(sourceCardId)
+        hasher.combine(targetCardId)
+        hasher.combine(relation)
+        hasher.combine(sourceElement)
+        hasher.combine(targetElement)
+        hasher.combine(affinity)
+        hasher.combine(dignityStatus)
+        hasher.combine(tensionScore)
+        hasher.combine(dynamicSummaryZh)
+    }
+}
+
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
+public struct FfiConverterTypePairwiseDignity: FfiConverterRustBuffer {
+    public static func read(from buf: inout (data: Data, offset: Data.Index)) throws -> PairwiseDignity {
+        return
+            try PairwiseDignity(
+                sourceSlotId: FfiConverterUInt8.read(from: &buf),
+                targetSlotId: FfiConverterUInt8.read(from: &buf),
+                sourceCardId: FfiConverterUInt8.read(from: &buf),
+                targetCardId: FfiConverterUInt8.read(from: &buf),
+                relation: FfiConverterTypeSlotRelationType.read(from: &buf),
+                sourceElement: FfiConverterTypeElement.read(from: &buf),
+                targetElement: FfiConverterTypeElement.read(from: &buf),
+                affinity: FfiConverterTypeElementalAffinity.read(from: &buf),
+                dignityStatus: FfiConverterTypeDignityStatus.read(from: &buf),
+                tensionScore: FfiConverterFloat.read(from: &buf),
+                dynamicSummaryZh: FfiConverterString.read(from: &buf)
+            )
+    }
+
+    public static func write(_ value: PairwiseDignity, into buf: inout [UInt8]) {
+        FfiConverterUInt8.write(value.sourceSlotId, into: &buf)
+        FfiConverterUInt8.write(value.targetSlotId, into: &buf)
+        FfiConverterUInt8.write(value.sourceCardId, into: &buf)
+        FfiConverterUInt8.write(value.targetCardId, into: &buf)
+        FfiConverterTypeSlotRelationType.write(value.relation, into: &buf)
+        FfiConverterTypeElement.write(value.sourceElement, into: &buf)
+        FfiConverterTypeElement.write(value.targetElement, into: &buf)
+        FfiConverterTypeElementalAffinity.write(value.affinity, into: &buf)
+        FfiConverterTypeDignityStatus.write(value.dignityStatus, into: &buf)
+        FfiConverterFloat.write(value.tensionScore, into: &buf)
+        FfiConverterString.write(value.dynamicSummaryZh, into: &buf)
+    }
+}
+
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
+public func FfiConverterTypePairwiseDignity_lift(_ buf: RustBuffer) throws -> PairwiseDignity {
+    return try FfiConverterTypePairwiseDignity.lift(buf)
+}
+
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
+public func FfiConverterTypePairwiseDignity_lower(_ value: PairwiseDignity) -> RustBuffer {
+    return FfiConverterTypePairwiseDignity.lower(value)
 }
 
 public struct PlacedCard {
@@ -1146,6 +1311,83 @@ public func FfiConverterTypeReadingSession_lower(_ value: ReadingSession) -> Rus
     return FfiConverterTypeReadingSession.lower(value)
 }
 
+public struct SlotEdge {
+    public var sourceSlotId: UInt8
+    public var targetSlotId: UInt8
+    public var relation: SlotRelationType
+    public var weight: Float
+
+    /// Default memberwise initializers are never public by default, so we
+    /// declare one manually.
+    public init(sourceSlotId: UInt8, targetSlotId: UInt8, relation: SlotRelationType, weight: Float) {
+        self.sourceSlotId = sourceSlotId
+        self.targetSlotId = targetSlotId
+        self.relation = relation
+        self.weight = weight
+    }
+}
+
+extension SlotEdge: Equatable, Hashable {
+    public static func == (lhs: SlotEdge, rhs: SlotEdge) -> Bool {
+        if lhs.sourceSlotId != rhs.sourceSlotId {
+            return false
+        }
+        if lhs.targetSlotId != rhs.targetSlotId {
+            return false
+        }
+        if lhs.relation != rhs.relation {
+            return false
+        }
+        if lhs.weight != rhs.weight {
+            return false
+        }
+        return true
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(sourceSlotId)
+        hasher.combine(targetSlotId)
+        hasher.combine(relation)
+        hasher.combine(weight)
+    }
+}
+
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
+public struct FfiConverterTypeSlotEdge: FfiConverterRustBuffer {
+    public static func read(from buf: inout (data: Data, offset: Data.Index)) throws -> SlotEdge {
+        return
+            try SlotEdge(
+                sourceSlotId: FfiConverterUInt8.read(from: &buf),
+                targetSlotId: FfiConverterUInt8.read(from: &buf),
+                relation: FfiConverterTypeSlotRelationType.read(from: &buf),
+                weight: FfiConverterFloat.read(from: &buf)
+            )
+    }
+
+    public static func write(_ value: SlotEdge, into buf: inout [UInt8]) {
+        FfiConverterUInt8.write(value.sourceSlotId, into: &buf)
+        FfiConverterUInt8.write(value.targetSlotId, into: &buf)
+        FfiConverterTypeSlotRelationType.write(value.relation, into: &buf)
+        FfiConverterFloat.write(value.weight, into: &buf)
+    }
+}
+
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
+public func FfiConverterTypeSlotEdge_lift(_ buf: RustBuffer) throws -> SlotEdge {
+    return try FfiConverterTypeSlotEdge.lift(buf)
+}
+
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
+public func FfiConverterTypeSlotEdge_lower(_ value: SlotEdge) -> RustBuffer {
+    return FfiConverterTypeSlotEdge.lower(value)
+}
+
 public struct Spread {
     public var id: String
     public var nameEn: String
@@ -1153,16 +1395,18 @@ public struct Spread {
     public var description: String
     public var category: SpreadCategory
     public var slots: [SpreadSlot]
+    public var edges: [SlotEdge]
 
     /// Default memberwise initializers are never public by default, so we
     /// declare one manually.
-    public init(id: String, nameEn: String, nameZh: String, description: String, category: SpreadCategory, slots: [SpreadSlot]) {
+    public init(id: String, nameEn: String, nameZh: String, description: String, category: SpreadCategory, slots: [SpreadSlot], edges: [SlotEdge]) {
         self.id = id
         self.nameEn = nameEn
         self.nameZh = nameZh
         self.description = description
         self.category = category
         self.slots = slots
+        self.edges = edges
     }
 }
 
@@ -1186,6 +1430,9 @@ extension Spread: Equatable, Hashable {
         if lhs.slots != rhs.slots {
             return false
         }
+        if lhs.edges != rhs.edges {
+            return false
+        }
         return true
     }
 
@@ -1196,6 +1443,7 @@ extension Spread: Equatable, Hashable {
         hasher.combine(description)
         hasher.combine(category)
         hasher.combine(slots)
+        hasher.combine(edges)
     }
 }
 
@@ -1211,7 +1459,8 @@ public struct FfiConverterTypeSpread: FfiConverterRustBuffer {
                 nameZh: FfiConverterString.read(from: &buf),
                 description: FfiConverterString.read(from: &buf),
                 category: FfiConverterTypeSpreadCategory.read(from: &buf),
-                slots: FfiConverterSequenceTypeSpreadSlot.read(from: &buf)
+                slots: FfiConverterSequenceTypeSpreadSlot.read(from: &buf),
+                edges: FfiConverterSequenceTypeSlotEdge.read(from: &buf)
             )
     }
 
@@ -1222,6 +1471,7 @@ public struct FfiConverterTypeSpread: FfiConverterRustBuffer {
         FfiConverterString.write(value.description, into: &buf)
         FfiConverterTypeSpreadCategory.write(value.category, into: &buf)
         FfiConverterSequenceTypeSpreadSlot.write(value.slots, into: &buf)
+        FfiConverterSequenceTypeSlotEdge.write(value.edges, into: &buf)
     }
 }
 
@@ -1411,6 +1661,64 @@ extension ArcanaType: Equatable, Hashable {}
 // Note that we don't yet support `indirect` for enums.
 // See https://github.com/mozilla/uniffi-rs/issues/396 for further discussion.
 
+public enum DignityStatus {
+    case wellDignified
+    case illDignified
+    case neutralDignified
+}
+
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
+public struct FfiConverterTypeDignityStatus: FfiConverterRustBuffer {
+    typealias SwiftType = DignityStatus
+
+    public static func read(from buf: inout (data: Data, offset: Data.Index)) throws -> DignityStatus {
+        let variant: Int32 = try readInt(&buf)
+        switch variant {
+        case 1: return .wellDignified
+
+        case 2: return .illDignified
+
+        case 3: return .neutralDignified
+
+        default: throw UniffiInternalError.unexpectedEnumCase
+        }
+    }
+
+    public static func write(_ value: DignityStatus, into buf: inout [UInt8]) {
+        switch value {
+        case .wellDignified:
+            writeInt(&buf, Int32(1))
+
+        case .illDignified:
+            writeInt(&buf, Int32(2))
+
+        case .neutralDignified:
+            writeInt(&buf, Int32(3))
+        }
+    }
+}
+
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
+public func FfiConverterTypeDignityStatus_lift(_ buf: RustBuffer) throws -> DignityStatus {
+    return try FfiConverterTypeDignityStatus.lift(buf)
+}
+
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
+public func FfiConverterTypeDignityStatus_lower(_ value: DignityStatus) -> RustBuffer {
+    return FfiConverterTypeDignityStatus.lower(value)
+}
+
+extension DignityStatus: Equatable, Hashable {}
+
+// Note that we don't yet support `indirect` for enums.
+// See https://github.com/mozilla/uniffi-rs/issues/396 for further discussion.
+
 public enum DominantElement {
     case fire
     case water
@@ -1559,6 +1867,82 @@ public func FfiConverterTypeElement_lower(_ value: Element) -> RustBuffer {
 }
 
 extension Element: Equatable, Hashable {}
+
+// Note that we don't yet support `indirect` for enums.
+// See https://github.com/mozilla/uniffi-rs/issues/396 for further discussion.
+
+public enum ElementalAffinity {
+    case friendlyActive
+    case friendlyPassive
+    case intensified
+    case contradictoryHostile
+    case neutralModifying
+    case undefined
+}
+
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
+public struct FfiConverterTypeElementalAffinity: FfiConverterRustBuffer {
+    typealias SwiftType = ElementalAffinity
+
+    public static func read(from buf: inout (data: Data, offset: Data.Index)) throws -> ElementalAffinity {
+        let variant: Int32 = try readInt(&buf)
+        switch variant {
+        case 1: return .friendlyActive
+
+        case 2: return .friendlyPassive
+
+        case 3: return .intensified
+
+        case 4: return .contradictoryHostile
+
+        case 5: return .neutralModifying
+
+        case 6: return .undefined
+
+        default: throw UniffiInternalError.unexpectedEnumCase
+        }
+    }
+
+    public static func write(_ value: ElementalAffinity, into buf: inout [UInt8]) {
+        switch value {
+        case .friendlyActive:
+            writeInt(&buf, Int32(1))
+
+        case .friendlyPassive:
+            writeInt(&buf, Int32(2))
+
+        case .intensified:
+            writeInt(&buf, Int32(3))
+
+        case .contradictoryHostile:
+            writeInt(&buf, Int32(4))
+
+        case .neutralModifying:
+            writeInt(&buf, Int32(5))
+
+        case .undefined:
+            writeInt(&buf, Int32(6))
+        }
+    }
+}
+
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
+public func FfiConverterTypeElementalAffinity_lift(_ buf: RustBuffer) throws -> ElementalAffinity {
+    return try FfiConverterTypeElementalAffinity.lift(buf)
+}
+
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
+public func FfiConverterTypeElementalAffinity_lower(_ value: ElementalAffinity) -> RustBuffer {
+    return FfiConverterTypeElementalAffinity.lower(value)
+}
+
+extension ElementalAffinity: Equatable, Hashable {}
 
 // Note that we don't yet support `indirect` for enums.
 // See https://github.com/mozilla/uniffi-rs/issues/396 for further discussion.
@@ -1747,6 +2131,8 @@ public enum SlotConstraint {
     case cupsOnly
     case swordsOnly
     case pentaclesOnly
+    case courtOnly
+    case pipOnly
 }
 
 #if swift(>=5.8)
@@ -1771,6 +2157,10 @@ public struct FfiConverterTypeSlotConstraint: FfiConverterRustBuffer {
         case 6: return .swordsOnly
 
         case 7: return .pentaclesOnly
+
+        case 8: return .courtOnly
+
+        case 9: return .pipOnly
 
         default: throw UniffiInternalError.unexpectedEnumCase
         }
@@ -1798,6 +2188,12 @@ public struct FfiConverterTypeSlotConstraint: FfiConverterRustBuffer {
 
         case .pentaclesOnly:
             writeInt(&buf, Int32(7))
+
+        case .courtOnly:
+            writeInt(&buf, Int32(8))
+
+        case .pipOnly:
+            writeInt(&buf, Int32(9))
         }
     }
 }
@@ -1817,6 +2213,88 @@ public func FfiConverterTypeSlotConstraint_lower(_ value: SlotConstraint) -> Rus
 }
 
 extension SlotConstraint: Equatable, Hashable {}
+
+// Note that we don't yet support `indirect` for enums.
+// See https://github.com/mozilla/uniffi-rs/issues/396 for further discussion.
+
+public enum SlotRelationType {
+    case crosses
+    case flowsTo
+    case supports
+    case illuminates
+    case opposes
+    case synthesizes
+    case reflects
+}
+
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
+public struct FfiConverterTypeSlotRelationType: FfiConverterRustBuffer {
+    typealias SwiftType = SlotRelationType
+
+    public static func read(from buf: inout (data: Data, offset: Data.Index)) throws -> SlotRelationType {
+        let variant: Int32 = try readInt(&buf)
+        switch variant {
+        case 1: return .crosses
+
+        case 2: return .flowsTo
+
+        case 3: return .supports
+
+        case 4: return .illuminates
+
+        case 5: return .opposes
+
+        case 6: return .synthesizes
+
+        case 7: return .reflects
+
+        default: throw UniffiInternalError.unexpectedEnumCase
+        }
+    }
+
+    public static func write(_ value: SlotRelationType, into buf: inout [UInt8]) {
+        switch value {
+        case .crosses:
+            writeInt(&buf, Int32(1))
+
+        case .flowsTo:
+            writeInt(&buf, Int32(2))
+
+        case .supports:
+            writeInt(&buf, Int32(3))
+
+        case .illuminates:
+            writeInt(&buf, Int32(4))
+
+        case .opposes:
+            writeInt(&buf, Int32(5))
+
+        case .synthesizes:
+            writeInt(&buf, Int32(6))
+
+        case .reflects:
+            writeInt(&buf, Int32(7))
+        }
+    }
+}
+
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
+public func FfiConverterTypeSlotRelationType_lift(_ buf: RustBuffer) throws -> SlotRelationType {
+    return try FfiConverterTypeSlotRelationType.lift(buf)
+}
+
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
+public func FfiConverterTypeSlotRelationType_lower(_ value: SlotRelationType) -> RustBuffer {
+    return FfiConverterTypeSlotRelationType.lower(value)
+}
+
+extension SlotRelationType: Equatable, Hashable {}
 
 // Note that we don't yet support `indirect` for enums.
 // See https://github.com/mozilla/uniffi-rs/issues/396 for further discussion.
@@ -1962,6 +2440,13 @@ public enum TarotError {
     case DeserializationError(String)
     case AiProviderUnavailable(String)
     case Unauthorized(String)
+    case DeckNotFound(String)
+    case OtpArchiveCorrupted(String)
+    case OtpManifestMissing
+    case OtpManifestInvalid(String)
+    case OtpIncompleteDeck(UInt32)
+    case InternalLockError
+    case IoError(String)
 }
 
 #if swift(>=5.8)
@@ -2001,6 +2486,23 @@ public struct FfiConverterTypeTarotError: FfiConverterRustBuffer {
                 FfiConverterString.read(from: &buf)
             )
         case 9: return try .Unauthorized(
+                FfiConverterString.read(from: &buf)
+            )
+        case 10: return try .DeckNotFound(
+                FfiConverterString.read(from: &buf)
+            )
+        case 11: return try .OtpArchiveCorrupted(
+                FfiConverterString.read(from: &buf)
+            )
+        case 12: return .OtpManifestMissing
+        case 13: return try .OtpManifestInvalid(
+                FfiConverterString.read(from: &buf)
+            )
+        case 14: return try .OtpIncompleteDeck(
+                FfiConverterUInt32.read(from: &buf)
+            )
+        case 15: return .InternalLockError
+        case 16: return try .IoError(
                 FfiConverterString.read(from: &buf)
             )
         default: throw UniffiInternalError.unexpectedEnumCase
@@ -2046,6 +2548,32 @@ public struct FfiConverterTypeTarotError: FfiConverterRustBuffer {
 
         case let .Unauthorized(v1):
             writeInt(&buf, Int32(9))
+            FfiConverterString.write(v1, into: &buf)
+
+        case let .DeckNotFound(v1):
+            writeInt(&buf, Int32(10))
+            FfiConverterString.write(v1, into: &buf)
+
+        case let .OtpArchiveCorrupted(v1):
+            writeInt(&buf, Int32(11))
+            FfiConverterString.write(v1, into: &buf)
+
+        case .OtpManifestMissing:
+            writeInt(&buf, Int32(12))
+
+        case let .OtpManifestInvalid(v1):
+            writeInt(&buf, Int32(13))
+            FfiConverterString.write(v1, into: &buf)
+
+        case let .OtpIncompleteDeck(v1):
+            writeInt(&buf, Int32(14))
+            FfiConverterUInt32.write(v1, into: &buf)
+
+        case .InternalLockError:
+            writeInt(&buf, Int32(15))
+
+        case let .IoError(v1):
+            writeInt(&buf, Int32(16))
             FfiConverterString.write(v1, into: &buf)
         }
     }
@@ -2208,6 +2736,31 @@ private struct FfiConverterSequenceTypeCard: FfiConverterRustBuffer {
 #if swift(>=5.8)
     @_documentation(visibility: private)
 #endif
+private struct FfiConverterSequenceTypePairwiseDignity: FfiConverterRustBuffer {
+    typealias SwiftType = [PairwiseDignity]
+
+    static func write(_ value: [PairwiseDignity], into buf: inout [UInt8]) {
+        let len = Int32(value.count)
+        writeInt(&buf, len)
+        for item in value {
+            FfiConverterTypePairwiseDignity.write(item, into: &buf)
+        }
+    }
+
+    static func read(from buf: inout (data: Data, offset: Data.Index)) throws -> [PairwiseDignity] {
+        let len: Int32 = try readInt(&buf)
+        var seq = [PairwiseDignity]()
+        seq.reserveCapacity(Int(len))
+        for _ in 0 ..< len {
+            try seq.append(FfiConverterTypePairwiseDignity.read(from: &buf))
+        }
+        return seq
+    }
+}
+
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 private struct FfiConverterSequenceTypePlacedCard: FfiConverterRustBuffer {
     typealias SwiftType = [PlacedCard]
 
@@ -2225,6 +2778,31 @@ private struct FfiConverterSequenceTypePlacedCard: FfiConverterRustBuffer {
         seq.reserveCapacity(Int(len))
         for _ in 0 ..< len {
             try seq.append(FfiConverterTypePlacedCard.read(from: &buf))
+        }
+        return seq
+    }
+}
+
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
+private struct FfiConverterSequenceTypeSlotEdge: FfiConverterRustBuffer {
+    typealias SwiftType = [SlotEdge]
+
+    static func write(_ value: [SlotEdge], into buf: inout [UInt8]) {
+        let len = Int32(value.count)
+        writeInt(&buf, len)
+        for item in value {
+            FfiConverterTypeSlotEdge.write(item, into: &buf)
+        }
+    }
+
+    static func read(from buf: inout (data: Data, offset: Data.Index)) throws -> [SlotEdge] {
+        let len: Int32 = try readInt(&buf)
+        var seq = [SlotEdge]()
+        seq.reserveCapacity(Int(len))
+        for _ in 0 ..< len {
+            try seq.append(FfiConverterTypeSlotEdge.read(from: &buf))
         }
         return seq
     }

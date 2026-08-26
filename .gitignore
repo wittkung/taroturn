@@ -35,6 +35,9 @@ taroturn-miniprogram/wasm/*.js
 taroturn-miniprogram/miniprogram_npm/
 
 # UniFFI / Swift / Android
+.build/
+.swiftpm/
+*.xcuserstate
 bindings/swift/*.framework
 bindings/swift/DerivedData/
 bindings/kotlin/build/

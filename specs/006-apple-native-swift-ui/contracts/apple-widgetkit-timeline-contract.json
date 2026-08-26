@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AppleWidgetKitTimelineContract",
+  "description": "Schema for Apple WidgetKit Timeline Entry and shared App Group storage payload",
+  "type": "object",
+  "required": ["date", "cardId", "nameZh", "nameEn", "orientation", "element", "archetypalMeaningZh", "seedHex"],
+  "properties": {
+    "date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "cardId": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 77
+    },
+    "nameZh": {
+      "type": "string"
+    },
+    "nameEn": {
+      "type": "string"
+    },
+    "orientation": {
+      "type": "string",
+      "enum": ["Upright", "Reversed"]
+    },
+    "element": {
+      "type": "string",
+      "enum": ["Fire", "Water", "Air", "Earth", "Spirit"]
+    },
+    "archetypalMeaningZh": {
+      "type": "string"
+    },
+    "astrologicalCorrespondence": {
+      "type": "string"
+    },
+    "seedHex": {
+      "type": "string",
+      "pattern": "^[0-9a-fA-F]{64}$"
+    }
+  },
+  "additionalProperties": false
+}

@@ -31,7 +31,10 @@ let package = Package(
         .testTarget(
             name: "TaroturnCoreTests",
             dependencies: ["TaroturnCore"],
-            path: "Tests/TaroturnCoreTests"
+            path: "Tests/TaroturnCoreTests",
+            linkerSettings: [
+                .unsafeFlags(["-Xlinker", "-w"])
+            ]
         )
     ]
 )

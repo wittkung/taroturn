@@ -74,6 +74,10 @@ impl DeckRegistry {
         })
     }
 
+    pub fn default_system_id(&self) -> &str {
+        &self.default_system_id
+    }
+
     pub fn register(&self, system: Arc<dyn TarotDeckSystem>) -> TarotResult<()> {
         let mut map = self.systems.write().map_err(|_| TarotError::InternalLockError)?;
         map.insert(system.deck_id().to_string(), system);

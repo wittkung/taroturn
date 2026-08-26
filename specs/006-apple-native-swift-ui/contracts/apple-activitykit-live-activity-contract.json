@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AppleActivityKitLiveActivityContract",
+  "description": "Schema for ActivityKit Live Activity Attributes and ContentState payloads",
+  "type": "object",
+  "required": ["activityId", "spreadId", "spreadTitleZh", "sessionStartTime", "contentState"],
+  "properties": {
+    "activityId": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "spreadId": {
+      "type": "string"
+    },
+    "spreadTitleZh": {
+      "type": "string"
+    },
+    "sessionStartTime": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "contentState": {
+      "type": "object",
+      "required": ["currentSlotIndex", "totalSlots", "currentSlotTitleZh", "isComplete"],
+      "properties": {
+        "currentSlotIndex": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "totalSlots": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "currentSlotTitleZh": {
+          "type": "string"
+        },
+        "drawnCardNameZh": {
+          "type": ["string", "null"]
+        },
+        "isComplete": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

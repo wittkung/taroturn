@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AppleStoreKitEntitlementContract",
+  "description": "Schema for StoreKit 2 verified transaction entitlements",
+  "type": "object",
+  "required": ["productId", "transactionId", "purchaseDate", "isSubscribed", "deckAccessList"],
+  "properties": {
+    "productId": {
+      "type": "string"
+    },
+    "transactionId": {
+      "type": "string"
+    },
+    "purchaseDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "expirationDate": {
+      "type": ["string", "null"],
+      "format": "date-time"
+    },
+    "isSubscribed": {
+      "type": "boolean"
+    },
+    "deckAccessList": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}

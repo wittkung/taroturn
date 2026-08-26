@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AppleProjectGovernanceContract",
+  "description": "Validation schema for Apple SPM target path mapping and toolchain targets",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "spmTargets",
+    "deploymentTargets"
+  ],
+  "properties": {
+    "spmTargets": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "path", "type"],
+        "properties": {
+          "name": { "type": "string" },
+          "path": { "type": "string" },
+          "type": { "type": "string", "enum": ["target", "executableTarget"] }
+        }
+      }
+    },
+    "deploymentTargets": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["macosMinVersion", "iosMinVersion"],
+      "properties": {
+        "macosMinVersion": { "type": "string" },
+        "iosMinVersion": { "type": "string" }
+      }
+    }
+  }
+}

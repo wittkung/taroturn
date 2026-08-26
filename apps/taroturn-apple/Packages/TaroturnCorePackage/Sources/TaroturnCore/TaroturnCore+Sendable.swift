@@ -13,7 +13,13 @@ extension DrawnCard: @unchecked Sendable {}
 extension ElementalDignitySummary: @unchecked Sendable {}
 extension PairwiseDignity: @unchecked Sendable {}
 extension ArcanaType: @unchecked Sendable {}
-extension ElementType: @unchecked Sendable {}
+extension Element: @unchecked Sendable {}
+extension ElementalAffinity: @unchecked Sendable {}
+extension DominantElement: @unchecked Sendable {}
 extension Orientation: @unchecked Sendable {}
+extension Rank: @unchecked Sendable {}
+extension SlotConstraint: @unchecked Sendable {}
 extension SlotRelationType: @unchecked Sendable {}
-extension DignityStatus: @unchecked Sendable {}
+extension SpreadCategory: @unchecked Sendable {}
+extension Suit: @unchecked Sendable {}
+extension TarotError: @unchecked Sendable {}
